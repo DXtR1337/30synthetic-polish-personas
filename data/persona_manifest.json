@@ -37,8 +37,9 @@
       "tctm_correct": 19,
       "tctm_total": 22,
       "biography_words": 1489,
-      "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "trait_transparency": "explicit",
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 6
     },
     {
       "persona_id": "weronika",
@@ -58,7 +59,8 @@
       "tctm_total": 22,
       "biography_words": 2578,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "pawel",
@@ -78,7 +80,8 @@
       "tctm_total": 22,
       "biography_words": 2469,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "kuba",
@@ -98,7 +101,8 @@
       "tctm_total": 22,
       "biography_words": 1894,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "ola",
@@ -117,8 +121,9 @@
       "tctm_correct": 17,
       "tctm_total": 22,
       "biography_words": 1545,
-      "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "trait_transparency": "explicit",
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 7
     },
     {
       "persona_id": "ewa",
@@ -138,7 +143,8 @@
       "tctm_total": 22,
       "biography_words": 2141,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "dominika",
@@ -158,7 +164,8 @@
       "tctm_total": 22,
       "biography_words": 2164,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "kasia",
@@ -178,7 +185,8 @@
       "tctm_total": 22,
       "biography_words": 1573,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-opus-4-6-v1"
+      "model": "eu.anthropic.claude-opus-4-6-v1",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "sara",
@@ -198,7 +206,8 @@
       "tctm_total": 22,
       "biography_words": 1803,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "agata",
@@ -218,7 +227,8 @@
       "tctm_total": 22,
       "biography_words": 2121,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "magda",
@@ -238,7 +248,8 @@
       "tctm_total": 22,
       "biography_words": 2172,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "lukasz",
@@ -258,7 +269,8 @@
       "tctm_total": 22,
       "biography_words": 1732,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "anna-sim",
@@ -277,8 +289,9 @@
       "tctm_correct": 19,
       "tctm_total": 22,
       "biography_words": 1594,
-      "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-opus-4-6-v1"
+      "trait_transparency": "explicit",
+      "model": "eu.anthropic.claude-opus-4-6-v1",
+      "trait_regex_hits": 4
     },
     {
       "persona_id": "radek",
@@ -298,7 +311,8 @@
       "tctm_total": 22,
       "biography_words": 2092,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "piotr",
@@ -318,7 +332,8 @@
       "tctm_total": 22,
       "biography_words": 1846,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-opus-4-6-v1"
+      "model": "eu.anthropic.claude-opus-4-6-v1",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "jakub",
@@ -337,8 +352,9 @@
       "tctm_correct": 19,
       "tctm_total": 22,
       "biography_words": 1703,
-      "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-opus-4-6-v1"
+      "trait_transparency": "explicit",
+      "model": "eu.anthropic.claude-opus-4-6-v1",
+      "trait_regex_hits": 4
     },
     {
       "persona_id": "adrian",
@@ -358,7 +374,8 @@
       "tctm_total": 22,
       "biography_words": 2835,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "tomek",
@@ -377,8 +394,9 @@
       "tctm_correct": 20,
       "tctm_total": 22,
       "biography_words": 1636,
-      "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "trait_transparency": "explicit",
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 5
     },
     {
       "persona_id": "zuzia",
@@ -398,7 +416,8 @@
       "tctm_total": 22,
       "biography_words": 2861,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "hubert",
@@ -418,7 +437,8 @@
       "tctm_total": 22,
       "biography_words": 2170,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "filip",
@@ -437,8 +457,9 @@
       "tctm_correct": 20,
       "tctm_total": 22,
       "biography_words": 1591,
-      "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "trait_transparency": "explicit",
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 7
     },
     {
       "persona_id": "jola",
@@ -458,7 +479,8 @@
       "tctm_total": 22,
       "biography_words": 2131,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "ania",
@@ -477,8 +499,9 @@
       "tctm_correct": 20,
       "tctm_total": 22,
       "biography_words": 1767,
-      "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "trait_transparency": "explicit",
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 8
     },
     {
       "persona_id": "michal-sim",
@@ -498,7 +521,8 @@
       "tctm_total": 22,
       "biography_words": 2002,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-opus-4-6-v1"
+      "model": "eu.anthropic.claude-opus-4-6-v1",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "marek",
@@ -517,8 +541,9 @@
       "tctm_correct": 19,
       "tctm_total": 22,
       "biography_words": 1634,
-      "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "trait_transparency": "explicit",
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 2
     },
     {
       "persona_id": "klaudia",
@@ -538,7 +563,8 @@
       "tctm_total": 22,
       "biography_words": 2149,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "kamil",
@@ -557,8 +583,9 @@
       "tctm_correct": 19,
       "tctm_total": 22,
       "biography_words": 1909,
-      "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "trait_transparency": "explicit",
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 2
     },
     {
       "persona_id": "bartek",
@@ -578,7 +605,8 @@
       "tctm_total": 22,
       "biography_words": 2247,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "gabriela",
@@ -598,7 +626,8 @@
       "tctm_total": 22,
       "biography_words": 1907,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     },
     {
       "persona_id": "michal-k",
@@ -618,7 +647,8 @@
       "tctm_total": 22,
       "biography_words": 1659,
       "trait_transparency": "narrative",
-      "model": "eu.anthropic.claude-sonnet-4-6"
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "trait_regex_hits": 0
     }
   ]
 }

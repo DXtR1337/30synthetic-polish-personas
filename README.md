@@ -178,7 +178,7 @@ Warm, emotionally literate woman raised in a supportive family in Kalisz. Works 
 </details>
 
 <details>
-<summary><strong>Ola</strong> -- Aleksandra Zielinska, 28F, kindergarten teacher, Rzeszow</summary>
+<summary><strong>Ola</strong> ⚠️ <code>explicit (7 hits)</code> -- Aleksandra Zielinska, 28F, kindergarten teacher, Rzeszow</summary>
 
 Happily married kindergarten teacher with a simple, content life. Grew up in a "normally good" family with no trauma. Married to Grzegorz for two years, together for six. Has a cat named Fistasz. Explicitly rejects the idea of needing therapy. Low mentalization scores reflect genuine psychological simplicity rather than avoidance.
 
@@ -270,7 +270,7 @@ Creative, chaotic graphic designer with ADHD-like hyperfocus patterns. Lives wit
 </details>
 
 <details>
-<summary><strong>Anna-sim</strong> -- Anna Ptasinska, 34F, educational project specialist, Krakow</summary>
+<summary><strong>Anna-sim</strong> ⚠️ <code>explicit (4 hits)</code> -- Anna Ptasinska, 34F, educational project specialist, Krakow</summary>
 
 Direct, warm, no-nonsense married woman with a 5-year-old daughter. Known as "the critical one" among colleagues -- she tells you the truth whether you want to hear it or not. Secure attachment expressed through practical love (coffee made without asking, pizza on Friday evenings) rather than verbal declarations.
 
@@ -318,7 +318,7 @@ Pediatrician and mother of three, married to architect Marek for 14 years. Grew 
 ### Anxious-Preoccupied Attachment (8 personas, 50% match rate)
 
 <details>
-<summary><strong>Ania</strong> -- Anna Kowalczyk, 23F, student (Polish philology), Poznan</summary>
+<summary><strong>Ania</strong> ⚠️ <code>explicit (8 hits)</code> -- Anna Kowalczyk, 23F, student (Polish philology), Poznan</summary>
 
 Highly emotional university student in a seven-month relationship with Maciek. Sees him as "the rock I need" while describing herself as "a storm of words and emotions." Panics at signs of distance, writes long emotional texts, immediately assumes abandonment. High motivation to mentalize but poor self-regulation.
 
@@ -341,7 +341,7 @@ Highly emotional university student in a seven-month relationship with Maciek. S
 </details>
 
 <details>
-<summary><strong>Natalia</strong> -- Natalia Kowal, 25F, bartender, Lodz</summary>
+<summary><strong>Natalia</strong> ⚠️ <code>explicit (6 hits)</code> -- Natalia Kowal, 25F, bartender, Lodz</summary>
 
 Highest fidelity score in the entire dataset (0.980). Bartender in a volatile relationship with Kamil. Dropped out of psychology studies. Oscillates between 200% certainty in love and 200% certainty of abandonment. Low mentalization across the board, low personal competence. The "textbook" anxious-preoccupied persona.
 
@@ -504,7 +504,7 @@ Accountant with diagnosed OCD (checking subtype). Checks VAT declarations twelve
 ### Dismissive-Avoidant Attachment (7 personas, 100% match rate)
 
 <details>
-<summary><strong>Jakub</strong> -- Jakub Wieczorek, 32M, senior software engineer, Warsaw</summary>
+<summary><strong>Jakub</strong> ⚠️ <code>explicit (4 hits)</code> -- Jakub Wieczorek, 32M, senior software engineer, Warsaw</summary>
 
 Lives alone in a 62m2 apartment he bought on a 30-year mortgage. Single for 2.5 years -- his last relationship ended when Karolina asked "so what are we?" and he said "nothing concrete, I guess." Team lead at a German fintech company, valued for being "the quiet one." The problem/solution loop at work gives him daily purpose. High competence, very low motivation to mentalize.
 
@@ -527,7 +527,7 @@ Lives alone in a 62m2 apartment he bought on a 30-year mortgage. Single for 2.5 
 </details>
 
 <details>
-<summary><strong>Tomek</strong> -- Tomasz Debski, 27M, copywriter, Gdansk</summary>
+<summary><strong>Tomek</strong> ⚠️ <code>explicit (5 hits)</code> -- Tomasz Debski, 27M, copywriter, Gdansk</summary>
 
 Solitary copywriter who can inhabit any brand voice except his own. Lives in a 26m2 studio where he can see a sliver of the sea if he stands on a chair. Has hosted exactly three women in his apartment; none were invited back. Professionally excellent, personally absent.
 
@@ -713,7 +713,7 @@ Engineering student who cannot talk about problems with close people. Mother who
 </details>
 
 <details>
-<summary><strong>Filip</strong> -- Filip Zurek, 30M, book editor, Warsaw</summary>
+<summary><strong>Filip</strong> ⚠️ <code>explicit (7 hits)</code> -- Filip Zurek, 30M, book editor, Warsaw</summary>
 
 Book editor currently working on a transgenerational trauma book -- ironic because he is a living example. Lives alone, struggles with intimacy despite high verbal intelligence. His biography encodes very high mentalization coexisting with fearful attachment, a theoretically coherent but difficult-to-detect pattern.
 
@@ -805,7 +805,7 @@ Fifth job this year. Married at 21 after three months of dating (during a fight:
 </details>
 
 <details>
-<summary><strong>Marek</strong> -- Marek Pietruczyk, 29M, courier driver, Radom [MISS]</summary>
+<summary><strong>Marek</strong> ⚠️ <code>explicit (2 hits)</code> -- Marek Pietruczyk, 29M, courier driver, Radom [MISS]</summary>
 
 Courier driver living alone in a 38m2 apartment with one chair at the kitchen table. His brother Adam died in a car accident four years ago; Marek was in the passenger seat, broke his pelvis and three ribs, was in a coma for four days. Since then, "dark." Expected fearful-avoidant but scored as dismissive-avoidant: the grief-driven shutdown eliminated visible anxiety, presenting as pure avoidance.
 
@@ -828,7 +828,7 @@ Courier driver living alone in a 38m2 apartment with one chair at the kitchen ta
 </details>
 
 <details>
-<summary><strong>Kamil</strong> -- Kamil Wojtczak, 32M, security guard (ex-military), Rzeszow [MISS]</summary>
+<summary><strong>Kamil</strong> ⚠️ <code>explicit (2 hits)</code> -- Kamil Wojtczak, 32M, security guard (ex-military), Rzeszow [MISS]</summary>
 
 Former soldier with PTSD from combat missions. Works as a night security guard because his hypervigilance is useful there rather than pathological. Has a therapy dog (Bur, adopted at his psychologist's suggestion). Expected fearful-avoidant but scored as dismissive-avoidant: his military-trained emotional suppression flattened anxiety scores, while avoidance remained high.
 
