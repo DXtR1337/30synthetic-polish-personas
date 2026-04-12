@@ -10,7 +10,7 @@
 
 This repository contains the complete materials for a synthetic persona validation experiment conducted as part of an MA thesis at the Uniwersytet Komisji Edukacji Narodowej (UKEN) in Krakow, Poland. The thesis investigates mentalization in text-based communication among young Polish adults.
 
-Thirty fictional characters ("personas") were authored with predetermined psychological profiles spanning four attachment styles, three mentalization subscales, personal competence, and Big Five personality traits (12 dimensions total). Each persona was written as an immersive second-person biography in Polish, averaging 1,554-2,914 words, providing enough behavioral and relational detail for a large language model (Claude Opus 4.6 / Claude Sonnet 4.6) to complete a battery of five validated psychometric instruments as if it were the persona.
+Thirty fictional characters ("personas") were authored with predetermined psychological profiles spanning four attachment styles, three mentalization subscales, need for cognition, and Big Five personality traits (12 dimensions total). Each persona was written as an immersive second-person biography in Polish, averaging 1,554-2,914 words, providing enough behavioral and relational detail for a large language model (Claude Opus 4.6 / Claude Sonnet 4.6) to complete a battery of five validated psychometric instruments as if it were the persona.
 
 The scored responses were then compared against the ground-truth profiles embedded in each biography. This dataset provides the full pipeline: biographies, expected profiles, observed scores, and statistical validation.
 
@@ -43,7 +43,7 @@ Secure and dismissive-avoidant styles achieve perfect classification (100%). Anx
 
 | Dimension | Accuracy | Pearson r | p-value |
 |:---|:---:|:---:|:---:|
-| KPP (personal competence) | 97% | 0.756 | < 0.001 |
+| KPP (need for cognition) | 97% | 0.756 | < 0.001 |
 | DBZ Anxiety (attachment) | 93% | 0.829 | < 0.001 |
 | TIPI Agreeableness | 93% | 0.744 | < 0.001 |
 | TIPI Conscientiousness | 93% | 0.748 | < 0.001 |
@@ -63,7 +63,7 @@ The battery consists of five validated Polish-language instruments:
 
 2. **MentS** (Mentalization Scale; Janczak, 2021). 28 items across three subscales: Self-oriented mentalization, Other-directed mentalization, and Motivation to mentalize. Norms: Janczak (2021).
 
-3. **KPP** (Kwestionariusz Kompetencji Personalnych; Matusz, 2011). 36 items measuring personal/social competence. Norms: Matusz (2011).
+3. **KPP** (Kwestionariusz Potrzeby Poznania; Matusz, 2011). 36 items measuring need for cognition (tendency toward effortful analytical thinking). Norms: Matusz (2011).
 
 4. **TIPI-PL** (Ten-Item Personality Inventory, Polish adaptation; Sorokowska et al., 2014). 10 items yielding Big Five z-scores (Extraversion, Agreeableness, Conscientiousness, Emotional Stability, Openness). Norms: Sorokowska (2014).
 
@@ -168,7 +168,7 @@ Expected profile values use an ordinal scale mapped to approximate z-score range
 <details>
 <summary><strong>Kasia</strong> -- Katarzyna Wilczynska, 26F, physiotherapist, Wroclaw</summary>
 
-Warm, emotionally literate woman raised in a supportive family in Kalisz. Works in a private physiotherapy clinic where patients describe her as "the first physiotherapist who truly listens." Lives with her boyfriend Jarek and a cat named Bobas. High mentalization across all subscales, strong personal competence.
+Warm, emotionally literate woman raised in a supportive family in Kalisz. Works in a private physiotherapy clinic where patients describe her as "the first physiotherapist who truly listens." Lives with her boyfriend Jarek and a cat named Bobas. High mentalization across all subscales, strong need for cognition.
 
 | Dimension | Expected | Observed z | Dir. Match |
 |:---|:---|:---:|:---:|
@@ -354,7 +354,7 @@ Highly emotional university student in a seven-month relationship with Maciek. S
 <details>
 <summary><strong>Natalia</strong> ⚠️ <code>explicit (6 hits)</code> -- Natalia Kowal, 25F, bartender, Lodz</summary>
 
-Highest fidelity score in the entire dataset (0.980). Bartender in a volatile relationship with Kamil. Dropped out of psychology studies. Oscillates between 200% certainty in love and 200% certainty of abandonment. Low mentalization across the board, low personal competence. The "textbook" anxious-preoccupied persona.
+Highest fidelity score in the entire dataset (0.980). Bartender in a volatile relationship with Kamil. Dropped out of psychology studies. Oscillates between 200% certainty in love and 200% certainty of abandonment. Low mentalization across the board, low need for cognition. The "textbook" anxious-preoccupied persona.
 
 | Dimension | Expected | Observed z | Dir. Match |
 |:---|:---|:---:|:---:|
@@ -878,7 +878,7 @@ All z-scores and classifications use published Polish norms:
 
 - **DBZ-R:** Lubiewska, K. (2016). *Doswiadczanie Bliskich Zwiazkov-Rewidowany*. Wydawnictwo Uniwersytetu Kazimierza Wielkiego.
 - **MentS:** Janczak, M. O. (2021). Polish adaptation and validation of the Mentalization Scale (MentS). *Psychiatria Polska*, 55(6), 1257-1274.
-- **KPP:** Matusz, P. (2011). *Kwestionariusz Kompetencji Personalnych*.
+- **KPP:** Matusz, P. J., Traczyk, J., & Gąsiorowska, A. (2011). Kwestionariusz potrzeby poznania — konstrukcja i weryfikacja empiryczna. *Psychologia Społeczna*, 6(2), 113-128.
 - **TIPI-PL:** Sorokowska, A. et al. (2014). *TIPI-PL -- polska adaptacja Ten Item Personality Inventory (TIPI)*. Roczniki Psychologiczne, 17(2), 353-366.
 - **TCTM-22:** Original instrument by Wiencek (2026). Error typology based on: Dziobek, I. et al. (2006). *Introducing MASC: A Movie for the Assessment of Social Cognition*. Journal of Autism and Developmental Disorders, 36(5), 623-636.
 
