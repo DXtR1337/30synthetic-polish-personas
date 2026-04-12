@@ -73,9 +73,11 @@ The battery consists of five validated Polish-language instruments:
 
 Each biography encodes its target psychological profile through one of two strategies:
 
-- **Narrative** (21 personas): Traits are conveyed exclusively through behavioral descriptions, relationship patterns, emotional reactions, and life history -- without any psychological terminology or labels. The LLM must infer the construct from behavior.
+**Important: the YAML frontmatter (containing `expected_profile`, `persona_version`, `author_note`) was NEVER passed to the LLM.** The runner script (`run_synthetic.py`) strips the frontmatter and sends only the biography body as the system prompt. The LLM has no access to expected scores, attachment style labels, or any metadata — it sees only the narrative text.
 
-- **Explicit** (9 personas): Some biographies include limited psychological terminology in the author's notes section (YAML frontmatter), though the biography body itself still relies on behavioral encoding.
+- **Narrative** (21 personas): The biography body contains zero hits for trait-related keywords (e.g., "wysoka", "niska", "ekstrawersja", "mentalizacja"). The LLM must infer the entire profile from behavioral descriptions alone.
+
+- **Explicit** (9 personas): The biography body contains 1–8 incidental uses of trait-related words (e.g., "Twoja mentalizacja jest niska", "Twoja sumienność jest niska"). These appear in the text the LLM sees — not in the YAML frontmatter. They are trait *descriptions within the narrative*, not metadata labels.
 
 ### Comparison: Does explicit labeling improve fidelity?
 
