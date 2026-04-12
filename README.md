@@ -886,9 +886,9 @@ All z-scores and classifications use published Polish norms:
 
 The composite fidelity score (0.0-1.0) weights:
 
-1. **Attachment style match** (binary, 50% weight) -- correct 4-category classification
-2. **Directional accuracy** (proportion, 25% weight) -- do observed z-scores have the expected sign?
-3. **Literature consistency** (proportion, 25% weight) -- do 10 theoretically-expected cross-scale correlations hold?
+1. **Attachment style match** (binary, 40% weight) -- correct 4-category classification
+2. **Directional accuracy** (proportion, 40% weight) -- do observed z-scores have the expected sign?
+3. **Literature consistency** (proportion, 20% weight) -- do 10 theoretically-expected cross-scale correlations hold?
 
 Mean fidelity across all 30 personas: **0.788**.
 
