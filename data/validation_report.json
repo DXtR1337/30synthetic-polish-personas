@@ -1,0 +1,5990 @@
+{
+  "meta": {
+    "n_personas": 30,
+    "generated": "2026-04-12",
+    "models": [
+      "eu.anthropic.claude-opus-4-6-v1",
+      "eu.anthropic.claude-sonnet-4-6"
+    ],
+    "scoring": "Identical to MagisterkaClient.tsx (Lubiewska 2016, Janczak 2021, Matusz 2011, Sorokowska 2014)"
+  },
+  "summary": {
+    "attachment_match_rate": 0.8,
+    "mean_directional_accuracy": 0.848,
+    "mean_literature_consistency": 0.643,
+    "mean_magnitude_error": 0.704,
+    "mean_fidelity_score": 0.788
+  },
+  "personas": [
+    {
+      "persona_id": "natalia",
+      "biography_length": 1489,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "anxious_preoccupied",
+        "predicted": "anxious_preoccupied",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 2.277,
+          "directional_match": true,
+          "magnitude_error": 0.777,
+          "expected_z_approx": 1.5
+        },
+        "dbz_avoidance": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.736,
+          "directional_match": true,
+          "magnitude_error": 0.014,
+          "expected_z_approx": -0.75
+        },
+        "ments_self": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.052,
+          "directional_match": true,
+          "magnitude_error": 1.302,
+          "expected_z_approx": -0.75
+        },
+        "ments_other": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.643,
+          "directional_match": true,
+          "magnitude_error": 0.893,
+          "expected_z_approx": -0.75
+        },
+        "ments_motivation": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -1.858,
+          "directional_match": true,
+          "magnitude_error": 1.483,
+          "expected_z_approx": -0.375
+        },
+        "kpp": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -3.676,
+          "directional_match": true,
+          "magnitude_error": 2.926,
+          "expected_z_approx": -0.75
+        },
+        "tipi_E": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.044,
+          "directional_match": true,
+          "magnitude_error": 0.419,
+          "expected_z_approx": 0.375
+        },
+        "tipi_A": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.239,
+          "directional_match": true,
+          "magnitude_error": 0.239,
+          "expected_z_approx": 0.0
+        },
+        "tipi_C": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.811,
+          "directional_match": true,
+          "magnitude_error": 1.061,
+          "expected_z_approx": -0.75
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.833,
+          "directional_match": true,
+          "magnitude_error": 0.333,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -1.325,
+          "directional_match": true,
+          "magnitude_error": 0.95,
+          "expected_z_approx": -0.375
+        }
+      },
+      "directional_accuracy": 1.0,
+      "directional_hits": 11,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.945,
+      "literature_consistency": {
+        "hits": 9,
+        "total": 10,
+        "rate": 0.9,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -2.409,
+            "z2": 2.277,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -2.052,
+            "z2": 2.277,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -2.052,
+            "z2": -0.736,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -1.858,
+            "z2": -3.676,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -1.858,
+            "z2": -1.325,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": -1.643,
+            "z2": -0.044,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -2.409,
+            "z2": -1.833,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": -3.676,
+            "z2": -1.325,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": -3.676,
+            "z2": -1.811,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 2.277,
+            "z2": -1.833,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 1,
+        "total": 22
+      },
+      "fidelity_score": 0.98
+    },
+    {
+      "persona_id": "weronika",
+      "biography_length": 2578,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "secure",
+        "predicted": "secure",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.707,
+          "directional_match": true,
+          "magnitude_error": 0.043,
+          "expected_z_approx": -0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.794,
+          "directional_match": true,
+          "magnitude_error": 0.044,
+          "expected_z_approx": -0.75
+        },
+        "ments_self": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.534,
+          "directional_match": true,
+          "magnitude_error": 0.159,
+          "expected_z_approx": 0.375
+        },
+        "ments_other": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.214,
+          "directional_match": true,
+          "magnitude_error": 0.464,
+          "expected_z_approx": 0.75
+        },
+        "ments_motivation": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 1.449,
+          "directional_match": true,
+          "magnitude_error": 1.074,
+          "expected_z_approx": 0.375
+        },
+        "kpp": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.357,
+          "directional_match": true,
+          "magnitude_error": 0.018,
+          "expected_z_approx": 0.375
+        },
+        "tipi_E": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.044,
+          "directional_match": true,
+          "magnitude_error": 0.044,
+          "expected_z_approx": 0.0
+        },
+        "tipi_A": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.615,
+          "directional_match": true,
+          "magnitude_error": 0.885,
+          "expected_z_approx": 1.5
+        },
+        "tipi_C": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.287,
+          "directional_match": true,
+          "magnitude_error": 1.213,
+          "expected_z_approx": 1.5
+        },
+        "tipi_ES": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.41,
+          "directional_match": true,
+          "magnitude_error": 0.035,
+          "expected_z_approx": 0.375
+        },
+        "tipi_O": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.009,
+          "directional_match": true,
+          "magnitude_error": 0.009,
+          "expected_z_approx": 0.0
+        }
+      },
+      "directional_accuracy": 1.0,
+      "directional_hits": 11,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.363,
+      "literature_consistency": {
+        "hits": 7,
+        "total": 10,
+        "rate": 0.7,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 1.387,
+            "z2": -0.707,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.534,
+            "z2": -0.707,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": 0.534,
+            "z2": -0.794,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.449,
+            "z2": 0.357,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.449,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 1.214,
+            "z2": -0.044,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 1.387,
+            "z2": 0.41,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.357,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 0.357,
+            "z2": 0.287,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -0.707,
+            "z2": 0.41,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 18,
+        "DOS": 4,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.94
+    },
+    {
+      "persona_id": "pawel",
+      "biography_length": 2469,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "anxious_preoccupied",
+        "predicted": "anxious_preoccupied",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.359,
+          "directional_match": true,
+          "magnitude_error": 0.609,
+          "expected_z_approx": 0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": 0.653,
+          "directional_match": false,
+          "magnitude_error": 1.028,
+          "expected_z_approx": -0.375
+        },
+        "ments_self": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.879,
+          "directional_match": true,
+          "magnitude_error": 1.129,
+          "expected_z_approx": -0.75
+        },
+        "ments_other": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -0.929,
+          "directional_match": true,
+          "magnitude_error": 0.554,
+          "expected_z_approx": -0.375
+        },
+        "ments_motivation": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.386,
+          "directional_match": true,
+          "magnitude_error": 0.636,
+          "expected_z_approx": -0.75
+        },
+        "kpp": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.29,
+          "directional_match": true,
+          "magnitude_error": 0.54,
+          "expected_z_approx": -0.75
+        },
+        "tipi_E": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.412,
+          "directional_match": false,
+          "magnitude_error": 0.787,
+          "expected_z_approx": 0.375
+        },
+        "tipi_A": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -0.239,
+          "directional_match": true,
+          "magnitude_error": 0.136,
+          "expected_z_approx": -0.375
+        },
+        "tipi_C": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.413,
+          "directional_match": true,
+          "magnitude_error": 0.337,
+          "expected_z_approx": -0.75
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -0.551,
+          "directional_match": true,
+          "magnitude_error": 0.949,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.325,
+          "directional_match": true,
+          "magnitude_error": 0.575,
+          "expected_z_approx": -0.75
+        }
+      },
+      "directional_accuracy": 0.818,
+      "directional_hits": 9,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.662,
+      "literature_consistency": {
+        "hits": 10,
+        "total": 10,
+        "rate": 1.0,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.825,
+            "z2": 1.359,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.879,
+            "z2": 1.359,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -1.879,
+            "z2": 0.653,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -1.386,
+            "z2": -1.29,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -1.386,
+            "z2": -1.325,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": -0.929,
+            "z2": -0.412,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -1.825,
+            "z2": -0.551,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": -1.29,
+            "z2": -1.325,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": -1.29,
+            "z2": -0.413,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 1.359,
+            "z2": -0.551,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 3,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.927
+    },
+    {
+      "persona_id": "kuba",
+      "biography_length": 1894,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "secure",
+        "predicted": "secure",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.845,
+          "directional_match": true,
+          "magnitude_error": 0.095,
+          "expected_z_approx": -0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.736,
+          "directional_match": true,
+          "magnitude_error": 0.014,
+          "expected_z_approx": -0.75
+        },
+        "ments_self": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.534,
+          "directional_match": true,
+          "magnitude_error": 0.216,
+          "expected_z_approx": 0.75
+        },
+        "ments_other": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.679,
+          "directional_match": true,
+          "magnitude_error": 0.071,
+          "expected_z_approx": 0.75
+        },
+        "ments_motivation": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.606,
+          "directional_match": true,
+          "magnitude_error": 0.856,
+          "expected_z_approx": 0.75
+        },
+        "kpp": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.607,
+          "directional_match": true,
+          "magnitude_error": 0.857,
+          "expected_z_approx": 0.75
+        },
+        "tipi_E": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": -0.412,
+          "directional_match": false,
+          "magnitude_error": 1.912,
+          "expected_z_approx": 1.5
+        },
+        "tipi_A": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.188,
+          "directional_match": true,
+          "magnitude_error": 0.562,
+          "expected_z_approx": 0.75
+        },
+        "tipi_C": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.063,
+          "directional_match": true,
+          "magnitude_error": 0.063,
+          "expected_z_approx": 0.0
+        },
+        "tipi_ES": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.41,
+          "directional_match": true,
+          "magnitude_error": 0.34,
+          "expected_z_approx": 0.75
+        },
+        "tipi_O": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.868,
+          "directional_match": true,
+          "magnitude_error": 0.632,
+          "expected_z_approx": 1.5
+        }
+      },
+      "directional_accuracy": 0.909,
+      "directional_hits": 10,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.511,
+      "literature_consistency": {
+        "hits": 8,
+        "total": 10,
+        "rate": 0.8,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 1.241,
+            "z2": -0.845,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.534,
+            "z2": -0.845,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": 0.534,
+            "z2": -0.736,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.606,
+            "z2": 1.607,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.606,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.679,
+            "z2": -0.412,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 1.241,
+            "z2": 0.41,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.607,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.607,
+            "z2": -0.063,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -0.845,
+            "z2": 0.41,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 3,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.924
+    },
+    {
+      "persona_id": "ola",
+      "biography_length": 1545,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "secure",
+        "predicted": "secure",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.028,
+          "directional_match": true,
+          "magnitude_error": 0.278,
+          "expected_z_approx": -0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.736,
+          "directional_match": true,
+          "magnitude_error": 0.014,
+          "expected_z_approx": -0.75
+        },
+        "ments_self": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": 0.19,
+          "directional_match": true,
+          "magnitude_error": 0.565,
+          "expected_z_approx": -0.375
+        },
+        "ments_other": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.214,
+          "directional_match": true,
+          "magnitude_error": 0.536,
+          "expected_z_approx": -0.75
+        },
+        "ments_motivation": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.386,
+          "directional_match": true,
+          "magnitude_error": 0.636,
+          "expected_z_approx": -0.75
+        },
+        "kpp": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -2.256,
+          "directional_match": true,
+          "magnitude_error": 1.881,
+          "expected_z_approx": -0.375
+        },
+        "tipi_E": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.324,
+          "directional_match": true,
+          "magnitude_error": 0.426,
+          "expected_z_approx": 0.75
+        },
+        "tipi_A": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.615,
+          "directional_match": true,
+          "magnitude_error": 0.135,
+          "expected_z_approx": 0.75
+        },
+        "tipi_C": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.636,
+          "directional_match": true,
+          "magnitude_error": 0.114,
+          "expected_z_approx": 0.75
+        },
+        "tipi_ES": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.051,
+          "directional_match": true,
+          "magnitude_error": 0.301,
+          "expected_z_approx": 0.75
+        },
+        "tipi_O": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.763,
+          "directional_match": true,
+          "magnitude_error": 1.013,
+          "expected_z_approx": -0.75
+        }
+      },
+      "directional_accuracy": 1.0,
+      "directional_hits": 11,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.536,
+      "literature_consistency": {
+        "hits": 6,
+        "total": 10,
+        "rate": 0.6,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.657,
+            "z2": -1.028,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.19,
+            "z2": -1.028,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": 0.19,
+            "z2": -0.736,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -1.386,
+            "z2": -2.256,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -1.386,
+            "z2": -1.763,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": -0.214,
+            "z2": 0.324,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -0.657,
+            "z2": 1.051,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": -2.256,
+            "z2": -1.763,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": -2.256,
+            "z2": 0.636,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -1.028,
+            "z2": 1.051,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 17,
+        "DOS": 5,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.92
+    },
+    {
+      "persona_id": "ewa",
+      "biography_length": 2141,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "fearful_avoidant",
+        "predicted": "fearful_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.9,
+          "directional_match": true,
+          "magnitude_error": 0.6,
+          "expected_z_approx": 1.5
+        },
+        "dbz_avoidance": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.637,
+          "directional_match": true,
+          "magnitude_error": 0.137,
+          "expected_z_approx": 1.5
+        },
+        "ments_self": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.155,
+          "directional_match": true,
+          "magnitude_error": 0.905,
+          "expected_z_approx": 0.75
+        },
+        "ments_other": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 1.393,
+          "directional_match": true,
+          "magnitude_error": 1.018,
+          "expected_z_approx": 0.375
+        },
+        "ments_motivation": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.449,
+          "directional_match": true,
+          "magnitude_error": 0.051,
+          "expected_z_approx": 1.5
+        },
+        "kpp": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.493,
+          "directional_match": true,
+          "magnitude_error": 0.007,
+          "expected_z_approx": 1.5
+        },
+        "tipi_E": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.882,
+          "directional_match": true,
+          "magnitude_error": 1.132,
+          "expected_z_approx": -0.75
+        },
+        "tipi_A": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": -0.239,
+          "directional_match": true,
+          "magnitude_error": 0.136,
+          "expected_z_approx": -0.375
+        },
+        "tipi_C": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.063,
+          "directional_match": true,
+          "magnitude_error": 0.813,
+          "expected_z_approx": 0.75
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.192,
+          "directional_match": true,
+          "magnitude_error": 0.308,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.307,
+          "directional_match": true,
+          "magnitude_error": 0.193,
+          "expected_z_approx": 1.5
+        }
+      },
+      "directional_accuracy": 1.0,
+      "directional_hits": 11,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.482,
+      "literature_consistency": {
+        "hits": 6,
+        "total": 10,
+        "rate": 0.6,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 1.168,
+            "z2": 0.9,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.155,
+            "z2": 0.9,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.155,
+            "z2": 1.637,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.449,
+            "z2": 1.493,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.449,
+            "z2": 1.307,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 1.393,
+            "z2": -1.882,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 1.168,
+            "z2": -1.192,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.493,
+            "z2": 1.307,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.493,
+            "z2": -0.063,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 0.9,
+            "z2": -1.192,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 3,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.92
+    },
+    {
+      "persona_id": "dominika",
+      "biography_length": 2164,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "dismissive_avoidant",
+        "predicted": "dismissive_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.615,
+          "directional_match": true,
+          "magnitude_error": 0.135,
+          "expected_z_approx": -0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 2.389,
+          "directional_match": true,
+          "magnitude_error": 2.014,
+          "expected_z_approx": 0.375
+        },
+        "ments_self": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.845,
+          "directional_match": false,
+          "magnitude_error": 0.845,
+          "expected_z_approx": 0.0
+        },
+        "ments_other": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.036,
+          "directional_match": true,
+          "magnitude_error": 0.464,
+          "expected_z_approx": 1.5
+        },
+        "ments_motivation": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 0.661,
+          "directional_match": true,
+          "magnitude_error": 0.661,
+          "expected_z_approx": 0.0
+        },
+        "kpp": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 1.664,
+          "directional_match": true,
+          "magnitude_error": 1.289,
+          "expected_z_approx": 0.375
+        },
+        "tipi_E": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.324,
+          "directional_match": true,
+          "magnitude_error": 1.176,
+          "expected_z_approx": 1.5
+        },
+        "tipi_A": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -0.667,
+          "directional_match": true,
+          "magnitude_error": 0.833,
+          "expected_z_approx": -1.5
+        },
+        "tipi_C": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.336,
+          "directional_match": true,
+          "magnitude_error": 0.164,
+          "expected_z_approx": 1.5
+        },
+        "tipi_ES": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.41,
+          "directional_match": true,
+          "magnitude_error": 0.34,
+          "expected_z_approx": 0.75
+        },
+        "tipi_O": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 0.868,
+          "directional_match": false,
+          "magnitude_error": 0.868,
+          "expected_z_approx": 0.0
+        }
+      },
+      "directional_accuracy": 0.818,
+      "directional_hits": 9,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.799,
+      "literature_consistency": {
+        "hits": 9,
+        "total": 10,
+        "rate": 0.9,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.365,
+            "z2": -0.615,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.845,
+            "z2": -0.615,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.845,
+            "z2": 2.389,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 0.661,
+            "z2": 1.664,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.661,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 1.036,
+            "z2": 0.324,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.365,
+            "z2": 0.41,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.664,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.664,
+            "z2": 1.336,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -0.615,
+            "z2": 0.41,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.907
+    },
+    {
+      "persona_id": "kasia",
+      "biography_length": 1573,
+      "model": "eu.anthropic.claude-opus-4-6-v1",
+      "attachment": {
+        "expected": "secure",
+        "predicted": "secure",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.028,
+          "directional_match": true,
+          "magnitude_error": 0.278,
+          "expected_z_approx": -0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.373,
+          "directional_match": true,
+          "magnitude_error": 0.623,
+          "expected_z_approx": -0.75
+        },
+        "ments_self": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.914,
+          "directional_match": true,
+          "magnitude_error": 1.164,
+          "expected_z_approx": 0.75
+        },
+        "ments_other": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.571,
+          "directional_match": true,
+          "magnitude_error": 0.821,
+          "expected_z_approx": 0.75
+        },
+        "ments_motivation": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.291,
+          "directional_match": true,
+          "magnitude_error": 0.541,
+          "expected_z_approx": 0.75
+        },
+        "kpp": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.357,
+          "directional_match": true,
+          "magnitude_error": 0.018,
+          "expected_z_approx": 0.375
+        },
+        "tipi_E": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.412,
+          "directional_match": false,
+          "magnitude_error": 1.162,
+          "expected_z_approx": 0.75
+        },
+        "tipi_A": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.615,
+          "directional_match": true,
+          "magnitude_error": 0.135,
+          "expected_z_approx": 0.75
+        },
+        "tipi_C": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.636,
+          "directional_match": true,
+          "magnitude_error": 0.261,
+          "expected_z_approx": 0.375
+        },
+        "tipi_ES": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.41,
+          "directional_match": true,
+          "magnitude_error": 0.035,
+          "expected_z_approx": 0.375
+        },
+        "tipi_O": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.009,
+          "directional_match": true,
+          "magnitude_error": 0.759,
+          "expected_z_approx": 0.75
+        }
+      },
+      "directional_accuracy": 0.909,
+      "directional_hits": 10,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.527,
+      "literature_consistency": {
+        "hits": 7,
+        "total": 10,
+        "rate": 0.7,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 2.044,
+            "z2": -1.028,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 1.914,
+            "z2": -1.028,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": 1.914,
+            "z2": -1.373,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.291,
+            "z2": 0.357,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.291,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 1.571,
+            "z2": -0.412,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 2.044,
+            "z2": 0.41,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.357,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 0.357,
+            "z2": 0.636,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -1.028,
+            "z2": 0.41,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.904
+    },
+    {
+      "persona_id": "sara",
+      "biography_length": 1803,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "secure",
+        "predicted": "secure",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": -1.028,
+          "directional_match": true,
+          "magnitude_error": 0.653,
+          "expected_z_approx": -0.375
+        },
+        "dbz_avoidance": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.91,
+          "directional_match": true,
+          "magnitude_error": 0.16,
+          "expected_z_approx": -0.75
+        },
+        "ments_self": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.707,
+          "directional_match": true,
+          "magnitude_error": 0.043,
+          "expected_z_approx": 0.75
+        },
+        "ments_other": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.571,
+          "directional_match": true,
+          "magnitude_error": 0.821,
+          "expected_z_approx": 0.75
+        },
+        "ments_motivation": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 0.976,
+          "directional_match": false,
+          "magnitude_error": 0.976,
+          "expected_z_approx": 0.0
+        },
+        "kpp": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.244,
+          "directional_match": true,
+          "magnitude_error": 0.506,
+          "expected_z_approx": 0.75
+        },
+        "tipi_E": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": -0.044,
+          "directional_match": true,
+          "magnitude_error": 0.331,
+          "expected_z_approx": -0.375
+        },
+        "tipi_A": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.615,
+          "directional_match": true,
+          "magnitude_error": 0.135,
+          "expected_z_approx": 0.75
+        },
+        "tipi_C": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.287,
+          "directional_match": true,
+          "magnitude_error": 0.463,
+          "expected_z_approx": 0.75
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": 0.09,
+          "directional_match": true,
+          "magnitude_error": 1.59,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.009,
+          "directional_match": true,
+          "magnitude_error": 0.759,
+          "expected_z_approx": 0.75
+        }
+      },
+      "directional_accuracy": 0.909,
+      "directional_hits": 10,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.585,
+      "literature_consistency": {
+        "hits": 7,
+        "total": 10,
+        "rate": 0.7,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 1.387,
+            "z2": -1.028,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.707,
+            "z2": -1.028,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": 0.707,
+            "z2": -0.91,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 0.976,
+            "z2": 0.244,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.976,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 1.571,
+            "z2": -0.044,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 1.387,
+            "z2": 0.09,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.244,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 0.244,
+            "z2": 0.287,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -1.028,
+            "z2": 0.09,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 3,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.904
+    },
+    {
+      "persona_id": "agata",
+      "biography_length": 2121,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "dismissive_avoidant",
+        "predicted": "dismissive_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.212,
+          "directional_match": true,
+          "magnitude_error": 0.288,
+          "expected_z_approx": -1.5
+        },
+        "dbz_avoidance": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 2.736,
+          "directional_match": true,
+          "magnitude_error": 1.236,
+          "expected_z_approx": 1.5
+        },
+        "ments_self": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 0.707,
+          "directional_match": true,
+          "magnitude_error": 0.707,
+          "expected_z_approx": 0.0
+        },
+        "ments_other": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": 0.321,
+          "directional_match": false,
+          "magnitude_error": 1.071,
+          "expected_z_approx": -0.75
+        },
+        "ments_motivation": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": 0.504,
+          "directional_match": false,
+          "magnitude_error": 1.254,
+          "expected_z_approx": -0.75
+        },
+        "kpp": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.948,
+          "directional_match": true,
+          "magnitude_error": 0.448,
+          "expected_z_approx": 1.5
+        },
+        "tipi_E": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -2.618,
+          "directional_match": true,
+          "magnitude_error": 1.118,
+          "expected_z_approx": -1.5
+        },
+        "tipi_A": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.239,
+          "directional_match": true,
+          "magnitude_error": 0.511,
+          "expected_z_approx": -0.75
+        },
+        "tipi_C": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.986,
+          "directional_match": true,
+          "magnitude_error": 0.236,
+          "expected_z_approx": 0.75
+        },
+        "tipi_ES": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.731,
+          "directional_match": true,
+          "magnitude_error": 0.019,
+          "expected_z_approx": 0.75
+        },
+        "tipi_O": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.868,
+          "directional_match": true,
+          "magnitude_error": 0.632,
+          "expected_z_approx": 1.5
+        }
+      },
+      "directional_accuracy": 0.818,
+      "directional_hits": 9,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.684,
+      "literature_consistency": {
+        "hits": 8,
+        "total": 10,
+        "rate": 0.8,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.657,
+            "z2": -1.212,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.707,
+            "z2": -1.212,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": 0.707,
+            "z2": 2.736,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 0.504,
+            "z2": 1.948,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.504,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.321,
+            "z2": -2.618,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.657,
+            "z2": 0.731,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.948,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.948,
+            "z2": 0.986,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -1.212,
+            "z2": 0.731,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.887
+    },
+    {
+      "persona_id": "magda",
+      "biography_length": 2172,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "dismissive_avoidant",
+        "predicted": "dismissive_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.845,
+          "directional_match": true,
+          "magnitude_error": 0.095,
+          "expected_z_approx": -0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 2.678,
+          "directional_match": true,
+          "magnitude_error": 1.928,
+          "expected_z_approx": 0.75
+        },
+        "ments_self": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.328,
+          "directional_match": true,
+          "magnitude_error": 0.328,
+          "expected_z_approx": 0.0
+        },
+        "ments_other": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.5,
+          "directional_match": true,
+          "magnitude_error": 0.125,
+          "expected_z_approx": 0.375
+        },
+        "ments_motivation": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 0.661,
+          "directional_match": true,
+          "magnitude_error": 0.661,
+          "expected_z_approx": 0.0
+        },
+        "kpp": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.55,
+          "directional_match": true,
+          "magnitude_error": 0.8,
+          "expected_z_approx": 0.75
+        },
+        "tipi_E": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -1.515,
+          "directional_match": false,
+          "magnitude_error": 1.89,
+          "expected_z_approx": 0.375
+        },
+        "tipi_A": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.667,
+          "directional_match": true,
+          "magnitude_error": 0.083,
+          "expected_z_approx": -0.75
+        },
+        "tipi_C": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.336,
+          "directional_match": true,
+          "magnitude_error": 0.164,
+          "expected_z_approx": 1.5
+        },
+        "tipi_ES": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.731,
+          "directional_match": true,
+          "magnitude_error": 0.019,
+          "expected_z_approx": 0.75
+        },
+        "tipi_O": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.009,
+          "directional_match": true,
+          "magnitude_error": 0.384,
+          "expected_z_approx": 0.375
+        }
+      },
+      "directional_accuracy": 0.909,
+      "directional_hits": 10,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.589,
+      "literature_consistency": {
+        "hits": 6,
+        "total": 10,
+        "rate": 0.6,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.365,
+            "z2": -0.845,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": -0.845,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": 2.678,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 0.661,
+            "z2": 1.55,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.661,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.5,
+            "z2": -1.515,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.365,
+            "z2": 0.731,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.55,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.55,
+            "z2": 1.336,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -0.845,
+            "z2": 0.731,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.884
+    },
+    {
+      "persona_id": "lukasz",
+      "biography_length": 1732,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "secure",
+        "predicted": "secure",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -0.799,
+          "directional_match": true,
+          "magnitude_error": 0.424,
+          "expected_z_approx": -0.375
+        },
+        "dbz_avoidance": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.736,
+          "directional_match": true,
+          "magnitude_error": 0.014,
+          "expected_z_approx": -0.75
+        },
+        "ments_self": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.5,
+          "directional_match": true,
+          "magnitude_error": 0.5,
+          "expected_z_approx": 0.0
+        },
+        "ments_other": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.321,
+          "directional_match": true,
+          "magnitude_error": 0.054,
+          "expected_z_approx": 0.375
+        },
+        "ments_motivation": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.661,
+          "directional_match": true,
+          "magnitude_error": 0.286,
+          "expected_z_approx": 0.375
+        },
+        "kpp": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.097,
+          "directional_match": true,
+          "magnitude_error": 0.472,
+          "expected_z_approx": 0.375
+        },
+        "tipi_E": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.691,
+          "directional_match": true,
+          "magnitude_error": 0.809,
+          "expected_z_approx": 1.5
+        },
+        "tipi_A": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.188,
+          "directional_match": true,
+          "magnitude_error": 0.562,
+          "expected_z_approx": 0.75
+        },
+        "tipi_C": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.811,
+          "directional_match": true,
+          "magnitude_error": 0.311,
+          "expected_z_approx": -1.5
+        },
+        "tipi_ES": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": 0.41,
+          "directional_match": false,
+          "magnitude_error": 0.785,
+          "expected_z_approx": -0.375
+        },
+        "tipi_O": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.868,
+          "directional_match": true,
+          "magnitude_error": 0.632,
+          "expected_z_approx": 1.5
+        }
+      },
+      "directional_accuracy": 0.909,
+      "directional_hits": 10,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.441,
+      "literature_consistency": {
+        "hits": 6,
+        "total": 10,
+        "rate": 0.6,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.219,
+            "z2": -0.799,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.5,
+            "z2": -0.799,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.5,
+            "z2": -0.736,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 0.661,
+            "z2": -0.097,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.661,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.321,
+            "z2": 0.691,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.219,
+            "z2": 0.41,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.097,
+            "z2": 0.868,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": -0.097,
+            "z2": -1.811,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -0.799,
+            "z2": 0.41,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 3,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.884
+    },
+    {
+      "persona_id": "anna-sim",
+      "biography_length": 1594,
+      "model": "eu.anthropic.claude-opus-4-6-v1",
+      "attachment": {
+        "expected": "secure",
+        "predicted": "secure",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.304,
+          "directional_match": true,
+          "magnitude_error": 0.554,
+          "expected_z_approx": -0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": -0.331,
+          "directional_match": true,
+          "magnitude_error": 0.044,
+          "expected_z_approx": -0.375
+        },
+        "ments_self": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.534,
+          "directional_match": true,
+          "magnitude_error": 0.216,
+          "expected_z_approx": 0.75
+        },
+        "ments_other": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.5,
+          "directional_match": true,
+          "magnitude_error": 0.125,
+          "expected_z_approx": 0.375
+        },
+        "ments_motivation": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.913,
+          "directional_match": false,
+          "magnitude_error": 1.288,
+          "expected_z_approx": 0.375
+        },
+        "kpp": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.495,
+          "directional_match": true,
+          "magnitude_error": 0.495,
+          "expected_z_approx": 0.0
+        },
+        "tipi_E": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.324,
+          "directional_match": true,
+          "magnitude_error": 0.051,
+          "expected_z_approx": 0.375
+        },
+        "tipi_A": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.667,
+          "directional_match": true,
+          "magnitude_error": 0.083,
+          "expected_z_approx": -0.75
+        },
+        "tipi_C": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 0.636,
+          "directional_match": true,
+          "magnitude_error": 0.636,
+          "expected_z_approx": 0.0
+        },
+        "tipi_ES": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": 0.731,
+          "directional_match": false,
+          "magnitude_error": 1.481,
+          "expected_z_approx": -0.75
+        },
+        "tipi_O": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -1.325,
+          "directional_match": false,
+          "magnitude_error": 1.7,
+          "expected_z_approx": 0.375
+        }
+      },
+      "directional_accuracy": 0.727,
+      "directional_hits": 8,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.607,
+      "literature_consistency": {
+        "hits": 9,
+        "total": 10,
+        "rate": 0.9,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.0,
+            "z2": -1.304,
+            "product_sign": "0",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.534,
+            "z2": -1.304,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": 0.534,
+            "z2": -0.331,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -0.913,
+            "z2": -0.495,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.913,
+            "z2": -1.325,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.5,
+            "z2": 0.324,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.0,
+            "z2": 0.731,
+            "product_sign": "0",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.495,
+            "z2": -1.325,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": -0.495,
+            "z2": 0.636,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -1.304,
+            "z2": 0.731,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 2,
+        "NAD": 1,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.871
+    },
+    {
+      "persona_id": "radek",
+      "biography_length": 2092,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "fearful_avoidant",
+        "predicted": "fearful_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.726,
+          "directional_match": true,
+          "magnitude_error": 0.226,
+          "expected_z_approx": 1.5
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 1.868,
+          "directional_match": true,
+          "magnitude_error": 1.493,
+          "expected_z_approx": 0.375
+        },
+        "ments_self": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -2.052,
+          "directional_match": true,
+          "magnitude_error": 0.552,
+          "expected_z_approx": -1.5
+        },
+        "ments_other": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.5,
+          "directional_match": true,
+          "magnitude_error": 0.125,
+          "expected_z_approx": 0.375
+        },
+        "ments_motivation": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.441,
+          "directional_match": true,
+          "magnitude_error": 0.441,
+          "expected_z_approx": 0.0
+        },
+        "kpp": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.029,
+          "directional_match": true,
+          "magnitude_error": 1.279,
+          "expected_z_approx": -0.75
+        },
+        "tipi_E": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.412,
+          "directional_match": false,
+          "magnitude_error": 1.162,
+          "expected_z_approx": 0.75
+        },
+        "tipi_A": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.667,
+          "directional_match": false,
+          "magnitude_error": 1.042,
+          "expected_z_approx": 0.375
+        },
+        "tipi_C": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.811,
+          "directional_match": true,
+          "magnitude_error": 0.311,
+          "expected_z_approx": -1.5
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.513,
+          "directional_match": true,
+          "magnitude_error": 0.013,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.447,
+          "directional_match": false,
+          "magnitude_error": 1.197,
+          "expected_z_approx": 0.75
+        }
+      },
+      "directional_accuracy": 0.727,
+      "directional_hits": 8,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.713,
+      "literature_consistency": {
+        "hits": 9,
+        "total": 10,
+        "rate": 0.9,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.876,
+            "z2": 1.726,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -2.052,
+            "z2": 1.726,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -2.052,
+            "z2": 1.868,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -0.441,
+            "z2": -2.029,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.441,
+            "z2": -0.447,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.5,
+            "z2": -0.412,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -0.876,
+            "z2": -1.513,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": -2.029,
+            "z2": -0.447,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": -2.029,
+            "z2": -1.811,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 1.726,
+            "z2": -1.513,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 1,
+        "NAD": 0,
+        "BK": 1,
+        "total": 22
+      },
+      "fidelity_score": 0.871
+    },
+    {
+      "persona_id": "piotr",
+      "biography_length": 1846,
+      "model": "eu.anthropic.claude-opus-4-6-v1",
+      "attachment": {
+        "expected": "fearful_avoidant",
+        "predicted": "fearful_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.68,
+          "directional_match": true,
+          "magnitude_error": 0.93,
+          "expected_z_approx": 0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 2.794,
+          "directional_match": true,
+          "magnitude_error": 2.044,
+          "expected_z_approx": 0.75
+        },
+        "ments_self": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": -2.052,
+          "directional_match": true,
+          "magnitude_error": 1.677,
+          "expected_z_approx": -0.375
+        },
+        "ments_other": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": -1.464,
+          "directional_match": true,
+          "magnitude_error": 1.089,
+          "expected_z_approx": -0.375
+        },
+        "ments_motivation": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.756,
+          "directional_match": false,
+          "magnitude_error": 0.756,
+          "expected_z_approx": 0.0
+        },
+        "kpp": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.414,
+          "directional_match": true,
+          "magnitude_error": 0.336,
+          "expected_z_approx": 0.75
+        },
+        "tipi_E": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.618,
+          "directional_match": true,
+          "magnitude_error": 1.868,
+          "expected_z_approx": -0.75
+        },
+        "tipi_A": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": 0.188,
+          "directional_match": true,
+          "magnitude_error": 0.938,
+          "expected_z_approx": -0.75
+        },
+        "tipi_C": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.063,
+          "directional_match": true,
+          "magnitude_error": 0.813,
+          "expected_z_approx": 0.75
+        },
+        "tipi_ES": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.513,
+          "directional_match": true,
+          "magnitude_error": 0.763,
+          "expected_z_approx": -0.75
+        },
+        "tipi_O": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -1.325,
+          "directional_match": false,
+          "magnitude_error": 1.325,
+          "expected_z_approx": 0.0
+        }
+      },
+      "directional_accuracy": 0.818,
+      "directional_hits": 9,
+      "directional_total": 11,
+      "mean_magnitude_error": 1.14,
+      "literature_consistency": {
+        "hits": 7,
+        "total": 10,
+        "rate": 0.7,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.825,
+            "z2": 1.68,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -2.052,
+            "z2": 1.68,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -2.052,
+            "z2": 2.794,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -0.756,
+            "z2": 0.414,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.756,
+            "z2": -1.325,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": -1.464,
+            "z2": -2.618,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -1.825,
+            "z2": -1.513,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.414,
+            "z2": -1.325,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 0.414,
+            "z2": -0.063,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 1.68,
+            "z2": -1.513,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 1,
+        "total": 22
+      },
+      "fidelity_score": 0.867
+    },
+    {
+      "persona_id": "jakub",
+      "biography_length": 1703,
+      "model": "eu.anthropic.claude-opus-4-6-v1",
+      "attachment": {
+        "expected": "dismissive_avoidant",
+        "predicted": "dismissive_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.396,
+          "directional_match": true,
+          "magnitude_error": 0.646,
+          "expected_z_approx": -0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 2.62,
+          "directional_match": true,
+          "magnitude_error": 1.87,
+          "expected_z_approx": 0.75
+        },
+        "ments_self": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.155,
+          "directional_match": true,
+          "magnitude_error": 0.53,
+          "expected_z_approx": 0.375
+        },
+        "ments_other": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": -1.107,
+          "directional_match": true,
+          "magnitude_error": 0.732,
+          "expected_z_approx": -0.375
+        },
+        "ments_motivation": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.173,
+          "directional_match": true,
+          "magnitude_error": 1.423,
+          "expected_z_approx": -0.75
+        },
+        "kpp": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.152,
+          "directional_match": true,
+          "magnitude_error": 0.402,
+          "expected_z_approx": 0.75
+        },
+        "tipi_E": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.882,
+          "directional_match": true,
+          "magnitude_error": 1.132,
+          "expected_z_approx": -0.75
+        },
+        "tipi_A": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.094,
+          "directional_match": true,
+          "magnitude_error": 0.344,
+          "expected_z_approx": -0.75
+        },
+        "tipi_C": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.986,
+          "directional_match": true,
+          "magnitude_error": 0.236,
+          "expected_z_approx": 0.75
+        },
+        "tipi_ES": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.051,
+          "directional_match": true,
+          "magnitude_error": 0.301,
+          "expected_z_approx": 0.75
+        },
+        "tipi_O": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -1.325,
+          "directional_match": false,
+          "magnitude_error": 1.325,
+          "expected_z_approx": 0.0
+        }
+      },
+      "directional_accuracy": 0.909,
+      "directional_hits": 10,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.813,
+      "literature_consistency": {
+        "hits": 5,
+        "total": 10,
+        "rate": 0.5,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.533,
+            "z2": -1.396,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.155,
+            "z2": -1.396,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.155,
+            "z2": 2.62,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -2.173,
+            "z2": 1.152,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -2.173,
+            "z2": -1.325,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": -1.107,
+            "z2": -1.882,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -1.533,
+            "z2": 1.051,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.152,
+            "z2": -1.325,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.152,
+            "z2": 0.986,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -1.396,
+            "z2": 1.051,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 2,
+        "NAD": 1,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.864
+    },
+    {
+      "persona_id": "adrian",
+      "biography_length": 2835,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "dismissive_avoidant",
+        "predicted": "dismissive_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.028,
+          "directional_match": true,
+          "magnitude_error": 0.472,
+          "expected_z_approx": -1.5
+        },
+        "dbz_avoidance": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 2.794,
+          "directional_match": true,
+          "magnitude_error": 1.294,
+          "expected_z_approx": 1.5
+        },
+        "ments_self": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.19,
+          "directional_match": true,
+          "magnitude_error": 0.31,
+          "expected_z_approx": -1.5
+        },
+        "ments_other": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.107,
+          "directional_match": true,
+          "magnitude_error": 0.357,
+          "expected_z_approx": -0.75
+        },
+        "ments_motivation": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -0.756,
+          "directional_match": true,
+          "magnitude_error": 0.744,
+          "expected_z_approx": -1.5
+        },
+        "kpp": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": 1.664,
+          "directional_match": false,
+          "magnitude_error": 2.039,
+          "expected_z_approx": -0.375
+        },
+        "tipi_E": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -2.618,
+          "directional_match": true,
+          "magnitude_error": 1.118,
+          "expected_z_approx": -1.5
+        },
+        "tipi_A": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -0.239,
+          "directional_match": true,
+          "magnitude_error": 0.136,
+          "expected_z_approx": -0.375
+        },
+        "tipi_C": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.986,
+          "directional_match": true,
+          "magnitude_error": 0.514,
+          "expected_z_approx": 1.5
+        },
+        "tipi_ES": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.051,
+          "directional_match": true,
+          "magnitude_error": 0.301,
+          "expected_z_approx": 0.75
+        },
+        "tipi_O": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.886,
+          "directional_match": true,
+          "magnitude_error": 0.136,
+          "expected_z_approx": -0.75
+        }
+      },
+      "directional_accuracy": 0.909,
+      "directional_hits": 10,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.675,
+      "literature_consistency": {
+        "hits": 5,
+        "total": 10,
+        "rate": 0.5,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.314,
+            "z2": -1.028,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.19,
+            "z2": -1.028,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -1.19,
+            "z2": 2.794,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -0.756,
+            "z2": 1.664,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.756,
+            "z2": -0.886,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": -1.107,
+            "z2": -2.618,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -1.314,
+            "z2": 1.051,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.664,
+            "z2": -0.886,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.664,
+            "z2": 0.986,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -1.028,
+            "z2": 1.051,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.864
+    },
+    {
+      "persona_id": "tomek",
+      "biography_length": 1636,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "dismissive_avoidant",
+        "predicted": "dismissive_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.937,
+          "directional_match": true,
+          "magnitude_error": 0.187,
+          "expected_z_approx": -0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 2.91,
+          "directional_match": true,
+          "magnitude_error": 2.535,
+          "expected_z_approx": 0.375
+        },
+        "ments_self": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -1.534,
+          "directional_match": true,
+          "magnitude_error": 1.159,
+          "expected_z_approx": -0.375
+        },
+        "ments_other": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.036,
+          "directional_match": true,
+          "magnitude_error": 0.286,
+          "expected_z_approx": 0.75
+        },
+        "ments_motivation": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 0.346,
+          "directional_match": true,
+          "magnitude_error": 0.346,
+          "expected_z_approx": 0.0
+        },
+        "kpp": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.04,
+          "directional_match": true,
+          "magnitude_error": 0.415,
+          "expected_z_approx": 0.375
+        },
+        "tipi_E": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -2.25,
+          "directional_match": true,
+          "magnitude_error": 1.875,
+          "expected_z_approx": -0.375
+        },
+        "tipi_A": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.239,
+          "directional_match": true,
+          "magnitude_error": 0.239,
+          "expected_z_approx": 0.0
+        },
+        "tipi_C": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.287,
+          "directional_match": true,
+          "magnitude_error": 0.088,
+          "expected_z_approx": 0.375
+        },
+        "tipi_ES": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 1.051,
+          "directional_match": true,
+          "magnitude_error": 0.676,
+          "expected_z_approx": 0.375
+        },
+        "tipi_O": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.009,
+          "directional_match": true,
+          "magnitude_error": 0.384,
+          "expected_z_approx": 0.375
+        }
+      },
+      "directional_accuracy": 1.0,
+      "directional_hits": 11,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.745,
+      "literature_consistency": {
+        "hits": 3,
+        "total": 10,
+        "rate": 0.3,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.073,
+            "z2": -0.937,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.534,
+            "z2": -0.937,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -1.534,
+            "z2": 2.91,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 0.346,
+            "z2": -0.04,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.346,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 1.036,
+            "z2": -2.25,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -0.073,
+            "z2": 1.051,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.04,
+            "z2": -0.009,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": -0.04,
+            "z2": 0.287,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -0.937,
+            "z2": 1.051,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.86
+    },
+    {
+      "persona_id": "zuzia",
+      "biography_length": 2861,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "fearful_avoidant",
+        "predicted": "fearful_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.854,
+          "directional_match": true,
+          "magnitude_error": 0.104,
+          "expected_z_approx": 0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 2.042,
+          "directional_match": true,
+          "magnitude_error": 1.667,
+          "expected_z_approx": 0.375
+        },
+        "ments_self": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": -0.328,
+          "directional_match": false,
+          "magnitude_error": 1.828,
+          "expected_z_approx": 1.5
+        },
+        "ments_other": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.857,
+          "directional_match": true,
+          "magnitude_error": 0.107,
+          "expected_z_approx": 0.75
+        },
+        "ments_motivation": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.134,
+          "directional_match": true,
+          "magnitude_error": 0.366,
+          "expected_z_approx": 1.5
+        },
+        "kpp": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.357,
+          "directional_match": true,
+          "magnitude_error": 0.393,
+          "expected_z_approx": 0.75
+        },
+        "tipi_E": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -1.515,
+          "directional_match": false,
+          "magnitude_error": 1.515,
+          "expected_z_approx": 0.0
+        },
+        "tipi_A": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.239,
+          "directional_match": true,
+          "magnitude_error": 0.614,
+          "expected_z_approx": 0.375
+        },
+        "tipi_C": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.063,
+          "directional_match": true,
+          "magnitude_error": 0.438,
+          "expected_z_approx": 0.375
+        },
+        "tipi_ES": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.192,
+          "directional_match": true,
+          "magnitude_error": 0.442,
+          "expected_z_approx": -0.75
+        },
+        "tipi_O": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.868,
+          "directional_match": true,
+          "magnitude_error": 0.632,
+          "expected_z_approx": 1.5
+        }
+      },
+      "directional_accuracy": 0.818,
+      "directional_hits": 9,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.737,
+      "literature_consistency": {
+        "hits": 6,
+        "total": 10,
+        "rate": 0.6,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.73,
+            "z2": 0.854,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": 0.854,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": 2.042,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.134,
+            "z2": 0.357,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.134,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.857,
+            "z2": -1.515,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.73,
+            "z2": -1.192,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.357,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 0.357,
+            "z2": -0.063,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 0.854,
+            "z2": -1.192,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.847
+    },
+    {
+      "persona_id": "hubert",
+      "biography_length": 2170,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "dismissive_avoidant",
+        "predicted": "dismissive_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.074,
+          "directional_match": true,
+          "magnitude_error": 0.324,
+          "expected_z_approx": -0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 2.042,
+          "directional_match": true,
+          "magnitude_error": 1.292,
+          "expected_z_approx": 0.75
+        },
+        "ments_self": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.707,
+          "directional_match": true,
+          "magnitude_error": 0.207,
+          "expected_z_approx": -1.5
+        },
+        "ments_other": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.286,
+          "directional_match": true,
+          "magnitude_error": 0.536,
+          "expected_z_approx": -0.75
+        },
+        "ments_motivation": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.283,
+          "directional_match": true,
+          "magnitude_error": 0.467,
+          "expected_z_approx": -0.75
+        },
+        "kpp": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.55,
+          "directional_match": true,
+          "magnitude_error": 0.8,
+          "expected_z_approx": 0.75
+        },
+        "tipi_E": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -2.618,
+          "directional_match": true,
+          "magnitude_error": 1.118,
+          "expected_z_approx": -1.5
+        },
+        "tipi_A": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -0.239,
+          "directional_match": true,
+          "magnitude_error": 0.136,
+          "expected_z_approx": -0.375
+        },
+        "tipi_C": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.986,
+          "directional_match": true,
+          "magnitude_error": 0.514,
+          "expected_z_approx": 1.5
+        },
+        "tipi_ES": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 1.051,
+          "directional_match": false,
+          "magnitude_error": 1.051,
+          "expected_z_approx": 0.0
+        },
+        "tipi_O": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.447,
+          "directional_match": false,
+          "magnitude_error": 1.197,
+          "expected_z_approx": 0.75
+        }
+      },
+      "directional_accuracy": 0.818,
+      "directional_hits": 9,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.695,
+      "literature_consistency": {
+        "hits": 5,
+        "total": 10,
+        "rate": 0.5,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.387,
+            "z2": -1.074,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.707,
+            "z2": -1.074,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -1.707,
+            "z2": 2.042,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -0.283,
+            "z2": 1.55,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.283,
+            "z2": -0.447,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": -1.286,
+            "z2": -2.618,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -1.387,
+            "z2": 1.051,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.55,
+            "z2": -0.447,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.55,
+            "z2": 0.986,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -1.074,
+            "z2": 1.051,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.827
+    },
+    {
+      "persona_id": "filip",
+      "biography_length": 1591,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "fearful_avoidant",
+        "predicted": "fearful_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.267,
+          "directional_match": true,
+          "magnitude_error": 0.517,
+          "expected_z_approx": 0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 2.331,
+          "directional_match": true,
+          "magnitude_error": 1.956,
+          "expected_z_approx": 0.375
+        },
+        "ments_self": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": -1.017,
+          "directional_match": false,
+          "magnitude_error": 2.517,
+          "expected_z_approx": 1.5
+        },
+        "ments_other": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.321,
+          "directional_match": true,
+          "magnitude_error": 0.429,
+          "expected_z_approx": 0.75
+        },
+        "ments_motivation": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.291,
+          "directional_match": true,
+          "magnitude_error": 0.209,
+          "expected_z_approx": 1.5
+        },
+        "kpp": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.152,
+          "directional_match": true,
+          "magnitude_error": 0.348,
+          "expected_z_approx": 1.5
+        },
+        "tipi_E": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -1.882,
+          "directional_match": true,
+          "magnitude_error": 1.507,
+          "expected_z_approx": -0.375
+        },
+        "tipi_A": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.667,
+          "directional_match": false,
+          "magnitude_error": 1.042,
+          "expected_z_approx": 0.375
+        },
+        "tipi_C": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -1.112,
+          "directional_match": false,
+          "magnitude_error": 1.112,
+          "expected_z_approx": 0.0
+        },
+        "tipi_ES": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.513,
+          "directional_match": true,
+          "magnitude_error": 0.763,
+          "expected_z_approx": -0.75
+        },
+        "tipi_O": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.868,
+          "directional_match": true,
+          "magnitude_error": 0.632,
+          "expected_z_approx": 1.5
+        }
+      },
+      "directional_accuracy": 0.727,
+      "directional_hits": 8,
+      "directional_total": 11,
+      "mean_magnitude_error": 1.003,
+      "literature_consistency": {
+        "hits": 6,
+        "total": 10,
+        "rate": 0.6,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.292,
+            "z2": 1.267,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.017,
+            "z2": 1.267,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -1.017,
+            "z2": 2.331,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.291,
+            "z2": 1.152,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.291,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.321,
+            "z2": -1.882,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.292,
+            "z2": -1.513,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.152,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.152,
+            "z2": -1.112,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 1.267,
+            "z2": -1.513,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.811
+    },
+    {
+      "persona_id": "jola",
+      "biography_length": 2131,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "anxious_preoccupied",
+        "predicted": "anxious_preoccupied",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.68,
+          "directional_match": true,
+          "magnitude_error": 0.18,
+          "expected_z_approx": 1.5
+        },
+        "dbz_avoidance": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": 0.595,
+          "directional_match": false,
+          "magnitude_error": 1.345,
+          "expected_z_approx": -0.75
+        },
+        "ments_self": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.328,
+          "directional_match": false,
+          "magnitude_error": 1.078,
+          "expected_z_approx": 0.75
+        },
+        "ments_other": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.036,
+          "directional_match": true,
+          "magnitude_error": 0.464,
+          "expected_z_approx": 1.5
+        },
+        "ments_motivation": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.291,
+          "directional_match": true,
+          "magnitude_error": 0.209,
+          "expected_z_approx": 1.5
+        },
+        "kpp": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.187,
+          "directional_match": true,
+          "magnitude_error": 0.188,
+          "expected_z_approx": 0.375
+        },
+        "tipi_E": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.779,
+          "directional_match": false,
+          "magnitude_error": 1.154,
+          "expected_z_approx": 0.375
+        },
+        "tipi_A": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.188,
+          "directional_match": true,
+          "magnitude_error": 0.187,
+          "expected_z_approx": 0.375
+        },
+        "tipi_C": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.063,
+          "directional_match": true,
+          "magnitude_error": 0.063,
+          "expected_z_approx": 0.0
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.513,
+          "directional_match": true,
+          "magnitude_error": 0.013,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.868,
+          "directional_match": true,
+          "magnitude_error": 0.632,
+          "expected_z_approx": 1.5
+        }
+      },
+      "directional_accuracy": 0.727,
+      "directional_hits": 8,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.501,
+      "literature_consistency": {
+        "hits": 6,
+        "total": 10,
+        "rate": 0.6,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.876,
+            "z2": 1.68,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": 1.68,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": 0.595,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.291,
+            "z2": 0.187,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.291,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 1.036,
+            "z2": -0.779,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.876,
+            "z2": -1.513,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.187,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 0.187,
+            "z2": -0.063,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 1.68,
+            "z2": -1.513,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.811
+    },
+    {
+      "persona_id": "ania",
+      "biography_length": 1767,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "anxious_preoccupied",
+        "predicted": "anxious_preoccupied",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 2.185,
+          "directional_match": true,
+          "magnitude_error": 0.685,
+          "expected_z_approx": 1.5
+        },
+        "dbz_avoidance": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.678,
+          "directional_match": true,
+          "magnitude_error": 0.072,
+          "expected_z_approx": -0.75
+        },
+        "ments_self": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.328,
+          "directional_match": false,
+          "magnitude_error": 0.703,
+          "expected_z_approx": 0.375
+        },
+        "ments_other": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 0.857,
+          "directional_match": false,
+          "magnitude_error": 0.857,
+          "expected_z_approx": 0.0
+        },
+        "ments_motivation": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.606,
+          "directional_match": true,
+          "magnitude_error": 0.106,
+          "expected_z_approx": 1.5
+        },
+        "kpp": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.13,
+          "directional_match": true,
+          "magnitude_error": 0.245,
+          "expected_z_approx": 0.375
+        },
+        "tipi_E": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.044,
+          "directional_match": true,
+          "magnitude_error": 0.419,
+          "expected_z_approx": 0.375
+        },
+        "tipi_A": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.615,
+          "directional_match": true,
+          "magnitude_error": 0.135,
+          "expected_z_approx": 0.75
+        },
+        "tipi_C": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.762,
+          "directional_match": false,
+          "magnitude_error": 0.762,
+          "expected_z_approx": 0.0
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.513,
+          "directional_match": true,
+          "magnitude_error": 0.013,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.868,
+          "directional_match": true,
+          "magnitude_error": 0.118,
+          "expected_z_approx": 0.75
+        }
+      },
+      "directional_accuracy": 0.727,
+      "directional_hits": 8,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.374,
+      "literature_consistency": {
+        "hits": 5,
+        "total": 10,
+        "rate": 0.5,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.949,
+            "z2": 2.185,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": 2.185,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": -0.678,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.606,
+            "z2": 0.13,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.606,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.857,
+            "z2": -0.044,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.949,
+            "z2": -1.513,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.13,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 0.13,
+            "z2": -0.762,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 2.185,
+            "z2": -1.513,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.791
+    },
+    {
+      "persona_id": "michal-sim",
+      "biography_length": 2002,
+      "model": "eu.anthropic.claude-opus-4-6-v1",
+      "attachment": {
+        "expected": "fearful_avoidant",
+        "predicted": "fearful_avoidant",
+        "match": true
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 1.543,
+          "directional_match": true,
+          "magnitude_error": 1.168,
+          "expected_z_approx": 0.375
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 2.736,
+          "directional_match": true,
+          "magnitude_error": 2.361,
+          "expected_z_approx": 0.375
+        },
+        "ments_self": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -1.707,
+          "directional_match": false,
+          "magnitude_error": 1.707,
+          "expected_z_approx": 0.0
+        },
+        "ments_other": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -1.286,
+          "directional_match": false,
+          "magnitude_error": 1.286,
+          "expected_z_approx": 0.0
+        },
+        "ments_motivation": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.598,
+          "directional_match": false,
+          "magnitude_error": 0.973,
+          "expected_z_approx": 0.375
+        },
+        "kpp": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.755,
+          "directional_match": true,
+          "magnitude_error": 0.38,
+          "expected_z_approx": 0.375
+        },
+        "tipi_E": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -2.25,
+          "directional_match": false,
+          "magnitude_error": 2.25,
+          "expected_z_approx": 0.0
+        },
+        "tipi_A": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.615,
+          "directional_match": true,
+          "magnitude_error": 0.24,
+          "expected_z_approx": 0.375
+        },
+        "tipi_C": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 0.287,
+          "directional_match": true,
+          "magnitude_error": 0.287,
+          "expected_z_approx": 0.0
+        },
+        "tipi_ES": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -1.192,
+          "directional_match": true,
+          "magnitude_error": 0.817,
+          "expected_z_approx": -0.375
+        },
+        "tipi_O": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.447,
+          "directional_match": false,
+          "magnitude_error": 0.822,
+          "expected_z_approx": 0.375
+        }
+      },
+      "directional_accuracy": 0.545,
+      "directional_hits": 6,
+      "directional_total": 11,
+      "mean_magnitude_error": 1.117,
+      "literature_consistency": {
+        "hits": 8,
+        "total": 10,
+        "rate": 0.8,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.533,
+            "z2": 1.543,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -1.707,
+            "z2": 1.543,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -1.707,
+            "z2": 2.736,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -0.598,
+            "z2": 0.755,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.598,
+            "z2": -0.447,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": -1.286,
+            "z2": -2.25,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -1.533,
+            "z2": -1.192,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.755,
+            "z2": -0.447,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 0.755,
+            "z2": 0.287,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 1.543,
+            "z2": -1.192,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 2,
+        "NAD": 1,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.778
+    },
+    {
+      "persona_id": "marek",
+      "biography_length": 1634,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "fearful_avoidant",
+        "predicted": "dismissive_avoidant",
+        "match": false
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.615,
+          "directional_match": false,
+          "magnitude_error": 1.365,
+          "expected_z_approx": 0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 2.852,
+          "directional_match": true,
+          "magnitude_error": 2.102,
+          "expected_z_approx": 0.75
+        },
+        "ments_self": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.397,
+          "directional_match": true,
+          "magnitude_error": 1.647,
+          "expected_z_approx": -0.75
+        },
+        "ments_other": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.357,
+          "directional_match": true,
+          "magnitude_error": 1.607,
+          "expected_z_approx": -0.75
+        },
+        "ments_motivation": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.016,
+          "directional_match": true,
+          "magnitude_error": 1.266,
+          "expected_z_approx": -0.75
+        },
+        "kpp": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -2.994,
+          "directional_match": true,
+          "magnitude_error": 2.619,
+          "expected_z_approx": -0.375
+        },
+        "tipi_E": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.618,
+          "directional_match": true,
+          "magnitude_error": 1.868,
+          "expected_z_approx": -0.75
+        },
+        "tipi_A": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.667,
+          "directional_match": true,
+          "magnitude_error": 0.667,
+          "expected_z_approx": 0.0
+        },
+        "tipi_C": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -0.063,
+          "directional_match": true,
+          "magnitude_error": 0.312,
+          "expected_z_approx": -0.375
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -0.551,
+          "directional_match": true,
+          "magnitude_error": 0.949,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.202,
+          "directional_match": true,
+          "magnitude_error": 1.452,
+          "expected_z_approx": -0.75
+        }
+      },
+      "directional_accuracy": 0.909,
+      "directional_hits": 10,
+      "directional_total": 11,
+      "mean_magnitude_error": 1.441,
+      "literature_consistency": {
+        "hits": 7,
+        "total": 10,
+        "rate": 0.7,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -2.92,
+            "z2": -0.615,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -2.397,
+            "z2": -0.615,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -2.397,
+            "z2": 2.852,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": -2.016,
+            "z2": -2.994,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": -2.016,
+            "z2": -2.202,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": -2.357,
+            "z2": -2.618,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -2.92,
+            "z2": -0.551,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": -2.994,
+            "z2": -2.202,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": -2.994,
+            "z2": -0.063,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -0.615,
+            "z2": -0.551,
+            "product_sign": "+",
+            "match": false
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 3,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.504
+    },
+    {
+      "persona_id": "klaudia",
+      "biography_length": 2149,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "anxious_preoccupied",
+        "predicted": "secure",
+        "match": false
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.303,
+          "directional_match": true,
+          "magnitude_error": 1.197,
+          "expected_z_approx": 1.5
+        },
+        "dbz_avoidance": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": 0.479,
+          "directional_match": false,
+          "magnitude_error": 1.979,
+          "expected_z_approx": -1.5
+        },
+        "ments_self": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.5,
+          "directional_match": true,
+          "magnitude_error": 0.25,
+          "expected_z_approx": -0.75
+        },
+        "ments_other": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.214,
+          "directional_match": true,
+          "magnitude_error": 0.286,
+          "expected_z_approx": 1.5
+        },
+        "ments_motivation": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.134,
+          "directional_match": true,
+          "magnitude_error": 0.366,
+          "expected_z_approx": 1.5
+        },
+        "kpp": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.438,
+          "directional_match": true,
+          "magnitude_error": 0.438,
+          "expected_z_approx": 0.0
+        },
+        "tipi_E": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.044,
+          "directional_match": true,
+          "magnitude_error": 0.794,
+          "expected_z_approx": 0.75
+        },
+        "tipi_A": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.615,
+          "directional_match": true,
+          "magnitude_error": 0.885,
+          "expected_z_approx": 1.5
+        },
+        "tipi_C": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.287,
+          "directional_match": true,
+          "magnitude_error": 0.088,
+          "expected_z_approx": 0.375
+        },
+        "tipi_ES": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -0.551,
+          "directional_match": true,
+          "magnitude_error": 0.199,
+          "expected_z_approx": -0.75
+        },
+        "tipi_O": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.447,
+          "directional_match": true,
+          "magnitude_error": 0.447,
+          "expected_z_approx": 0.0
+        }
+      },
+      "directional_accuracy": 0.909,
+      "directional_hits": 10,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.63,
+      "literature_consistency": {
+        "hits": 4,
+        "total": 10,
+        "rate": 0.4,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.803,
+            "z2": 0.303,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.5,
+            "z2": 0.303,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.5,
+            "z2": 0.479,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.134,
+            "z2": -0.438,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.134,
+            "z2": -0.447,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 1.214,
+            "z2": -0.044,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.803,
+            "z2": -0.551,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.438,
+            "z2": -0.447,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": -0.438,
+            "z2": 0.287,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 0.303,
+            "z2": -0.551,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.444
+    },
+    {
+      "persona_id": "kamil",
+      "biography_length": 1909,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "fearful_avoidant",
+        "predicted": "dismissive_avoidant",
+        "match": false
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": -0.294,
+          "directional_match": false,
+          "magnitude_error": 1.044,
+          "expected_z_approx": 0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 2.157,
+          "directional_match": true,
+          "magnitude_error": 1.407,
+          "expected_z_approx": 0.75
+        },
+        "ments_self": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.672,
+          "directional_match": true,
+          "magnitude_error": 0.672,
+          "expected_z_approx": 0.0
+        },
+        "ments_other": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.036,
+          "directional_match": true,
+          "magnitude_error": 0.036,
+          "expected_z_approx": 0.0
+        },
+        "ments_motivation": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": 0.189,
+          "directional_match": true,
+          "magnitude_error": 0.939,
+          "expected_z_approx": -0.75
+        },
+        "kpp": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -0.211,
+          "directional_match": true,
+          "magnitude_error": 0.164,
+          "expected_z_approx": -0.375
+        },
+        "tipi_E": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.618,
+          "directional_match": true,
+          "magnitude_error": 1.868,
+          "expected_z_approx": -0.75
+        },
+        "tipi_A": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.239,
+          "directional_match": true,
+          "magnitude_error": 0.239,
+          "expected_z_approx": 0.0
+        },
+        "tipi_C": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.287,
+          "directional_match": true,
+          "magnitude_error": 0.463,
+          "expected_z_approx": 0.75
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -0.551,
+          "directional_match": true,
+          "magnitude_error": 0.949,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": -0.447,
+          "directional_match": true,
+          "magnitude_error": 0.072,
+          "expected_z_approx": -0.375
+        }
+      },
+      "directional_accuracy": 0.909,
+      "directional_hits": 10,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.714,
+      "literature_consistency": {
+        "hits": 4,
+        "total": 10,
+        "rate": 0.4,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.219,
+            "z2": -0.294,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.672,
+            "z2": -0.294,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.672,
+            "z2": 2.157,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 0.189,
+            "z2": -0.211,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.189,
+            "z2": -0.447,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": -0.036,
+            "z2": -2.618,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": -0.219,
+            "z2": -0.551,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": -0.211,
+            "z2": -0.447,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": -0.211,
+            "z2": 0.287,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -0.294,
+            "z2": -0.551,
+            "product_sign": "+",
+            "match": false
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 3,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.444
+    },
+    {
+      "persona_id": "bartek",
+      "biography_length": 2247,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "anxious_preoccupied",
+        "predicted": "dismissive_avoidant",
+        "match": false
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": -0.018,
+          "directional_match": true,
+          "magnitude_error": 1.518,
+          "expected_z_approx": 1.5
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 1.752,
+          "directional_match": false,
+          "magnitude_error": 1.752,
+          "expected_z_approx": 0.0
+        },
+        "ments_self": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": -0.328,
+          "directional_match": false,
+          "magnitude_error": 1.828,
+          "expected_z_approx": 1.5
+        },
+        "ments_other": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.5,
+          "directional_match": true,
+          "magnitude_error": 0.125,
+          "expected_z_approx": 0.375
+        },
+        "ments_motivation": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.449,
+          "directional_match": true,
+          "magnitude_error": 0.051,
+          "expected_z_approx": 1.5
+        },
+        "kpp": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.698,
+          "directional_match": true,
+          "magnitude_error": 0.323,
+          "expected_z_approx": 0.375
+        },
+        "tipi_E": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -2.25,
+          "directional_match": true,
+          "magnitude_error": 1.5,
+          "expected_z_approx": -0.75
+        },
+        "tipi_A": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.239,
+          "directional_match": true,
+          "magnitude_error": 0.614,
+          "expected_z_approx": 0.375
+        },
+        "tipi_C": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.063,
+          "directional_match": true,
+          "magnitude_error": 0.063,
+          "expected_z_approx": 0.0
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.192,
+          "directional_match": true,
+          "magnitude_error": 0.308,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.868,
+          "directional_match": true,
+          "magnitude_error": 0.118,
+          "expected_z_approx": 0.75
+        }
+      },
+      "directional_accuracy": 0.818,
+      "directional_hits": 9,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.745,
+      "literature_consistency": {
+        "hits": 5,
+        "total": 10,
+        "rate": 0.5,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.73,
+            "z2": -0.018,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": -0.018,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": 1.752,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.449,
+            "z2": 0.698,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.449,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.5,
+            "z2": -2.25,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.73,
+            "z2": -1.192,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 0.698,
+            "z2": 0.868,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 0.698,
+            "z2": -0.063,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": -0.018,
+            "z2": -1.192,
+            "product_sign": "+",
+            "match": false
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.427
+    },
+    {
+      "persona_id": "gabriela",
+      "biography_length": 1907,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "anxious_preoccupied",
+        "predicted": "secure",
+        "match": false
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.257,
+          "directional_match": true,
+          "magnitude_error": 0.493,
+          "expected_z_approx": 0.75
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate_low",
+          "expected_rank": -0.5,
+          "observed_z": 0.306,
+          "directional_match": false,
+          "magnitude_error": 0.681,
+          "expected_z_approx": -0.375
+        },
+        "ments_self": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.5,
+          "directional_match": false,
+          "magnitude_error": 0.875,
+          "expected_z_approx": 0.375
+        },
+        "ments_other": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 0.679,
+          "directional_match": true,
+          "magnitude_error": 0.071,
+          "expected_z_approx": 0.75
+        },
+        "ments_motivation": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.134,
+          "directional_match": true,
+          "magnitude_error": 0.384,
+          "expected_z_approx": 0.75
+        },
+        "kpp": {
+          "expected_level": "high",
+          "expected_rank": 1,
+          "observed_z": 1.096,
+          "directional_match": true,
+          "magnitude_error": 0.346,
+          "expected_z_approx": 0.75
+        },
+        "tipi_E": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": -0.779,
+          "directional_match": false,
+          "magnitude_error": 0.779,
+          "expected_z_approx": 0.0
+        },
+        "tipi_A": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.188,
+          "directional_match": true,
+          "magnitude_error": 1.312,
+          "expected_z_approx": 1.5
+        },
+        "tipi_C": {
+          "expected_level": "extreme",
+          "expected_rank": 2.5,
+          "observed_z": 1.336,
+          "directional_match": true,
+          "magnitude_error": 0.539,
+          "expected_z_approx": 1.875
+        },
+        "tipi_ES": {
+          "expected_level": "low_moderate",
+          "expected_rank": -0.5,
+          "observed_z": -1.192,
+          "directional_match": true,
+          "magnitude_error": 0.817,
+          "expected_z_approx": -0.375
+        },
+        "tipi_O": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.009,
+          "directional_match": true,
+          "magnitude_error": 0.384,
+          "expected_z_approx": 0.375
+        }
+      },
+      "directional_accuracy": 0.727,
+      "directional_hits": 8,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.607,
+      "literature_consistency": {
+        "hits": 5,
+        "total": 10,
+        "rate": 0.5,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.584,
+            "z2": 0.257,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.5,
+            "z2": 0.257,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.5,
+            "z2": 0.306,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.134,
+            "z2": 1.096,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.134,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.679,
+            "z2": -0.779,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.584,
+            "z2": -1.192,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.096,
+            "z2": -0.009,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.096,
+            "z2": 1.336,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 0.257,
+            "z2": -1.192,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 20,
+        "DOS": 2,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.391
+    },
+    {
+      "persona_id": "michal-k",
+      "biography_length": 1659,
+      "model": "eu.anthropic.claude-sonnet-4-6",
+      "attachment": {
+        "expected": "anxious_preoccupied",
+        "predicted": "fearful_avoidant",
+        "match": false
+      },
+      "dimensions": {
+        "dbz_anxiety": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 0.9,
+          "directional_match": true,
+          "magnitude_error": 0.6,
+          "expected_z_approx": 1.5
+        },
+        "dbz_avoidance": {
+          "expected_level": "moderate",
+          "expected_rank": 0,
+          "observed_z": 1.868,
+          "directional_match": false,
+          "magnitude_error": 1.868,
+          "expected_z_approx": 0.0
+        },
+        "ments_self": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": -0.328,
+          "directional_match": false,
+          "magnitude_error": 1.828,
+          "expected_z_approx": 1.5
+        },
+        "ments_other": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.321,
+          "directional_match": true,
+          "magnitude_error": 0.054,
+          "expected_z_approx": 0.375
+        },
+        "ments_motivation": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.134,
+          "directional_match": true,
+          "magnitude_error": 0.366,
+          "expected_z_approx": 1.5
+        },
+        "kpp": {
+          "expected_level": "very_high",
+          "expected_rank": 2,
+          "observed_z": 1.152,
+          "directional_match": true,
+          "magnitude_error": 0.348,
+          "expected_z_approx": 1.5
+        },
+        "tipi_E": {
+          "expected_level": "low",
+          "expected_rank": -1,
+          "observed_z": -1.882,
+          "directional_match": true,
+          "magnitude_error": 1.132,
+          "expected_z_approx": -0.75
+        },
+        "tipi_A": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": 0.188,
+          "directional_match": true,
+          "magnitude_error": 0.187,
+          "expected_z_approx": 0.375
+        },
+        "tipi_C": {
+          "expected_level": "extreme",
+          "expected_rank": 2.5,
+          "observed_z": 0.986,
+          "directional_match": true,
+          "magnitude_error": 0.889,
+          "expected_z_approx": 1.875
+        },
+        "tipi_ES": {
+          "expected_level": "very_low",
+          "expected_rank": -2,
+          "observed_z": -1.513,
+          "directional_match": true,
+          "magnitude_error": 0.013,
+          "expected_z_approx": -1.5
+        },
+        "tipi_O": {
+          "expected_level": "moderate_high",
+          "expected_rank": 0.5,
+          "observed_z": -0.447,
+          "directional_match": false,
+          "magnitude_error": 0.822,
+          "expected_z_approx": 0.375
+        }
+      },
+      "directional_accuracy": 0.727,
+      "directional_hits": 8,
+      "directional_total": 11,
+      "mean_magnitude_error": 0.737,
+      "literature_consistency": {
+        "hits": 5,
+        "total": 10,
+        "rate": 0.5,
+        "details": [
+          {
+            "pair": "ments_total x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": 0.511,
+            "z2": 0.9,
+            "product_sign": "+",
+            "match": false
+          },
+          {
+            "pair": "ments_self x dbz_anxiety",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": 0.9,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_self x dbz_avoidance",
+            "expected_sign": "-",
+            "z1": -0.328,
+            "z2": 1.868,
+            "product_sign": "-",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x kpp_z",
+            "expected_sign": "+",
+            "z1": 1.134,
+            "z2": 1.152,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "ments_mot x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.134,
+            "z2": -0.447,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_other x tipi_E",
+            "expected_sign": "+",
+            "z1": 0.321,
+            "z2": -1.882,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "ments_total x tipi_ES",
+            "expected_sign": "+",
+            "z1": 0.511,
+            "z2": -1.513,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_O",
+            "expected_sign": "+",
+            "z1": 1.152,
+            "z2": -0.447,
+            "product_sign": "-",
+            "match": false
+          },
+          {
+            "pair": "kpp_z x tipi_C",
+            "expected_sign": "+",
+            "z1": 1.152,
+            "z2": 0.986,
+            "product_sign": "+",
+            "match": true
+          },
+          {
+            "pair": "dbz_anxiety x tipi_ES",
+            "expected_sign": "-",
+            "z1": 0.9,
+            "z2": -1.513,
+            "product_sign": "-",
+            "match": true
+          }
+        ]
+      },
+      "tctm": {
+        "correct": 19,
+        "DOS": 3,
+        "NAD": 0,
+        "BK": 0,
+        "total": 22
+      },
+      "fidelity_score": 0.391
+    }
+  ]
+}
