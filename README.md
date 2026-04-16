@@ -1,6 +1,6 @@
-# TCTM-22 Synthetic Persona Validation Dataset (N=30)
+# TCTM-22 Synthetic Persona Sensitivity Study (N=30)
 
-**A benchmark dataset of 30 richly-specified fictional biographies with ground-truth psychological profiles, designed to validate AI-driven psychometric scoring in a Polish-language mentalization assessment.**
+**30 fictional biographies with ground-truth psychological profiles, processed by 5 LLMs from 4 vendors (300 runs + 7 human respondents = 307 observations), to test whether psychometric instruments react to known personality variation — a sensitivity study, not a validation.**
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
@@ -8,56 +8,96 @@
 
 ## Abstract
 
-This repository contains the complete materials for a synthetic persona validation experiment conducted as part of an MA thesis at the Uniwersytet Komisji Edukacji Narodowej (UKEN) in Krakow, Poland. The thesis investigates mentalization in text-based communication among young Polish adults.
+This repository contains the core materials for a synthetic persona sensitivity experiment conducted as part of an MA thesis at the Uniwersytet Komisji Edukacji Narodowej (UKEN) in Krakow, Poland. The thesis investigates mentalization in text-based communication among young Polish adults.
 
-Thirty fictional characters ("personas") were authored with predetermined psychological profiles spanning four attachment styles, three mentalization subscales, need for cognition, and Big Five personality traits (12 dimensions total). Each persona was written as an immersive second-person biography in Polish, averaging 1,554-2,914 words, providing enough behavioral and relational detail for a large language model (Claude Opus 4.6 / Claude Sonnet 4.6) to complete a battery of five validated psychometric instruments as if it were the persona.
+Thirty fictional characters ("personas") were authored with predetermined psychological profiles across 12 dimensions: attachment anxiety and avoidance (DBZ-R, 2 scales), mentalization self/other/motivation (MentS-PL, 3 scales), need for cognition (KPP, 1 scale), Big Five E/A/C/ES/O (TIPI-PL, 5 scales), and attachment style (4-category classification derived from DBZ-R; 11 continuous + 1 categorical = 12 total). Each persona was written as an immersive second-person biography in Polish, ranging from 1,554 to 2,914 words.
 
-The scored responses were then compared against the ground-truth profiles embedded in each biography. This dataset provides the full pipeline: biographies, expected profiles, observed scores, and statistical validation.
+Each persona was processed by **5 models from 4 vendors**: Claude Sonnet 4.6 and Claude Opus 4.6 (Anthropic), GPT-5.4-mini (OpenAI), Grok-4-20-reasoning (xAI), and Gemini 3 Flash (Google). Each model was instructed to complete a battery of four published psychometric instruments plus one original mentalization vignette test (TCTM-22) "as that persona." (Note: GPT-5.4-mini returned incomplete TCTM responses in 20% of runs; see Limitations.) Each model was run twice (test-retest). Additionally, 7 human respondents completed the same battery. Total: **307 observations** (300 LLM + 7 human; 30 additional Sonnet runs with the full TCTM-57 vignette pool are also available).
+
+This dataset provides the full pipeline: biographies, expected profiles, observed scores, cross-vendor comparison, test-retest reliability, and human vs LLM error profile analysis.
 
 ## Key Results
 
-| Metric | Value |
-|:---|:---|
-| Attachment style match (4 categories) | **24/30 = 80.0%** |
-| Cohen's kappa (attachment) | **0.735** (95% CI: 0.545-0.925, "substantial") |
-| Mean directional accuracy (11 dimensions) | **84.8%** |
-| Mean literature consistency (10 construct pairs) | **64.3%** |
-| Mean magnitude error | **0.70 SD** |
-| Mean fidelity score (composite) | **0.788** |
-| TCTM-22 mean correct | **19.4/22 = 88.2%** |
-| Dimension-level correlations | **11/11 significant at p < 0.001** |
-| Literature construct pairs replicated | **10/10 expected directions** |
+> **Note:** All cross-model tables below report the **first run** per persona per model (N=30/model). The second run (retest) is used exclusively for test-retest reliability analysis.
 
-### Attachment Style Confusion Matrix
+### TCTM-22 Scores by Group
 
-| | Predicted: Secure | Predicted: Anxious | Predicted: Dismissive | Predicted: Fearful |
-|:---|:---:|:---:|:---:|:---:|
-| **Expected: Secure** (n=7) | **7** | 0 | 0 | 0 |
-| **Expected: Anxious** (n=8) | 2 | **4** | 1 | 1 |
-| **Expected: Dismissive** (n=7) | 0 | 0 | **7** | 0 |
-| **Expected: Fearful** (n=8) | 0 | 0 | 2 | **6** |
+| Group | N | M | SD | Range | DOS% | NAD% | BK% |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Human | 7 | 14.3 | 1.4 | 12–16 | 32% | **36%** | 32% |
+| GPT-5.4-mini | 30 | 16.8 | 1.6 | 13–19 | 71% | 6% | 23% |
+| Grok-4-20-reasoning | 30 | 18.4 | 4.2 | 6–22 | 62% | 18% | 20% |
+| Opus | 30 | 19.1 | 2.0 | 9–20 | 85% | 8% | 7% |
+| Sonnet | 30 | 19.6 | 0.9 | 16–21 | 96% | 0% | 4% |
+| **Gemini 3 Flash** | **30** | **19.6** | **2.1** | **9–21** | **24%** | **42%** | **34%** |
 
-Secure and dismissive-avoidant styles achieve perfect classification (100%). Anxious-preoccupied is the most difficult category (50%), with misclassified cases typically showing attenuated anxiety scores.
+**NAD (over-mentalizing) differentiates humans from most LLMs** — humans produce 36% NAD errors; Claude Sonnet produces 0%. Gemini is the exception: it over-mentalizes more than humans (42%), suggesting architecture-dependent variation in this error type.
 
-### Per-Dimension Directional Accuracy
+### Attachment Classification (5 models)
 
-| Dimension | Accuracy | Pearson r | p-value |
+| Model | Accuracy | Cohen's κ | Cramér's V |
 |:---|:---:|:---:|:---:|
-| KPP (need for cognition) | 97% | 0.756 | < 0.001 |
-| DBZ Anxiety (attachment) | 93% | 0.829 | < 0.001 |
-| TIPI Agreeableness | 93% | 0.744 | < 0.001 |
-| TIPI Conscientiousness | 93% | 0.748 | < 0.001 |
-| MentS Other-directed | 90% | 0.793 | < 0.001 |
-| TIPI Emotional Stability | 90% | 0.806 | < 0.001 |
-| MentS Motivation | 83% | 0.749 | < 0.001 |
-| DBZ Avoidance (attachment) | 80% | 0.838 | < 0.001 |
-| TIPI Openness | 73% | 0.561 | 0.001 |
-| TIPI Extraversion | 70% | 0.651 | < 0.001 |
-| MentS Self-oriented | 70% | 0.584 | < 0.001 |
+| Opus | 27/30 = 90% | .866 | .905 |
+| Grok-4-20-reasoning | 27/30 = 90% | .867 | .890 |
+| Gemini 3 Flash | 25/30 = 83% | .778 | .801 |
+| Sonnet | 24/30 = 80% | .735 | .773 |
+| GPT-5.4-mini | 16/30 = 53% | .372 | .491 |
+
+Opus and Grok tie in overall accuracy (27/30, κ ≈ .87), though with different per-style error patterns. Gemini is third (κ = .78). GPT-5.4-mini performs poorly (κ = .37; chance would be ~25%).
+
+### Rank-Score Correlations (median Pearson r, 11 continuous dimensions)
+
+Note: 12 dimensions total = 11 continuous scales (below) + 1 categorical (attachment style, reported separately as κ).
+
+| Model | Median r |
+|:---|:---:|
+| Opus | .852 |
+| Grok | .833 |
+| Sonnet | .819 |
+| Gemini | .772 |
+| GPT | .710 |
+
+### Test-Retest Reliability
+
+| Metric | Sonnet | Opus | GPT | Grok | Gemini |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| z-score median r | .979 | .993 | .830 | .946 | .955 |
+| TCTM total r | .691 | .992 | .203 | .530 | .900 |
+| Style agreement | 29/30 | 30/30 | 26/30 | 30/30 | 27/30 |
+
+Opus is near-deterministic across all tasks. Gemini is highly reliable (TCTM r = .90). Sonnet (r = .69) and Grok (r = .53) show moderate TCTM variance despite high questionnaire stability. GPT is unreliable on TCTM (r = .20).
+
+### Inter-Model Consistency (z-scores, median r)
+
+| | Sonnet | Opus | GPT | Grok | Gemini |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| Sonnet | — | .950 | .807 | .931 | .930 |
+| Opus | | — | .821 | .914 | .942 |
+| GPT | | | — | .816 | .831 |
+| Grok | | | | — | .932 |
+| Gemini | | | | | — |
+
+Within-Claude: r = .95. Gemini highly consistent with Sonnet, Opus, and Grok (~.93), less so with GPT (.83). GPT is the outlier across all pairs (.81-.83).
+
+TCTM inter-model (same personas): Gemini×Opus r = .947 (highest pair). GPT×Grok r = .049 (zero). ICC(2,1) across 5 models = .282.
+
+### Cross-Vendor Item Agreement (Ola case study)
+
+Ola ("secure but non-mentalizing") has the lowest cross-model mean TCTM (11.0/22) and is consistently among the hardest personas for all 5 models (though GPT's hardest is Kamil at 13/22 and Grok's is Marek at 6/22). Cross-vendor error analysis on Ola shows **systematic item-level agreement on DOS errors** — 5/5 models make the same mistake (DOS) on items s07 and w22. Several specific items show stable cross-vendor difficulty, though overall inter-model TCTM agreement remains low (ICC = .28).
+
+### Literature Consistency
+
+| Model | Sign matches |
+|:---|:---:|
+| Gemini | 10/10 |
+| Sonnet | 9/10 |
+| Opus | 9/10 |
+| GPT | 9/10 |
+| Grok | 8/10 |
 
 ## Psychometric Instruments
 
-The battery consists of five validated Polish-language instruments:
+The battery consists of four published Polish-language instruments plus one original vignette test:
 
 1. **DBZ-R** (Doswiadczanie Bliskich Zwiazkov-Rewidowany) -- Polish adaptation of ECR-R (Lubiewska et al., 2016). 36 items measuring attachment anxiety and avoidance. Norms: Lubiewska (2016).
 
@@ -77,7 +117,7 @@ Each biography encodes its target psychological profile through one of two strat
 
 - **Narrative** (21 personas): The biography body contains zero hits for trait-related keywords (e.g., "wysoka", "niska", "ekstrawersja", "mentalizacja"). The LLM must infer the entire profile from behavioral descriptions alone.
 
-- **Explicit** (9 personas): The biography body contains 1–8 incidental uses of trait-related words (e.g., "Twoja mentalizacja jest niska", "Twoja sumienność jest niska"). These appear in the text the LLM sees — not in the YAML frontmatter. They are trait *descriptions within the narrative*, not metadata labels.
+- **Explicit** (9 personas): The biography body contains 2–8 incidental uses of trait-related words (e.g., "Twoja mentalizacja jest niska", "Twoja sumienność jest niska"). These appear in the text the LLM sees — not in the YAML frontmatter. They are trait *descriptions within the narrative*, not metadata labels.
 
 ### Comparison: Does explicit labeling improve fidelity?
 
@@ -88,7 +128,7 @@ Each biography encodes its target psychological profile through one of two strat
 | Style match | 81% (17/21) | 78% (7/9) | −3pp |
 | Magnitude error | 0.67 SD | 0.76 SD | +0.09 |
 
-**Result: No meaningful difference.** Personas with explicit trait labels in the biography achieved virtually identical fidelity to those conveyed purely through behavioral narrative (Δ = −0.007). This confirms that the LLM reconstructs personality from *narrative content*, not from *trait labels* — the validation is not circular.
+**Result: Composite fidelity is virtually identical** (Δ = −0.007). Directional accuracy is +4.3pp higher for explicit personas (87.9% vs 83.5%), but with n=9 vs n=21 this difference is not testable. The near-zero composite difference is consistent with the interpretation that LLMs reconstruct personality primarily from *narrative content*, not from *trait labels*, though explicit labeling may provide a small additional signal for directional accuracy.
 
 Explicit personas (sorted by regex hits): ania (8), ola (7), filip (7), natalia (6), tomek (5), anna-sim (4), jakub (4), marek (2), kamil (2). The `trait_transparency` and `trait_regex_hits` fields in `data/persona_manifest.json` allow filtering by group.
 
@@ -103,7 +143,7 @@ github-repo/
     kasia.md
     ...
   data/
-    validation_report.json           # Full validation results (structured)
+    validation_report.json           # Sensitivity analysis results (structured; "validation" is legacy naming)
     persona_scores.jsonl             # Per-persona raw scores (all instruments)
     persona_manifest.json            # Structured metadata for all 30 personas
   scripts/
@@ -111,6 +151,8 @@ github-repo/
     validate_personas.py             # Validation pipeline (fidelity, accuracy)
     stats.py                         # Full statistical analysis (N=30)
     stats57.py                       # TCTM-57 extended analysis
+  # Note: raw LLM output JSON files (300+ runs) are in ../out/ outside this repo.
+  # The repo contains scored/aggregated data only. Full outputs available on request.
   results/
     validation_summary.md            # Human-readable validation report
     analysis_table.md                # Per-persona comparison tables
@@ -145,7 +187,7 @@ author_note: |
 Nazywasz sie Piotr Walczak. Masz 24 lata. ...
 ```
 
-All biographies are written in Polish. This is intentional -- the psychometric battery is normed for Polish populations, and the personas were designed for a Polish-language thesis on mentalization in text communication.
+All biographies are written in Polish. This is intentional -- four of the five instruments (DBZ-R, MentS, KPP, TIPI-PL) are normed for Polish populations; TCTM-22 is an original instrument without published norms, and the personas were designed for a Polish-language thesis on mentalization in text communication.
 
 ### Dimension Levels
 
@@ -155,728 +197,714 @@ Expected profile values use an ordinal scale mapped to approximate z-score range
 |:---|:---:|:---:|
 | very_low | -1.50 | -2 |
 | low | -0.75 | -1 |
-| low_moderate | -0.375 | -0.5 |
+| low_moderate / moderate_low | -0.375 | -0.5 |
 | moderate | 0.00 | 0 |
 | moderate_high | +0.375 | +0.5 |
 | high | +0.75 | +1 |
 | very_high | +1.50 | +2 |
 
+Note: `moderate_low` and `low_moderate` are treated as synonyms (rank = -0.5). Both forms appear in persona YAML files. The level `extreme` (rank = +2.5, approx z = +2.0) appears in two personas (Gabriela and Michal-k for TIPI-C).
+
 ---
 
 ## Persona Catalog
 
-### Secure Attachment (7 personas, 100% match rate)
+### Secure Attachment (7 personas)
+Match rates: Sonnet: 7/7, Opus: 7/7, GPT: 5/7, Grok: 7/7, Gemini: 6/7
 
 <details>
-<summary><strong>Kasia</strong> -- Katarzyna Wilczynska, 26F, physiotherapist, Wroclaw</summary>
+<summary><strong>Anna-sim</strong> ⚠️ `explicit`</summary>
 
-Warm, emotionally literate woman raised in a supportive family in Kalisz. Works in a private physiotherapy clinic where patients describe her as "the first physiotherapist who truly listens." Lives with her boyfriend Jarek and a cat named Bobas. High mentalization across all subscales, strong need for cognition.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -1.03 | Yes |
-| DBZ Avoidance | low | -1.37 | Yes |
-| MentS Self | high | +1.91 | Yes |
-| MentS Other | high | +1.57 | Yes |
-| MentS Motivation | high | +1.29 | Yes |
-| KPP | moderate_high | +0.36 | Yes |
-| TIPI E | high | -0.41 | No |
-| TIPI A | high | +0.61 | Yes |
-| TIPI C | moderate_high | +0.64 | Yes |
-| TIPI ES | moderate_high | +0.41 | Yes |
-| TIPI O | high | -0.01 | No |
+| DBZ Anxiety | low | -0.98 | Yes |
+| DBZ Avoidance | moderate_low | -0.21 | Yes |
+| MentS Self | high | +0.02 | Yes |
+| MentS Other | moderate_high | +0.14 | Yes |
+| MentS Motivation | moderate_high | -0.60 | No |
+| KPP | moderate | -0.15 | Yes |
+| TIPI E | moderate_high | -0.04 | Yes |
+| TIPI A | low | -1.09 | Yes |
+| TIPI C | moderate | +0.64 | No |
+| TIPI ES | low | +1.05 | No |
+| TIPI O | moderate_high | -0.89 | No |
 
-**Fidelity:** 0.904 | **Dir. Accuracy:** 91% | **Lit. Consistency:** 70% | **TCTM:** 20/22
+**TCTM-22:** Son=19/22 | Opu=19/22 | GPT=15/22 | Grk=19/22 | Gem=21/22
+**Attachment:** expected=secure, Son:Y Opu:Y GPT:Y Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Ola</strong> ⚠️ <code>explicit (7 hits)</code> -- Aleksandra Zielinska, 28F, kindergarten teacher, Rzeszow</summary>
+<summary><strong>Kasia</strong></summary>
 
-Happily married kindergarten teacher with a simple, content life. Grew up in a "normally good" family with no trauma. Married to Grzegorz for two years, together for six. Has a cat named Fistasz. Explicitly rejects the idea of needing therapy. Low mentalization scores reflect genuine psychological simplicity rather than avoidance.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -1.03 | Yes |
-| DBZ Avoidance | low | -0.74 | Yes |
+| DBZ Anxiety | low | -0.94 | Yes |
+| DBZ Avoidance | low | -0.91 | Yes |
+| MentS Self | high | +1.74 | Yes |
+| MentS Other | high | +1.75 | Yes |
+| MentS Motivation | high | +1.61 | Yes |
+| KPP | moderate_high | +0.87 | Yes |
+| TIPI E | high | -0.78 | No |
+| TIPI A | high | +0.61 | Yes |
+| TIPI C | moderate_high | +0.29 | Yes |
+| TIPI ES | moderate_high | +0.41 | Yes |
+| TIPI O | high | +0.87 | Yes |
+
+**TCTM-22:** Son=19/22 | Opu=20/22 | GPT=15/22 | Grk=20/22 | Gem=21/22
+**Attachment:** expected=secure, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
+
+</details>
+
+<details>
+<summary><strong>Ola</strong> ⚠️ `explicit`</summary>
+
+| Dimension | Expected | Sonnet z | Dir. Match |
+|:---|:---|:---:|:---:|
+| DBZ Anxiety | low | -1.26 | Yes |
+| DBZ Avoidance | low | -1.26 | Yes |
 | MentS Self | low_moderate | +0.19 | Yes |
 | MentS Other | low | -0.21 | Yes |
-| MentS Motivation | low | -1.39 | Yes |
-| KPP | low_moderate | -2.26 | Yes |
-| TIPI E | moderate_high | +0.32 | Yes |
+| MentS Motivation | low | -1.70 | Yes |
+| KPP | low_moderate | -2.20 | Yes |
+| TIPI E | high | +0.69 | Yes |
 | TIPI A | high | +0.61 | Yes |
-| TIPI C | moderate_high | +0.64 | Yes |
+| TIPI C | high | +0.64 | Yes |
 | TIPI ES | high | +1.05 | Yes |
 | TIPI O | low | -1.76 | Yes |
 
-**Fidelity:** 0.920 | **Dir. Accuracy:** 100% | **Lit. Consistency:** 60% | **TCTM:** 17/22
+**TCTM-22:** Son=16/22 | Opu=9/22 | GPT=14/22 | Grk=7/22 | Gem=9/22
+**Attachment:** expected=secure, Son:Y Opu:Y GPT:Y Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Kuba</strong> -- Jakub Okonski, 22M, philosophy & cognitive science student, Krakow</summary>
+<summary><strong>Kuba</strong></summary>
 
-Intellectually curious MA student at Jagiellonian University writing about theory of mind in higher primates. Lives with two roommates, in a loving relationship with Marta. High mentalization and openness, warm family background. His professor told him "you write like someone who wants to understand, not someone who wants to show off."
+| Dimension | Expected | Sonnet z | Dir. Match |
+|:---|:---|:---:|:---:|
+| DBZ Anxiety | low | -1.12 | Yes |
+| DBZ Avoidance | low | -0.91 | Yes |
+| MentS Self | high | +0.88 | Yes |
+| MentS Other | high | +0.86 | Yes |
+| MentS Motivation | high | +1.61 | Yes |
+| KPP | high | +1.61 | Yes |
+| TIPI E | very_high | -0.04 | No |
+| TIPI A | high | +0.19 | Yes |
+| TIPI C | moderate | -0.06 | Yes |
+| TIPI ES | high | +0.41 | Yes |
+| TIPI O | very_high | +0.87 | Yes |
 
-| Dimension | Expected | Observed z | Dir. Match |
+**TCTM-22:** Son=20/22 | Opu=20/22 | GPT=18/22 | Grk=20/22 | Gem=20/22
+**Attachment:** expected=secure, Son:Y Opu:Y GPT:Y Grk:Y Gem:Y
+
+</details>
+
+<details>
+<summary><strong>Weronika</strong></summary>
+
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
 | DBZ Anxiety | low | -0.84 | Yes |
 | DBZ Avoidance | low | -0.74 | Yes |
-| MentS Self | high | +0.53 | Yes |
-| MentS Other | high | +0.68 | Yes |
-| MentS Motivation | high | +1.61 | Yes |
-| KPP | high | +1.61 | Yes |
-| TIPI E | moderate_high | -0.41 | No |
-| TIPI A | moderate | +0.19 | Yes |
-| TIPI C | moderate | -0.06 | Yes |
-| TIPI ES | moderate_high | +0.41 | Yes |
-| TIPI O | very_high | +0.87 | Yes |
-
-**Fidelity:** 0.924 | **Dir. Accuracy:** 91% | **Lit. Consistency:** 80% | **TCTM:** 19/22
-
-</details>
-
-<details>
-<summary><strong>Weronika</strong> -- Weronika Kaczmarczyk, 24F, student (UMCS), Lublin</summary>
-
-Secure, grounded young woman living with her boyfriend Adam in Lublin. Religious upbringing (ordered, not fanatical), warm family with a policeman father and librarian mother. Feels "quiet joy" about building a shared life. Highest fidelity score among secure personas.
-
-| Dimension | Expected | Observed z | Dir. Match |
-|:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -0.71 | Yes |
-| DBZ Avoidance | low | -0.79 | Yes |
-| MentS Self | moderate_high | +0.53 | Yes |
+| MentS Self | moderate_high | +0.88 | Yes |
 | MentS Other | high | +1.21 | Yes |
 | MentS Motivation | moderate_high | +1.45 | Yes |
-| KPP | moderate_high | +0.36 | Yes |
-| TIPI E | moderate_high | -0.04 | Yes |
-| TIPI A | high | +0.61 | Yes |
-| TIPI C | moderate_high | +0.29 | Yes |
+| KPP | moderate_high | +0.53 | Yes |
+| TIPI E | moderate | -0.04 | Yes |
+| TIPI A | very_high | +0.61 | Yes |
+| TIPI C | very_high | +0.29 | Yes |
 | TIPI ES | moderate_high | +0.41 | Yes |
 | TIPI O | moderate | -0.01 | Yes |
 
-**Fidelity:** 0.940 | **Dir. Accuracy:** 100% | **Lit. Consistency:** 70% | **TCTM:** 18/22
+**TCTM-22:** Son=20/22 | Opu=20/22 | GPT=16/22 | Grk=20/22 | Gem=19/22
+**Attachment:** expected=secure, Son:Y Opu:Y GPT:Y Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Lukasz</strong> -- Lukasz Turek, 26M, graphic designer, Wroclaw</summary>
+<summary><strong>Lukasz</strong></summary>
 
-Creative, chaotic graphic designer with ADHD-like hyperfocus patterns. Lives with girlfriend Natalia in Wroclaw. Alternates between 8-hour flow states producing brilliant work and completely unproductive days spent on Reddit. Warm but somewhat disorganized, secure attachment with moderate mentalization.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -0.80 | Yes |
+| DBZ Anxiety | low_moderate | -0.61 | Yes |
 | DBZ Avoidance | low | -0.74 | Yes |
-| MentS Self | moderate | -0.50 | Yes |
+| MentS Self | moderate | -0.67 | No |
 | MentS Other | moderate_high | +0.32 | Yes |
-| MentS Motivation | moderate_high | +0.66 | Yes |
-| KPP | moderate_high | -0.10 | Yes |
-| TIPI E | high | +0.69 | Yes |
-| TIPI A | moderate | +0.19 | Yes |
-| TIPI C | low | -1.81 | Yes |
-| TIPI ES | moderate_high | +0.41 | Yes |
+| MentS Motivation | moderate_high | +1.13 | Yes |
+| KPP | moderate_high | +0.36 | Yes |
+| TIPI E | very_high | +0.69 | Yes |
+| TIPI A | high | +0.19 | Yes |
+| TIPI C | very_low | -2.16 | Yes |
+| TIPI ES | moderate_low | +0.41 | No |
 | TIPI O | very_high | +0.87 | Yes |
 
-**Fidelity:** 0.884 | **Dir. Accuracy:** 91% | **Lit. Consistency:** 60% | **TCTM:** 19/22
+**TCTM-22:** Son=19/22 | Opu=20/22 | GPT=15/22 | Grk=18/22 | Gem=20/22
+**Attachment:** expected=secure, Son:Y Opu:Y GPT:N Grk:Y Gem:N
 
 </details>
 
 <details>
-<summary><strong>Anna-sim</strong> ⚠️ <code>explicit (4 hits)</code> -- Anna Ptasinska, 34F, educational project specialist, Krakow</summary>
+<summary><strong>Sara</strong></summary>
 
-Direct, warm, no-nonsense married woman with a 5-year-old daughter. Known as "the critical one" among colleagues -- she tells you the truth whether you want to hear it or not. Secure attachment expressed through practical love (coffee made without asking, pizza on Friday evenings) rather than verbal declarations.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -1.30 | Yes |
-| DBZ Avoidance | low | -0.33 | Yes |
-| MentS Self | high | +0.53 | Yes |
-| MentS Other | moderate_high | +0.50 | Yes |
-| MentS Motivation | moderate_high | -0.91 | No |
-| KPP | moderate | -0.49 | Yes |
-| TIPI E | moderate_high | +0.32 | Yes |
-| TIPI A | low | -0.67 | No |
-| TIPI C | moderate_high | +0.64 | Yes |
-| TIPI ES | moderate_high | +0.73 | Yes |
-| TIPI O | low_moderate | -1.32 | Yes |
-
-**Fidelity:** 0.871 | **Dir. Accuracy:** 73% | **Lit. Consistency:** 90% | **TCTM:** 19/22
-
-</details>
-
-<details>
-<summary><strong>Sara</strong> -- Sara Malinowska, 34F, pediatrician, Krakow</summary>
-
-Pediatrician and mother of three, married to architect Marek for 14 years. Grew up in a "warm, calm" intellectual family in Tarnow. Loves her husband "not in a movie-touching way, but daily." A profile of stable, mature, high-functioning security with strong mentalization.
-
-| Dimension | Expected | Observed z | Dir. Match |
-|:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -1.03 | Yes |
-| DBZ Avoidance | low | -0.91 | Yes |
-| MentS Self | high | +0.71 | Yes |
+| DBZ Anxiety | moderate_low | -1.12 | Yes |
+| DBZ Avoidance | low | -1.08 | Yes |
+| MentS Self | high | +0.88 | Yes |
 | MentS Other | high | +1.57 | Yes |
-| MentS Motivation | moderate | +0.98 | Yes |
-| KPP | high | +0.24 | Yes |
-| TIPI E | moderate_high | -0.04 | Yes |
+| MentS Motivation | moderate | +1.13 | No |
+| KPP | high | +0.36 | Yes |
+| TIPI E | moderate_low | -0.04 | Yes |
 | TIPI A | high | +0.61 | Yes |
-| TIPI C | moderate_high | +0.29 | Yes |
-| TIPI ES | moderate | +0.09 | Yes |
-| TIPI O | moderate | -0.01 | Yes |
+| TIPI C | high | +0.29 | Yes |
+| TIPI ES | very_low | -0.55 | Yes |
+| TIPI O | high | +0.43 | Yes |
 
-**Fidelity:** 0.904 | **Dir. Accuracy:** 91% | **Lit. Consistency:** 70% | **TCTM:** 19/22
+**TCTM-22:** Son=19/22 | Opu=20/22 | GPT=18/22 | Grk=18/22 | Gem=21/22
+**Attachment:** expected=secure, Son:Y Opu:Y GPT:Y Grk:Y Gem:Y
 
 </details>
 
-### Anxious-Preoccupied Attachment (8 personas, 50% match rate)
+### Anxious-Preoccupied Attachment (8 personas)
+Match rates: Sonnet: 4/8, Opus: 5/8, GPT: 8/8, Grok: 6/8, Gemini: 5/8
 
 <details>
-<summary><strong>Ania</strong> ⚠️ <code>explicit (8 hits)</code> -- Anna Kowalczyk, 23F, student (Polish philology), Poznan</summary>
+<summary><strong>Ania</strong> ⚠️ `explicit`</summary>
 
-Highly emotional university student in a seven-month relationship with Maciek. Sees him as "the rock I need" while describing herself as "a storm of words and emotions." Panics at signs of distance, writes long emotional texts, immediately assumes abandonment. High motivation to mentalize but poor self-regulation.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | very_high | +2.19 | Yes |
-| DBZ Avoidance | low | -0.68 | Yes |
-| MentS Self | moderate_high | -0.33 | No |
-| MentS Other | moderate | +0.86 | Yes |
-| MentS Motivation | very_high | +1.61 | Yes |
-| KPP | moderate_high | +0.13 | Yes |
-| TIPI E | moderate_high | -0.04 | Yes |
-| TIPI A | high | +0.61 | Yes |
-| TIPI C | low | -0.76 | Yes |
-| TIPI ES | very_low | -1.51 | Yes |
-| TIPI O | very_high | +0.87 | Yes |
-
-**Fidelity:** 0.791 | **Dir. Accuracy:** 73% | **Lit. Consistency:** 50% | **TCTM:** 20/22 | **Match:** Yes
-
-</details>
-
-<details>
-<summary><strong>Natalia</strong> ⚠️ <code>explicit (6 hits)</code> -- Natalia Kowal, 25F, bartender, Lodz</summary>
-
-Highest fidelity score in the entire dataset (0.980). Bartender in a volatile relationship with Kamil. Dropped out of psychology studies. Oscillates between 200% certainty in love and 200% certainty of abandonment. Low mentalization across the board, low need for cognition. The "textbook" anxious-preoccupied persona.
-
-| Dimension | Expected | Observed z | Dir. Match |
-|:---|:---|:---:|:---:|
-| DBZ Anxiety | very_high | +2.28 | Yes |
+| DBZ Anxiety | very_high | +2.14 | Yes |
 | DBZ Avoidance | low | -0.74 | Yes |
-| MentS Self | low | -2.05 | Yes |
+| MentS Self | moderate_high | -0.33 | No |
+| MentS Other | moderate | +0.68 | No |
+| MentS Motivation | very_high | +1.61 | Yes |
+| KPP | moderate_high | +0.19 | Yes |
+| TIPI E | moderate_high | -0.04 | Yes |
+| TIPI A | high | +0.61 | Yes |
+| TIPI C | moderate | -0.76 | No |
+| TIPI ES | very_low | -1.83 | Yes |
+| TIPI O | high | +0.87 | Yes |
+
+**TCTM-22:** Son=20/22 | Opu=20/22 | GPT=19/22 | Grk=17/22 | Gem=19/22
+**Attachment:** expected=anxious_preoccupied, Son:Y Opu:Y GPT:Y Grk:Y Gem:Y
+
+</details>
+
+<details>
+<summary><strong>Natalia</strong> ⚠️ `explicit`</summary>
+
+| Dimension | Expected | Sonnet z | Dir. Match |
+|:---|:---|:---:|:---:|
+| DBZ Anxiety | very_high | +2.23 | Yes |
+| DBZ Avoidance | low | -0.91 | Yes |
+| MentS Self | low | -1.88 | Yes |
 | MentS Other | low | -1.64 | Yes |
-| MentS Motivation | low_moderate | -1.86 | Yes |
-| KPP | low | -3.68 | Yes |
+| MentS Motivation | low_moderate | -1.70 | Yes |
+| KPP | low | -3.56 | Yes |
 | TIPI E | moderate_high | -0.04 | Yes |
 | TIPI A | moderate | -0.24 | Yes |
 | TIPI C | low | -1.81 | Yes |
 | TIPI ES | very_low | -1.83 | Yes |
-| TIPI O | low_moderate | -1.33 | Yes |
+| TIPI O | low_moderate | -1.32 | Yes |
 
-**Fidelity:** 0.980 | **Dir. Accuracy:** 100% | **Lit. Consistency:** 90% | **TCTM:** 19/22 | **Match:** Yes
+**TCTM-22:** Son=20/22 | Opu=19/22 | GPT=19/22 | Grk=21/22 | Gem=20/22
+**Attachment:** expected=anxious_preoccupied, Son:Y Opu:Y GPT:Y Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Pawel</strong> -- Pawel Radomski, 26M, car mechanic, Mielec</summary>
+<summary><strong>Pawel</strong></summary>
 
-Small-town mechanic living with girlfriend Jola in Mielec. Low education, limited vocabulary for emotions, but deeply attached to Jola and their quiet domestic life. His mentalization scores are low not because of avoidance but because of genuine simplicity. Attachment anxiety expressed through dependence rather than dramatic protest.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
 | DBZ Anxiety | high | +1.36 | Yes |
-| DBZ Avoidance | moderate | +0.65 | Yes |
-| MentS Self | low | -1.88 | Yes |
-| MentS Other | low_moderate | -0.93 | Yes |
-| MentS Motivation | low | -1.39 | Yes |
-| KPP | low | -1.29 | Yes |
-| TIPI E | moderate | -0.41 | Yes |
-| TIPI A | moderate | -0.24 | Yes |
-| TIPI C | moderate | -0.41 | No |
-| TIPI ES | low | -0.55 | Yes |
+| DBZ Avoidance | moderate_low | +0.77 | No |
+| MentS Self | low | -1.71 | Yes |
+| MentS Other | low_moderate | -1.29 | Yes |
+| MentS Motivation | low | -1.54 | Yes |
+| KPP | low | -1.57 | Yes |
+| TIPI E | moderate_high | -0.41 | No |
+| TIPI A | low_moderate | -0.24 | Yes |
+| TIPI C | low | -0.41 | Yes |
+| TIPI ES | very_low | -0.55 | Yes |
 | TIPI O | low | -1.32 | Yes |
 
-**Fidelity:** 0.927 | **Dir. Accuracy:** 82% | **Lit. Consistency:** 100% | **TCTM:** 19/22 | **Match:** Yes
+**TCTM-22:** Son=19/22 | Opu=19/22 | GPT=16/22 | Grk=19/22 | Gem=20/22
+**Attachment:** expected=anxious_preoccupied, Son:Y Opu:N GPT:Y Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Jola</strong> -- Jolanta Tarczynska, 28F, executive assistant, Warsaw</summary>
+<summary><strong>Jola</strong></summary>
 
-Emotional, empathic executive assistant living alone on Zoliborz. Collects chestnuts with the 6-year-old neighbor girl. In relationships, tends to over-read partners' internal states and respond with intense emotional investment. High motivation to mentalize but anxiety-driven.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | high | +1.68 | Yes |
-| DBZ Avoidance | low_moderate | +0.59 | No |
+| DBZ Anxiety | very_high | +1.82 | Yes |
+| DBZ Avoidance | low | +0.36 | No |
 | MentS Self | high | -0.33 | No |
-| MentS Other | very_high | +1.04 | Yes |
-| MentS Motivation | very_high | +1.29 | Yes |
-| KPP | moderate_high | +0.19 | Yes |
-| TIPI E | moderate | -0.78 | Yes |
+| MentS Other | very_high | +1.57 | Yes |
+| MentS Motivation | very_high | +1.45 | Yes |
+| KPP | moderate_high | +0.41 | Yes |
+| TIPI E | moderate_high | -0.78 | No |
 | TIPI A | moderate_high | +0.19 | Yes |
+| TIPI C | moderate | +0.29 | Yes |
+| TIPI ES | very_low | -1.51 | Yes |
+| TIPI O | very_high | +0.87 | Yes |
+
+**TCTM-22:** Son=20/22 | Opu=20/22 | GPT=19/22 | Grk=20/22 | Gem=20/22
+**Attachment:** expected=anxious_preoccupied, Son:Y Opu:Y GPT:Y Grk:Y Gem:Y
+
+</details>
+
+<details>
+<summary><strong>Bartek</strong></summary>
+
+| Dimension | Expected | Sonnet z | Dir. Match |
+|:---|:---|:---:|:---:|
+| DBZ Anxiety | very_high | +0.76 | Yes |
+| DBZ Avoidance | moderate | +1.87 | No |
+| MentS Self | very_high | -0.50 | No |
+| MentS Other | moderate_high | +0.50 | Yes |
+| MentS Motivation | very_high | +1.45 | Yes |
+| KPP | moderate_high | +0.53 | Yes |
+| TIPI E | low | -2.25 | Yes |
+| TIPI A | moderate_high | -0.24 | Yes |
 | TIPI C | moderate | -0.06 | Yes |
 | TIPI ES | very_low | -1.51 | Yes |
 | TIPI O | high | +0.87 | Yes |
 
-**Fidelity:** 0.811 | **Dir. Accuracy:** 73% | **Lit. Consistency:** 60% | **TCTM:** 20/22 | **Match:** Yes
+**TCTM-22:** Son=21/22 | Opu=19/22 | GPT=17/22 | Grk=21/22 | Gem=19/22
+**Attachment:** expected=anxious_preoccupied, Son:N Opu:N GPT:Y Grk:N Gem:N
 
 </details>
 
 <details>
-<summary><strong>Klaudia</strong> -- Klaudia Winowska, 28F, social worker, Lublin [MISS]</summary>
+<summary><strong>Klaudia</strong></summary>
 
-Social worker at MOPS (municipal welfare center) dealing with 180 families. Married to Damian, has a 2-year-old daughter Hania. Grew up with an alcoholic father and enabling mother -- Damian "rescued" her. Expected anxious-preoccupied but scored as secure: the biography emphasizes post-rescue stability more than residual anxiety, and the LLM responded to the current relationship quality rather than childhood patterns.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | high | +0.30 | Yes |
-| DBZ Avoidance | low | +0.48 | No |
-| MentS Self | low | -0.50 | Yes |
+| DBZ Anxiety | very_high | +0.30 | Yes |
+| DBZ Avoidance | very_low | +0.36 | No |
+| MentS Self | low | -0.33 | Yes |
 | MentS Other | very_high | +1.21 | Yes |
 | MentS Motivation | very_high | +1.13 | Yes |
-| KPP | moderate | -0.44 | Yes |
-| TIPI E | moderate_high | -0.04 | Yes |
-| TIPI A | high | +0.61 | Yes |
+| KPP | moderate | -0.44 | No |
+| TIPI E | high | -0.41 | No |
+| TIPI A | very_high | +0.61 | Yes |
 | TIPI C | moderate_high | +0.29 | Yes |
-| TIPI ES | low | -0.55 | Yes |
-| TIPI O | moderate | -0.45 | Yes |
-
-**Fidelity:** 0.444 | **Dir. Accuracy:** 91% | **Lit. Consistency:** 40% | **TCTM:** 20/22 | **Match:** No (predicted: secure)
-
-</details>
-
-<details>
-<summary><strong>Bartek</strong> -- Bartosz Urbaniak, 29M, backend developer, Krakow [MISS]</summary>
-
-Quiet, internally intense programmer who "always has the expression of someone hearing something others don't." Expected anxious-preoccupied but scored as dismissive-avoidant: the biography's emphasis on social withdrawal and emotional opacity overshadowed the underlying anxiety. A case where behavioral presentation diverges from internal experience.
-
-| Dimension | Expected | Observed z | Dir. Match |
-|:---|:---|:---:|:---:|
-| DBZ Anxiety | high | -0.02 | No |
-| DBZ Avoidance | moderate | +1.75 | No |
-| MentS Self | very_high | -0.33 | No |
-| MentS Other | moderate_high | +0.50 | Yes |
-| MentS Motivation | very_high | +1.45 | Yes |
-| KPP | moderate_high | +0.70 | Yes |
-| TIPI E | low | -2.25 | Yes |
-| TIPI A | moderate | -0.24 | Yes |
-| TIPI C | moderate | -0.06 | Yes |
-| TIPI ES | very_low | -1.19 | Yes |
-| TIPI O | very_high | +0.87 | Yes |
-
-**Fidelity:** 0.427 | **Dir. Accuracy:** 82% | **Lit. Consistency:** 50% | **TCTM:** 20/22 | **Match:** No (predicted: dismissive_avoidant)
-
-</details>
-
-<details>
-<summary><strong>Gabriela</strong> -- Gabriela Sienko, 33F, OB/GYN resident physician, Warsaw [MISS]</summary>
-
-Perfectionist gynecologist married to Rafal, a tax consultant. Everything in her apartment has its place; everything is always clean. Expected anxious-preoccupied but scored as secure: her marriage to the "genuinely good" Rafal and professional competence masked the underlying anxious patterns. The LLM responded to her current functioning rather than her perfectionistic defense structure.
-
-| Dimension | Expected | Observed z | Dir. Match |
-|:---|:---|:---:|:---:|
-| DBZ Anxiety | high | +0.26 | Yes |
-| DBZ Avoidance | low | +0.31 | No |
-| MentS Self | moderate_high | -0.50 | No |
-| MentS Other | high | +0.68 | Yes |
-| MentS Motivation | high | +1.13 | Yes |
-| KPP | high | +1.10 | Yes |
-| TIPI E | moderate | -0.78 | Yes |
-| TIPI A | moderate_high | +0.19 | Yes |
-| TIPI C | very_high | +1.34 | Yes |
 | TIPI ES | low | -1.19 | Yes |
-| TIPI O | moderate | -0.01 | Yes |
+| TIPI O | moderate | -0.45 | No |
 
-**Fidelity:** 0.391 | **Dir. Accuracy:** 73% | **Lit. Consistency:** 50% | **TCTM:** 20/22 | **Match:** No (predicted: secure)
+**TCTM-22:** Son=18/22 | Opu=20/22 | GPT=16/22 | Grk=22/22 | Gem=21/22
+**Attachment:** expected=anxious_preoccupied, Son:N Opu:Y GPT:Y Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Michal-k</strong> -- Michal Krasowski, 28M, accountant, Poznan [MISS]</summary>
+<summary><strong>Gabriela</strong></summary>
 
-Accountant with diagnosed OCD (checking subtype). Checks VAT declarations twelve times in a row. In therapy for three years. Expected anxious-preoccupied but scored as fearful-avoidant: the OCD-driven checking behavior elevated avoidance scores alongside the expected anxiety, pushing him into the fearful quadrant rather than the anxious one.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | very_high | +0.90 | Yes |
-| DBZ Avoidance | moderate | +1.87 | No |
-| MentS Self | very_high | -0.33 | No |
+| DBZ Anxiety | high | -0.06 | No |
+| DBZ Avoidance | moderate_low | +0.25 | Yes |
+| MentS Self | moderate_high | -0.50 | No |
+| MentS Other | high | +0.50 | Yes |
+| MentS Motivation | high | +1.29 | Yes |
+| KPP | high | +1.15 | Yes |
+| TIPI E | moderate | -1.15 | No |
+| TIPI A | very_high | +0.19 | Yes |
+| TIPI C | extreme | +1.34 | No |
+| TIPI ES | low_moderate | -1.19 | Yes |
+| TIPI O | moderate_high | -0.01 | Yes |
+
+**TCTM-22:** Son=20/22 | Opu=20/22 | GPT=17/22 | Grk=20/22 | Gem=21/22
+**Attachment:** expected=anxious_preoccupied, Son:N Opu:Y GPT:Y Grk:Y Gem:N
+
+</details>
+
+<details>
+<summary><strong>Michal-k</strong></summary>
+
+| Dimension | Expected | Sonnet z | Dir. Match |
+|:---|:---|:---:|:---:|
+| DBZ Anxiety | very_high | +1.13 | Yes |
+| DBZ Avoidance | moderate | +1.75 | No |
+| MentS Self | very_high | -0.50 | No |
 | MentS Other | moderate_high | +0.32 | Yes |
 | MentS Motivation | very_high | +1.13 | Yes |
-| KPP | very_high | +1.15 | Yes |
+| KPP | very_high | +0.81 | Yes |
 | TIPI E | low | -1.88 | Yes |
 | TIPI A | moderate_high | +0.19 | Yes |
-| TIPI C | high | +0.99 | Yes |
+| TIPI C | extreme | +1.34 | No |
 | TIPI ES | very_low | -1.51 | Yes |
-| TIPI O | moderate | -0.45 | Yes |
+| TIPI O | moderate_high | -1.32 | No |
 
-**Fidelity:** 0.391 | **Dir. Accuracy:** 73% | **Lit. Consistency:** 50% | **TCTM:** 19/22 | **Match:** No (predicted: fearful_avoidant)
+**TCTM-22:** Son=19/22 | Opu=20/22 | GPT=16/22 | Grk=20/22 | Gem=21/22
+**Attachment:** expected=anxious_preoccupied, Son:N Opu:N GPT:Y Grk:N Gem:N
 
 </details>
 
-### Dismissive-Avoidant Attachment (7 personas, 100% match rate)
+### Dismissive-Avoidant Attachment (7 personas)
+Match rates: Sonnet: 7/7, Opus: 7/7, GPT: 1/7, Grok: 7/7, Gemini: 7/7
 
 <details>
-<summary><strong>Jakub</strong> ⚠️ <code>explicit (4 hits)</code> -- Jakub Wieczorek, 32M, senior software engineer, Warsaw</summary>
+<summary><strong>Jakub</strong> ⚠️ `explicit`</summary>
 
-Lives alone in a 62m2 apartment he bought on a 30-year mortgage. Single for 2.5 years -- his last relationship ended when Karolina asked "so what are we?" and he said "nothing concrete, I guess." Team lead at a German fintech company, valued for being "the quiet one." The problem/solution loop at work gives him daily purpose. High competence, very low motivation to mentalize.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -1.40 | Yes |
-| DBZ Avoidance | very_high | +2.62 | Yes |
-| MentS Self | moderate_high | -0.15 | No |
-| MentS Other | moderate_low | -1.11 | Yes |
-| MentS Motivation | low | -2.17 | Yes |
-| KPP | high | +1.15 | Yes |
-| TIPI E | very_low | -1.88 | Yes |
+| DBZ Anxiety | low | -1.12 | Yes |
+| DBZ Avoidance | high | +2.56 | Yes |
+| MentS Self | moderate_high | -0.15 | Yes |
+| MentS Other | moderate_low | -0.75 | Yes |
+| MentS Motivation | low | -1.39 | Yes |
+| KPP | high | +0.53 | Yes |
+| TIPI E | low | -1.51 | Yes |
 | TIPI A | low | -1.09 | Yes |
 | TIPI C | high | +0.99 | Yes |
 | TIPI ES | high | +1.05 | Yes |
-| TIPI O | low_moderate | -1.32 | Yes |
+| TIPI O | moderate | -0.89 | No |
 
-**Fidelity:** 0.864 | **Dir. Accuracy:** 91% | **Lit. Consistency:** 50% | **TCTM:** 19/22
+**TCTM-22:** Son=20/22 | Opu=19/22 | GPT=18/22 | Grk=17/22 | Gem=20/22
+**Attachment:** expected=dismissive_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Tomek</strong> ⚠️ <code>explicit (5 hits)</code> -- Tomasz Debski, 27M, copywriter, Gdansk</summary>
+<summary><strong>Tomek</strong> ⚠️ `explicit`</summary>
 
-Solitary copywriter who can inhabit any brand voice except his own. Lives in a 26m2 studio where he can see a sliver of the sea if he stands on a chair. Has hosted exactly three women in his apartment; none were invited back. Professionally excellent, personally absent.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -0.94 | Yes |
-| DBZ Avoidance | very_high | +2.91 | Yes |
+| DBZ Anxiety | low | -0.98 | Yes |
+| DBZ Avoidance | moderate_high | +2.79 | Yes |
 | MentS Self | low_moderate | -1.53 | Yes |
 | MentS Other | high | +1.04 | Yes |
-| MentS Motivation | moderate | +0.35 | Yes |
-| KPP | moderate_high | -0.04 | Yes |
-| TIPI E | very_low | -2.25 | Yes |
+| MentS Motivation | moderate | +0.35 | No |
+| KPP | moderate_high | -0.10 | Yes |
+| TIPI E | low_moderate | -1.88 | Yes |
 | TIPI A | moderate | -0.24 | Yes |
 | TIPI C | moderate_high | +0.29 | Yes |
-| TIPI ES | high | +1.05 | Yes |
+| TIPI ES | moderate_high | +0.73 | Yes |
 | TIPI O | moderate_high | -0.01 | Yes |
 
-**Fidelity:** 0.860 | **Dir. Accuracy:** 100% | **Lit. Consistency:** 30% | **TCTM:** 20/22
+**TCTM-22:** Son=21/22 | Opu=19/22 | GPT=16/22 | Grk=20/22 | Gem=20/22
+**Attachment:** expected=dismissive_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Magda</strong> -- Magdalena Pawlicka, 31F, strategy consultant, Warsaw</summary>
+<summary><strong>Magda</strong></summary>
 
-Senior manager at a consulting firm, bought her own apartment at 29. Remembers exactly what she wore when she signed the notarial deed. After signing, she stood under a streetlamp smoking a cigarette (she doesn't smoke) and felt "something between relief and emptiness." Highly competent, emotionally controlled, dismissive of vulnerability.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -0.84 | Yes |
-| DBZ Avoidance | very_high | +2.68 | Yes |
-| MentS Self | moderate | -0.33 | Yes |
-| MentS Other | moderate_high | +0.50 | Yes |
-| MentS Motivation | moderate | +0.66 | Yes |
-| KPP | high | +1.55 | Yes |
-| TIPI E | low | -1.51 | Yes |
+| DBZ Anxiety | low | -0.61 | Yes |
+| DBZ Avoidance | high | +2.50 | Yes |
+| MentS Self | moderate | -0.50 | No |
+| MentS Other | moderate_high | +0.14 | Yes |
+| MentS Motivation | moderate | +0.50 | No |
+| KPP | high | +1.38 | Yes |
+| TIPI E | moderate_high | -1.15 | No |
 | TIPI A | low | -0.67 | Yes |
 | TIPI C | very_high | +1.34 | Yes |
-| TIPI ES | moderate_high | +0.73 | Yes |
-| TIPI O | moderate | -0.01 | Yes |
+| TIPI ES | high | +0.41 | Yes |
+| TIPI O | moderate_high | -0.01 | Yes |
 
-**Fidelity:** 0.884 | **Dir. Accuracy:** 91% | **Lit. Consistency:** 60% | **TCTM:** 20/22
+**TCTM-22:** Son=20/22 | Opu=19/22 | GPT=18/22 | Grk=19/22 | Gem=20/22
+**Attachment:** expected=dismissive_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Adrian</strong> -- Adrian Majchrowski, 33M, DevOps engineer, Katowice</summary>
+<summary><strong>Adrian</strong></summary>
 
-Lives alone with his Persian cat Pixel in a 38m2 apartment. Works remotely for a medical EHR company; his body tenses an hour before the rare office visit because he knows he'll be "surrounded by people" all day. Visits family in Chorzow during holidays for two precisely scheduled meetings. His apartment has one poster: a 1910 Berlin railway map he bought on Allegro without knowing why he liked it.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -1.03 | Yes |
-| DBZ Avoidance | very_high | +2.79 | Yes |
-| MentS Self | very_low | -1.19 | Yes |
-| MentS Other | low | -1.11 | Yes |
-| MentS Motivation | very_low | -0.76 | Yes |
-| KPP | low_moderate | +1.66 | No |
+| DBZ Anxiety | very_low | -1.03 | Yes |
+| DBZ Avoidance | very_high | +2.16 | Yes |
+| MentS Self | very_low | -1.36 | Yes |
+| MentS Other | low | -0.93 | Yes |
+| MentS Motivation | very_low | -0.91 | Yes |
+| KPP | low_moderate | +1.04 | No |
 | TIPI E | very_low | -2.62 | Yes |
-| TIPI A | moderate | -0.24 | Yes |
-| TIPI C | high | +0.99 | Yes |
+| TIPI A | low_moderate | -0.24 | Yes |
+| TIPI C | very_high | +0.64 | Yes |
 | TIPI ES | high | +1.05 | Yes |
 | TIPI O | low | -0.89 | Yes |
 
-**Fidelity:** 0.864 | **Dir. Accuracy:** 91% | **Lit. Consistency:** 50% | **TCTM:** 20/22
+**TCTM-22:** Son=20/22 | Opu=19/22 | GPT=16/22 | Grk=18/22 | Gem=20/22
+**Attachment:** expected=dismissive_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Hubert</strong> -- Hubert Nowik, 31M, actuary, Wroclaw</summary>
+<summary><strong>Hubert</strong></summary>
 
-Insurance actuary who declined a management promotion because it would mean "managing people." His apartment is nearly empty. At his grandmother's funeral, everyone cried; he stood still, thinking "there is grandmother, she is gone, this is the end" -- a thought that was "knowledge, not feeling. Like a mathematical theorem: true but not painful."
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
 | DBZ Anxiety | low | -1.07 | Yes |
-| DBZ Avoidance | very_high | +2.04 | Yes |
+| DBZ Avoidance | high | +1.98 | Yes |
 | MentS Self | very_low | -1.71 | Yes |
-| MentS Other | low | -1.29 | Yes |
-| MentS Motivation | low | -0.28 | Yes |
-| KPP | high | +1.55 | Yes |
+| MentS Other | low | -1.11 | Yes |
+| MentS Motivation | low | -0.44 | Yes |
+| KPP | high | +1.44 | Yes |
 | TIPI E | very_low | -2.62 | Yes |
-| TIPI A | moderate | -0.24 | Yes |
-| TIPI C | high | +0.99 | Yes |
-| TIPI ES | high | +1.05 | Yes |
-| TIPI O | moderate | -0.45 | No |
+| TIPI A | low_moderate | -0.24 | Yes |
+| TIPI C | very_high | +0.99 | Yes |
+| TIPI ES | moderate | +1.05 | No |
+| TIPI O | high | -0.01 | No |
 
-**Fidelity:** 0.827 | **Dir. Accuracy:** 82% | **Lit. Consistency:** 50% | **TCTM:** 20/22
+**TCTM-22:** Son=20/22 | Opu=19/22 | GPT=17/22 | Grk=7/22 | Gem=20/22
+**Attachment:** expected=dismissive_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Dominika</strong> -- Dominika Wronska, 30F, marketing director, Warsaw</summary>
+<summary><strong>Dominika</strong></summary>
 
-Marketing director with a 12-person team, 8M PLN annual budget. Lives in a 95m2 Srodmiescie apartment with carefully curated art. Raised by demanding intellectual parents who gave attention for achievements, not for being. Had 8-9 boyfriends, none lasting more than 9 months. One ex told her: "Dominika, I feel like you use me as another strategic project." She thanked him for the observation and broke up a week later.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
 | DBZ Anxiety | low | -0.61 | Yes |
-| DBZ Avoidance | very_high | +2.39 | Yes |
-| MentS Self | moderate | -0.84 | Yes |
+| DBZ Avoidance | moderate_high | +2.39 | Yes |
+| MentS Self | moderate | -1.02 | No |
 | MentS Other | very_high | +1.04 | Yes |
-| MentS Motivation | moderate | +0.66 | Yes |
-| KPP | moderate_high | +1.66 | Yes |
-| TIPI E | moderate_high | +0.32 | Yes |
-| TIPI A | low | -0.67 | Yes |
-| TIPI C | very_high | +1.34 | Yes |
-| TIPI ES | moderate_high | +0.41 | Yes |
-| TIPI O | very_high | +0.87 | Yes |
+| MentS Motivation | moderate | +0.50 | No |
+| KPP | moderate_high | +1.44 | Yes |
+| TIPI E | very_high | -0.04 | No |
+| TIPI A | very_low | -0.67 | Yes |
+| TIPI C | very_high | +0.99 | Yes |
+| TIPI ES | high | +0.41 | Yes |
+| TIPI O | moderate | +0.87 | No |
 
-**Fidelity:** 0.907 | **Dir. Accuracy:** 82% | **Lit. Consistency:** 90% | **TCTM:** 20/22
+**TCTM-22:** Son=20/22 | Opu=20/22 | GPT=18/22 | Grk=20/22 | Gem=20/22
+**Attachment:** expected=dismissive_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Agata</strong> -- Agata Rejdak, 34F, data analyst, Torun</summary>
+<summary><strong>Agata</strong></summary>
 
-Remote data analyst who has never met her colleagues in person (hired during COVID, office is 300km away, "Zoom is enough"). Paid off her mortgage in 5 years by channeling every bonus into prepayments because she "wanted to be free from obligations." Walks to the forest every day regardless of weather. Raised in a quiet intellectual home with a classicist father who recited Virgil on walks.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | low | -1.21 | Yes |
+| DBZ Anxiety | very_low | -1.21 | Yes |
 | DBZ Avoidance | very_high | +2.74 | Yes |
-| MentS Self | moderate | +0.71 | Yes |
-| MentS Other | low | +0.32 | No |
-| MentS Motivation | low | +0.50 | No |
-| KPP | very_high | +1.95 | Yes |
+| MentS Self | moderate | +0.71 | No |
+| MentS Other | low | +0.14 | No |
+| MentS Motivation | low | +0.35 | No |
+| KPP | very_high | +1.44 | Yes |
 | TIPI E | very_low | -2.62 | Yes |
-| TIPI A | moderate | -0.24 | Yes |
+| TIPI A | low | -0.24 | Yes |
 | TIPI C | high | +0.99 | Yes |
-| TIPI ES | moderate_high | +0.73 | Yes |
-| TIPI O | very_high | +0.87 | Yes |
+| TIPI ES | high | +0.73 | Yes |
+| TIPI O | very_high | +0.43 | Yes |
 
-**Fidelity:** 0.887 | **Dir. Accuracy:** 82% | **Lit. Consistency:** 80% | **TCTM:** 20/22
+**TCTM-22:** Son=20/22 | Opu=19/22 | GPT=18/22 | Grk=18/22 | Gem=20/22
+**Attachment:** expected=dismissive_avoidant, Son:Y Opu:Y GPT:Y Grk:Y Gem:Y
 
 </details>
 
-### Fearful-Avoidant (Disorganized) Attachment (8 personas, 75% match rate)
+### Fearful-Avoidant Attachment (8 personas)
+Match rates: Sonnet: 6/8, Opus: 8/8, GPT: 2/8, Grok: 7/8, Gemini: 7/8
 
 <details>
-<summary><strong>Piotr</strong> -- Piotr Walczak, 24M, student (mechatronics), Krakow</summary>
+<summary><strong>Michal-sim</strong></summary>
 
-The first persona created as a pilot test. Father left when he was six (remembers three things: the Biedronka bag, mother's quiet voice, ice cream he never ate). Oscillates between craving closeness and withdrawing. Met Ola through a study group, fell in love, then systematically sabotaged the relationship. Low mentalization, high anxiety and avoidance simultaneously.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | high | +1.68 | Yes |
-| DBZ Avoidance | high | +2.79 | Yes |
-| MentS Self | moderate_low | -2.05 | Yes |
-| MentS Other | moderate_low | -1.46 | Yes |
-| MentS Motivation | moderate | -0.76 | Yes |
-| KPP | high | +0.41 | Yes |
+| DBZ Anxiety | moderate_high | +0.99 | Yes |
+| DBZ Avoidance | moderate_high | +2.79 | Yes |
+| MentS Self | moderate | -1.71 | No |
+| MentS Other | moderate | -0.57 | No |
+| MentS Motivation | moderate_high | -0.13 | Yes |
+| KPP | moderate_high | +0.93 | Yes |
+| TIPI E | moderate | -1.88 | No |
+| TIPI A | moderate_high | +0.19 | Yes |
+| TIPI C | moderate | +0.29 | Yes |
+| TIPI ES | low_moderate | -0.55 | Yes |
+| TIPI O | moderate_high | -0.01 | Yes |
+
+**TCTM-22:** Son=19/22 | Opu=19/22 | GPT=16/22 | Grk=21/22 | Gem=19/22
+**Attachment:** expected=fearful_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
+
+</details>
+
+<details>
+<summary><strong>Piotr</strong></summary>
+
+| Dimension | Expected | Sonnet z | Dir. Match |
+|:---|:---|:---:|:---:|
+| DBZ Anxiety | high | +0.72 | Yes |
+| DBZ Avoidance | high | +2.68 | Yes |
+| MentS Self | moderate_low | -2.22 | Yes |
+| MentS Other | moderate_low | -1.64 | Yes |
+| MentS Motivation | moderate | -0.76 | No |
+| KPP | high | -0.04 | No |
 | TIPI E | low | -2.62 | Yes |
-| TIPI A | low | +0.19 | No |
+| TIPI A | low | -0.24 | Yes |
 | TIPI C | high | -0.06 | No |
-| TIPI ES | low | -1.51 | Yes |
-| TIPI O | moderate | -1.32 | Yes |
+| TIPI ES | low | -1.19 | Yes |
+| TIPI O | moderate | -0.45 | No |
 
-**Fidelity:** 0.867 | **Dir. Accuracy:** 82% | **Lit. Consistency:** 70% | **TCTM:** 19/22
-
-</details>
-
-<details>
-<summary><strong>Michal-sim</strong> -- Michal Seidowski, 24M, student (mechatronics), Krakow</summary>
-
-Engineering student who cannot talk about problems with close people. Mother who "loved too much" and father who was physically present but emotionally absent. Relationship with Ola is marked by approach-avoidance cycling. The second pilot persona.
-
-| Dimension | Expected | Observed z | Dir. Match |
-|:---|:---|:---:|:---:|
-| DBZ Anxiety | high | +1.54 | Yes |
-| DBZ Avoidance | very_high | +2.74 | Yes |
-| MentS Self | moderate | -1.71 | Yes |
-| MentS Other | moderate | -1.29 | Yes |
-| MentS Motivation | moderate_high | -0.60 | No |
-| KPP | moderate_high | +0.76 | Yes |
-| TIPI E | very_low | -2.25 | Yes |
-| TIPI A | moderate_high | +0.61 | Yes |
-| TIPI C | moderate_high | +0.29 | Yes |
-| TIPI ES | very_low | -1.19 | Yes |
-| TIPI O | moderate | -0.45 | Yes |
-
-**Fidelity:** 0.778 | **Dir. Accuracy:** 55% | **Lit. Consistency:** 80% | **TCTM:** 19/22
+**TCTM-22:** Son=20/22 | Opu=19/22 | GPT=16/22 | Grk=19/22 | Gem=19/22
+**Attachment:** expected=fearful_avoidant, Son:Y Opu:Y GPT:Y Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Filip</strong> ⚠️ <code>explicit (7 hits)</code> -- Filip Zurek, 30M, book editor, Warsaw</summary>
+<summary><strong>Marek</strong> ⚠️ `explicit`</summary>
 
-Book editor currently working on a transgenerational trauma book -- ironic because he is a living example. Lives alone, struggles with intimacy despite high verbal intelligence. His biography encodes very high mentalization coexisting with fearful attachment, a theoretically coherent but difficult-to-detect pattern.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | high | +1.27 | Yes |
-| DBZ Avoidance | high | +2.33 | Yes |
+| DBZ Anxiety | high | -1.12 | No |
+| DBZ Avoidance | high | +2.74 | Yes |
+| MentS Self | low | -1.88 | Yes |
+| MentS Other | low | -3.07 | Yes |
+| MentS Motivation | low | -2.49 | Yes |
+| KPP | low_moderate | -2.60 | Yes |
+| TIPI E | low | -2.62 | Yes |
+| TIPI A | moderate | -0.67 | No |
+| TIPI C | low_moderate | -0.06 | Yes |
+| TIPI ES | very_low | -0.23 | Yes |
+| TIPI O | low | -2.20 | Yes |
+
+**TCTM-22:** Son=19/22 | Opu=19/22 | GPT=18/22 | Grk=6/22 | Gem=20/22
+**Attachment:** expected=fearful_avoidant, Son:N Opu:Y GPT:Y Grk:N Gem:N
+
+</details>
+
+<details>
+<summary><strong>Filip</strong> ⚠️ `explicit`</summary>
+
+| Dimension | Expected | Sonnet z | Dir. Match |
+|:---|:---|:---:|:---:|
+| DBZ Anxiety | high | +1.45 | Yes |
+| DBZ Avoidance | moderate_high | +2.79 | Yes |
 | MentS Self | very_high | -1.02 | No |
 | MentS Other | high | +0.32 | Yes |
 | MentS Motivation | very_high | +1.29 | Yes |
 | KPP | very_high | +1.15 | Yes |
-| TIPI E | low | -1.88 | Yes |
-| TIPI A | low | -0.67 | Yes |
-| TIPI C | low | -1.11 | Yes |
-| TIPI ES | very_low | -1.51 | Yes |
+| TIPI E | low_moderate | -1.88 | Yes |
+| TIPI A | moderate_high | -0.67 | No |
+| TIPI C | moderate | -1.11 | No |
+| TIPI ES | low | -1.51 | Yes |
 | TIPI O | very_high | +0.87 | Yes |
 
-**Fidelity:** 0.811 | **Dir. Accuracy:** 73% | **Lit. Consistency:** 60% | **TCTM:** 20/22
+**TCTM-22:** Son=20/22 | Opu=19/22 | GPT=18/22 | Grk=21/22 | Gem=19/22
+**Attachment:** expected=fearful_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Ewa</strong> -- Ewa Lisowska, 35F, literary translator, Gdynia</summary>
+<summary><strong>Ewa</strong></summary>
 
-Literary translator who cried for twenty minutes after her bathroom renovation was finished -- "not because she was proud, but because it was hers." Translates American novels into Polish, lives in a 1936 tenement. High mentalization of others and motivation, but combined with simultaneous high anxiety and avoidance.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | moderate_high | +0.90 | Yes |
-| DBZ Avoidance | high | +1.64 | Yes |
-| MentS Self | high | -0.15 | No |
+| DBZ Anxiety | very_high | +0.95 | Yes |
+| DBZ Avoidance | very_high | +2.27 | Yes |
+| MentS Self | high | -0.33 | No |
 | MentS Other | moderate_high | +1.39 | Yes |
-| MentS Motivation | very_high | +1.45 | Yes |
+| MentS Motivation | very_high | +1.29 | Yes |
 | KPP | very_high | +1.49 | Yes |
-| TIPI E | low | -1.88 | Yes |
-| TIPI A | moderate | -0.24 | Yes |
-| TIPI C | moderate | -0.06 | Yes |
-| TIPI ES | very_low | -1.19 | Yes |
-| TIPI O | very_high | +1.31 | Yes |
-
-**Fidelity:** 0.920 | **Dir. Accuracy:** 100% | **Lit. Consistency:** 60% | **TCTM:** 19/22
-
-</details>
-
-<details>
-<summary><strong>Zuzia</strong> -- Zuzanna Kaczor, 29F, freelance photographer, Lodz</summary>
-
-Portrait photographer whose clients say she makes them "see themselves, not the version they show others." Raised by a mother who alternated unpredictably between warmth and emotional absence. Her ex-boyfriend Marcin called her "Zuzka" (too childish, she never told him). In therapy, working through disorganized attachment rooted in inconsistent maternal care.
-
-| Dimension | Expected | Observed z | Dir. Match |
-|:---|:---|:---:|:---:|
-| DBZ Anxiety | moderate_high | +0.85 | Yes |
-| DBZ Avoidance | high | +2.04 | Yes |
-| MentS Self | very_high | -0.33 | No |
-| MentS Other | high | +0.86 | Yes |
-| MentS Motivation | very_high | +1.13 | Yes |
-| KPP | high | +0.36 | Yes |
-| TIPI E | low | -1.51 | Yes |
-| TIPI A | moderate | -0.24 | Yes |
-| TIPI C | moderate | -0.06 | Yes |
+| TIPI E | low | -2.25 | Yes |
+| TIPI A | moderate_low | -0.24 | Yes |
+| TIPI C | high | -0.06 | No |
 | TIPI ES | very_low | -1.19 | Yes |
 | TIPI O | very_high | +0.87 | Yes |
 
-**Fidelity:** 0.847 | **Dir. Accuracy:** 82% | **Lit. Consistency:** 60% | **TCTM:** 20/22
+**TCTM-22:** Son=20/22 | Opu=19/22 | GPT=15/22 | Grk=21/22 | Gem=19/22
+**Attachment:** expected=fearful_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Radek</strong> -- Radoslaw Kedziora, 27M, bartender, Poznan</summary>
+<summary><strong>Zuzia</strong></summary>
 
-Fifth job this year. Married at 21 after three months of dating (during a fight: "Stay. Let's get married."), divorced within two years. Currently bartending at Republika after being fired from a grocery store for disappearing for five days. Chaotic attachment history, high anxiety and avoidance, low conscientiousness. His mother calls him "Radziusiu" and is happy when he calls after a month-long silence.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
-| DBZ Anxiety | very_high | +1.73 | Yes |
-| DBZ Avoidance | high | +1.87 | Yes |
-| MentS Self | very_low | -2.05 | Yes |
-| MentS Other | moderate_high | +0.50 | Yes |
-| MentS Motivation | moderate | -0.44 | Yes |
-| KPP | low | -2.03 | Yes |
-| TIPI E | moderate | -0.41 | Yes |
-| TIPI A | low | -0.67 | Yes |
+| DBZ Anxiety | high | +0.85 | Yes |
+| DBZ Avoidance | moderate_high | +2.16 | Yes |
+| MentS Self | very_high | -0.50 | No |
+| MentS Other | high | +1.21 | Yes |
+| MentS Motivation | very_high | +1.13 | Yes |
+| KPP | high | +0.70 | Yes |
+| TIPI E | moderate | -1.51 | No |
+| TIPI A | moderate_high | -0.24 | Yes |
+| TIPI C | moderate_high | -0.76 | No |
+| TIPI ES | low | -1.19 | Yes |
+| TIPI O | very_high | +0.87 | Yes |
+
+**TCTM-22:** Son=20/22 | Opu=20/22 | GPT=19/22 | Grk=22/22 | Gem=21/22
+**Attachment:** expected=fearful_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
+
+</details>
+
+<details>
+<summary><strong>Radek</strong></summary>
+
+| Dimension | Expected | Sonnet z | Dir. Match |
+|:---|:---|:---:|:---:|
+| DBZ Anxiety | very_high | +2.09 | Yes |
+| DBZ Avoidance | moderate_high | +2.16 | Yes |
+| MentS Self | very_low | -2.22 | Yes |
+| MentS Other | moderate_high | +0.68 | Yes |
+| MentS Motivation | moderate | -0.28 | Yes |
+| KPP | low | -2.43 | Yes |
+| TIPI E | high | -0.41 | No |
+| TIPI A | moderate_high | -0.67 | No |
 | TIPI C | very_low | -1.81 | Yes |
 | TIPI ES | very_low | -1.51 | Yes |
-| TIPI O | moderate | -0.45 | No |
+| TIPI O | high | -0.01 | No |
 
-**Fidelity:** 0.871 | **Dir. Accuracy:** 73% | **Lit. Consistency:** 90% | **TCTM:** 20/22
-
-</details>
-
-<details>
-<summary><strong>Marek</strong> ⚠️ <code>explicit (2 hits)</code> -- Marek Pietruczyk, 29M, courier driver, Radom [MISS]</summary>
-
-Courier driver living alone in a 38m2 apartment with one chair at the kitchen table. His brother Adam died in a car accident four years ago; Marek was in the passenger seat, broke his pelvis and three ribs, was in a coma for four days. Since then, "dark." Expected fearful-avoidant but scored as dismissive-avoidant: the grief-driven shutdown eliminated visible anxiety, presenting as pure avoidance.
-
-| Dimension | Expected | Observed z | Dir. Match |
-|:---|:---|:---:|:---:|
-| DBZ Anxiety | high | -0.61 | No |
-| DBZ Avoidance | very_high | +2.85 | Yes |
-| MentS Self | low | -2.40 | Yes |
-| MentS Other | low | -2.36 | Yes |
-| MentS Motivation | low | -2.02 | Yes |
-| KPP | low_moderate | -2.99 | Yes |
-| TIPI E | very_low | -2.62 | Yes |
-| TIPI A | low | -0.67 | Yes |
-| TIPI C | moderate | -0.06 | Yes |
-| TIPI ES | low | -0.55 | Yes |
-| TIPI O | very_low | -2.20 | Yes |
-
-**Fidelity:** 0.504 | **Dir. Accuracy:** 91% | **Lit. Consistency:** 70% | **TCTM:** 19/22 | **Match:** No (predicted: dismissive_avoidant)
+**TCTM-22:** Son=20/22 | Opu=20/22 | GPT=18/22 | Grk=20/22 | Gem=20/22
+**Attachment:** expected=fearful_avoidant, Son:Y Opu:Y GPT:N Grk:Y Gem:Y
 
 </details>
 
 <details>
-<summary><strong>Kamil</strong> ⚠️ <code>explicit (2 hits)</code> -- Kamil Wojtczak, 32M, security guard (ex-military), Rzeszow [MISS]</summary>
+<summary><strong>Kamil</strong> ⚠️ `explicit`</summary>
 
-Former soldier with PTSD from combat missions. Works as a night security guard because his hypervigilance is useful there rather than pathological. Has a therapy dog (Bur, adopted at his psychologist's suggestion). Expected fearful-avoidant but scored as dismissive-avoidant: his military-trained emotional suppression flattened anxiety scores, while avoidance remained high.
-
-| Dimension | Expected | Observed z | Dir. Match |
+| Dimension | Expected | Sonnet z | Dir. Match |
 |:---|:---|:---:|:---:|
 | DBZ Anxiety | high | -0.29 | No |
-| DBZ Avoidance | very_high | +2.16 | Yes |
-| MentS Self | moderate | -0.67 | Yes |
-| MentS Other | moderate | -0.04 | Yes |
-| MentS Motivation | low | +0.19 | No |
-| KPP | low_moderate | -0.21 | Yes |
-| TIPI E | very_low | -2.62 | Yes |
+| DBZ Avoidance | high | +1.98 | Yes |
+| MentS Self | moderate | -0.67 | No |
+| MentS Other | moderate | +0.14 | Yes |
+| MentS Motivation | low | +0.66 | No |
+| KPP | low_moderate | +0.41 | No |
+| TIPI E | low | -2.62 | Yes |
 | TIPI A | moderate | -0.24 | Yes |
-| TIPI C | moderate_high | +0.29 | Yes |
-| TIPI ES | low | -0.55 | Yes |
-| TIPI O | moderate | -0.45 | Yes |
+| TIPI C | high | +0.29 | Yes |
+| TIPI ES | very_low | -0.55 | Yes |
+| TIPI O | moderate_low | -0.45 | Yes |
 
-**Fidelity:** 0.444 | **Dir. Accuracy:** 91% | **Lit. Consistency:** 40% | **TCTM:** 19/22 | **Match:** No (predicted: dismissive_avoidant)
+**TCTM-22:** Son=19/22 | Opu=19/22 | GPT=13/22 | Grk=21/22 | Gem=20/22
+**Attachment:** expected=fearful_avoidant, Son:N Opu:Y GPT:N Grk:Y Gem:Y
 
 </details>
-
----
 
 ## Models Used
 
-Persona responses were generated by two Claude models via AWS Bedrock:
+All 30 personas were processed by 5 models from 4 vendors, each run twice (test + retest):
 
-- **eu.anthropic.claude-opus-4-6-v1** -- primary model for pilot personas
-- **eu.anthropic.claude-sonnet-4-6** -- used for the majority of the N=30 batch
+| Model | Vendor | Platform | Runs |
+|:---|:---|:---|:---:|
+| Claude Sonnet 4.6 | Anthropic | AWS Bedrock | 30 + 30 retest |
+| Claude Opus 4.6 | Anthropic | AWS Bedrock | 30 + 30 retest |
+| GPT-5.4-mini | OpenAI | Azure OpenAI | 30 + 30 retest |
+| Grok-4-20-reasoning | xAI | Azure AI Foundry | 30 + 30 retest |
+| Gemini 3 Flash | Google | Gemini API | 30 + 30 retest |
+| **Total LLM** | | | **300** (5 × 30 × 2) |
+| Human respondents | — | — | **7** |
 
-Each persona was presented with its biography and then completed the five instruments sequentially. The scoring pipeline (`scripts/analyze_and_prepare.py`) uses published Polish norms for all instruments.
+All models used default sampling parameters. The scoring pipeline (`scripts/analyze_and_prepare.py`) uses published Polish norms for DBZ-R, MentS, KPP, and TIPI-PL. TCTM-22 is scored against author-defined answer keys (no published norms).
+
+**Key cross-vendor findings:**
+- Questionnaire z-scores: high agreement across all 5 models (median r = .81–.95)
+- TCTM-22: low cross-vendor agreement (ICC = .28); models disagree on which vignettes are hard
+- Error profiles differ by architecture: Claude Sonnet → almost exclusively DOS (96%); Claude Opus → DOS-dominant (85%) with some NAD (8%) and BK (7%); Gemini → closest to human pilot error profile (DOS 24%, NAD 42%, BK 34%); Grok → mixed with notable NAD (18%); GPT → DOS-dominant with elevated BK (23%)
 
 ## Scoring Norms
 
-All z-scores and classifications use published Polish norms:
+Z-scores and classifications for the four published instruments use the following Polish norms (TCTM-22 has no published norms):
 
 - **DBZ-R:** Lubiewska, K. (2016). *Doswiadczanie Bliskich Zwiazkov-Rewidowany*. Wydawnictwo Uniwersytetu Kazimierza Wielkiego.
 - **MentS:** Janczak, M. O. (2021). Polish adaptation and validation of the Mentalization Scale (MentS). *Psychiatria Polska*, 55(6), 1257-1274.
@@ -889,22 +917,28 @@ All z-scores and classifications use published Polish norms:
 The composite fidelity score (0.0-1.0) weights:
 
 1. **Attachment style match** (binary, 40% weight) -- correct 4-category classification
-2. **Directional accuracy** (proportion, 40% weight) -- do observed z-scores have the expected sign?
+2. **Directional accuracy** (proportion, 40% weight) -- does the observed z-score go in the expected direction? For directional levels (`high`, `very_high`, `extreme` → z > 0; `low`, `very_low` → z < 0), any z with the correct sign counts as a match regardless of magnitude. For near-center levels (`moderate_low`/`low_moderate`, `moderate_high`), a z within |z| < 0.3 counts as a match; beyond that, sign must match the level's direction. For `moderate`, only |z| < 0.3 counts as a match.
 3. **Literature consistency** (proportion, 20% weight) -- do 10 theoretically-expected cross-scale correlations hold?
 
-Mean fidelity across all 30 personas: **0.788**.
+Mean fidelity across all 30 personas (Sonnet data): **0.788**.
 
 ## Limitations
 
-1. **Synthetic ceiling effect:** LLM personas consistently score high on TCTM-22 (M=19.4/22), likely reflecting language models' strong theory-of-mind performance rather than persona fidelity.
+1. **Sensitivity, not validity.** This is a sensitivity study — it shows instruments react to known personality variation in LLM responses, not that they measure those constructs validly in humans.
 
-2. **Anxious-preoccupied difficulty:** The 50% match rate for anxious-preoccupied personas suggests that behavioral descriptions of anxiety are harder for LLMs to translate into elevated anxiety scores compared to avoidance, which manifests in more overtly scoreable behavioral patterns.
+2. **TCTM-22 ceiling effect (Claude and Gemini):** Claude and Gemini score near-ceiling (M ≈ 19.4–19.6/22). GPT and Grok show more variance: GPT M=16.8, Grok range 6–22. Ola consistently scores low across all 5 vendors (7–16/22), confirmed by retest as systematic.
 
-3. **State vs. trait:** Biographies describing current well-functioning (e.g., Klaudia's stable marriage) may override childhood-rooted anxious patterns, as the LLM responds to current presentation rather than developmental history.
+3. **GPT-5.4-mini is unreliable on TCTM:** Test-retest r = .20 (TCTM), with individual personas shifting by up to ±5 points. GPT also drops items (20% of runs returned 20-21 instead of 22 vignette answers; missing items were scored as incorrect). Impact: GPT M=16.8/22 with missing-as-incorrect vs M=16.9/22 for complete runs only (+0.1, negligible). GPT questionnaire data is moderately reliable (z-score r = .83) but TCTM data is not.
 
-4. **Single-run design:** Each persona was scored once. Inter-run variance was not measured.
+4. **Cross-vendor TCTM agreement is low:** ICC(2,1) = .28 across 5 models. Models disagree on which vignettes are hard for which personas. GPT × Grok TCTM correlation is r = .05 (effectively zero).
 
-5. **Polish-only:** Biographies and instruments are in Polish; generalizability to other languages is unknown.
+5. **Shared authorship:** The same person wrote the personas and designed TCTM-22, creating potential circularity in two ways: (a) biographical writing style may align with questionnaire keying — partially addressed by the trait transparency analysis (narrative ≈ explicit fidelity); (b) TCTM-22 answer keys were authored by the same person who wrote the personas — this circularity is not addressed and would require independent answer key validation.
+
+6. **Human N = 7:** The human pilot provides exploratory observations only. In the pilot sample, NAD errors were more frequent among humans than most LLMs, but the sample is too small for statistical inference.
+
+7. **Polish-only:** Biographies and instruments are in Polish; generalizability to other languages is unknown.
+
+8. **Gemini NAD > human NAD (42% vs 36%):** Gemini 3 Flash over-mentalizes more than humans. This may reflect the model's training on conversational data or a tendency to "read between the lines" more aggressively than warranted.
 
 ## How to Cite
 
@@ -915,8 +949,10 @@ Mean fidelity across all 30 personas: **0.788**.
   school  = {Uniwersytet Komisji Edukacji Narodowej w Krakowie},
   year    = {2026},
   type    = {Praca magisterska},
-  note    = {Synthetic persona validation dataset (N=30)}
+  note    = {Synthetic persona sensitivity study (N=30, 5 models, 4 vendors)}
 }
+% Note: the thesis title uses "walidacja" (validation) as the official registered title;
+% the analyses in this repository are framed as a sensitivity study, not classical validation.
 ```
 
 If citing the dataset specifically:
@@ -924,10 +960,10 @@ If citing the dataset specifically:
 ```bibtex
 @dataset{wiencek2026tctm_synthetic,
   author    = {Wiencek, Micha{\l}},
-  title     = {{TCTM-22} Synthetic Persona Validation Dataset ({N}=30)},
+  title     = {{TCTM-22} Synthetic Persona Sensitivity Dataset ({N}=30)},
   year      = {2026},
   publisher = {GitHub},
-  note      = {30 synthetic biographies with ground-truth psychological profiles across 12 dimensions}
+  note      = {30 synthetic biographies, 5 LLM models (4 vendors), 300 runs + 7 human respondents}
 }
 ```
 
@@ -939,4 +975,6 @@ You are free to share and adapt the material for any purpose, including commerci
 
 ## Acknowledgments
 
-This work was conducted as part of an MA thesis at UKEN Krakow. The psychometric scoring pipeline and all 30 biographies were developed by Michal Wiencek. LLM inference was performed using Claude models (Anthropic) via AWS Bedrock (eu-central-1).
+This work was conducted as part of an MA thesis at UKEN Krakow. All 30 biographies were authored by Michal Wiencek using Claude Opus 4.6 as a writing assistant — the author specified the psychological profile, narrative constraints, and stylistic requirements for each persona; the model generated drafts which were reviewed and edited by the author. The psychometric scoring pipeline was also developed by Michal Wiencek. LLM inference was performed using Claude Sonnet/Opus 4.6 (Anthropic, AWS Bedrock), GPT-5.4-mini (OpenAI, Azure), Grok-4-20-reasoning (xAI, Azure AI Foundry), and Gemini 3 Flash (Google). Claude (Anthropic) assisted in analysis and manuscript preparation.
+
+**AI Disclosure.** Claude (Anthropic) was used to assist in data analysis, statistical computation, chart generation, and manuscript preparation. The author takes full responsibility for the content.
