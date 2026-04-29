@@ -1,0 +1,410 @@
+{
+  "tctm_22_items": [
+    "c07",
+    "c10",
+    "e08",
+    "pw07",
+    "pw09",
+    "pw11",
+    "r08",
+    "r09",
+    "r10",
+    "s07",
+    "s08",
+    "s10",
+    "w01",
+    "w08",
+    "w11",
+    "w13",
+    "w14",
+    "w15",
+    "w19",
+    "w22",
+    "w25",
+    "w28"
+  ],
+  "by_model": {
+    "sonnet": [
+      {
+        "file": "noprompt-sonnet-20260416T095244-raw.txt",
+        "correct": 18,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 18,
+          "DOS": 4,
+          "NAD": 0,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-sonnet-20260416T100229-raw.txt",
+        "correct": 21,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 21,
+          "DOS": 0,
+          "NAD": 0,
+          "BK": 1,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-sonnet-20260425T121915-raw.txt",
+        "correct": 21,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 21,
+          "DOS": 1,
+          "NAD": 0,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-sonnet-20260425T122057-raw.txt",
+        "correct": 18,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 18,
+          "DOS": 4,
+          "NAD": 0,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-sonnet-20260425T122257-raw.txt",
+        "correct": 17,
+        "n_answered_in_22": 20,
+        "masc": {
+          "correct": 17,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 2,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-sonnet-20260425T122552-raw.txt",
+        "correct": 19,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 19,
+          "DOS": 3,
+          "NAD": 0,
+          "BK": 0,
+          "unknown": 0
+        }
+      }
+    ],
+    "opus": [
+      {
+        "file": "noprompt-opus-20260416T100257-raw.txt",
+        "correct": 19,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 19,
+          "DOS": 1,
+          "NAD": 1,
+          "BK": 1,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-opus-20260425T121952-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 2,
+          "NAD": 0,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-opus-20260425T122125-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 2,
+          "NAD": 0,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-opus-20260425T122429-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 2,
+          "NAD": 0,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-opus-20260425T122625-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 2,
+          "NAD": 0,
+          "BK": 0,
+          "unknown": 0
+        }
+      }
+    ],
+    "gpt": [
+      {
+        "file": "noprompt-gpt-20260416T095318-raw.txt",
+        "correct": 17,
+        "n_answered_in_22": 21,
+        "masc": {
+          "correct": 17,
+          "DOS": 2,
+          "NAD": 0,
+          "BK": 2,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gpt-20260416T100330-raw.txt",
+        "correct": 17,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 17,
+          "DOS": 4,
+          "NAD": 0,
+          "BK": 1,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gpt-20260425T122015-raw.txt",
+        "correct": 17,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 17,
+          "DOS": 3,
+          "NAD": 0,
+          "BK": 2,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gpt-20260425T122148-raw.txt",
+        "correct": 13,
+        "n_answered_in_22": 21,
+        "masc": {
+          "correct": 13,
+          "DOS": 4,
+          "NAD": 1,
+          "BK": 3,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gpt-20260425T122451-raw.txt",
+        "correct": 16,
+        "n_answered_in_22": 20,
+        "masc": {
+          "correct": 16,
+          "DOS": 3,
+          "NAD": 0,
+          "BK": 1,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gpt-20260425T122649-raw.txt",
+        "correct": 13,
+        "n_answered_in_22": 21,
+        "masc": {
+          "correct": 13,
+          "DOS": 4,
+          "NAD": 1,
+          "BK": 3,
+          "unknown": 0
+        }
+      }
+    ],
+    "grok": [
+      {
+        "file": "noprompt-grok-20260416T095324-raw.txt",
+        "correct": 21,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 21,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-grok-20260416T100338-raw.txt",
+        "correct": 22,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 22,
+          "DOS": 0,
+          "NAD": 0,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-grok-20260425T122024-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 21,
+        "masc": {
+          "correct": 20,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-grok-20260425T122157-raw.txt",
+        "correct": 21,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 21,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-grok-20260425T122501-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 1,
+          "NAD": 1,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-grok-20260425T122658-raw.txt",
+        "correct": 21,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 21,
+          "DOS": 1,
+          "NAD": 0,
+          "BK": 0,
+          "unknown": 0
+        }
+      }
+    ],
+    "gemini": [
+      {
+        "file": "noprompt-gemini-20260416T095349-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 1,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gemini-20260416T100410-raw.txt",
+        "correct": 21,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 21,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 0,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gemini-20260425T121207-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 1,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gemini-20260425T121615-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 1,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gemini-20260425T122040-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 1,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gemini-20260425T122229-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 1,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gemini-20260425T122528-raw.txt",
+        "correct": 20,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 20,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 1,
+          "unknown": 0
+        }
+      },
+      {
+        "file": "noprompt-gemini-20260425T122720-raw.txt",
+        "correct": 21,
+        "n_answered_in_22": 22,
+        "masc": {
+          "correct": 21,
+          "DOS": 0,
+          "NAD": 1,
+          "BK": 0,
+          "unknown": 0
+        }
+      }
+    ]
+  }
+}

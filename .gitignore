@@ -1,0 +1,18 @@
+# secrets
+.env
+.env.local
+.env.*.local
+*.key
+*_secret*
+
+# scratch
+out/
+*.log
+*.bak
+*.tmp
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
