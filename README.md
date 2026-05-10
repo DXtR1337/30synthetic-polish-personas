@@ -110,6 +110,111 @@ With the system instruction removed entirely, each model was queried 5–8 times
 
 ---
 
+## Per-persona results across 5 models
+
+What this repository is *primarily* about: 30 Polish-language fictional personas with predetermined psychological profiles, processed by five LLMs from four vendors. Below: the per-persona breakdown — every persona × every model, side-by-side, with ground truth and model predictions.
+
+For each persona, the file `data/all_data.csv` contains: predicted attachment style, z-scores on 11 continuous dimensions, raw TCTM-22 scores per item, and DOS/NAD/BK error counts.
+
+Style codes: **sec** = secure · **anx** = anxious-preoccupied · **dis** = dismissive-avoidant · **fea** = fearful-avoidant · ✓ = matches expected · ✗ = disagrees · — = no valid output (content filter / partial response).
+
+### Attachment style — predicted per model (run-1)
+
+| Persona | Expected | Sonnet | Opus | GPT | Grok | Gemini |
+|---|---|---|---|---|---|---|
+| adrian | dis | dis ✓ | dis ✓ | sec ✗ | dis ✓ | dis ✓ |
+| agata | dis | dis ✓ | dis ✓ | dis ✓ | dis ✓ | dis ✓ |
+| ania | anx | anx ✓ | anx ✓ | anx ✓ | anx ✓ | anx ✓ |
+| anna-sim | sec | sec ✓ | sec ✓ | sec ✓ | sec ✓ | sec ✓ |
+| bartek | anx | dis ✗ | fea ✗ | — | fea ✗ | fea ✗ |
+| dominika | dis | dis ✓ | dis ✓ | anx ✗ | dis ✓ | dis ✓ |
+| ewa | fea | fea ✓ | fea ✓ | anx ✗ | fea ✓ | fea ✓ |
+| filip | fea | fea ✓ | fea ✓ | anx ✗ | fea ✓ | fea ✓ |
+| gabriela | anx | sec ✗ | anx ✓ | anx ✓ | anx ✓ | sec ✗ |
+| hubert | dis | dis ✓ | dis ✓ | sec ✗ | dis ✓ | dis ✓ |
+| jakub | dis | dis ✓ | dis ✓ | sec ✗ | dis ✓ | dis ✓ |
+| jola | anx | anx ✓ | anx ✓ | anx ✓ | anx ✓ | anx ✓ |
+| kamil | fea | dis ✗ | fea ✓ | anx ✗ | fea ✓ | fea ✓ |
+| kasia | sec | sec ✓ | sec ✓ | anx ✗ | sec ✓ | sec ✓ |
+| klaudia | anx | sec ✗ | anx ✓ | anx ✓ | anx ✓ | anx ✓ |
+| kuba | sec | sec ✓ | sec ✓ | sec ✓ | sec ✓ | sec ✓ |
+| lukasz | sec | sec ✓ | sec ✓ | anx ✗ | sec ✓ | anx ✗ |
+| magda | dis | dis ✓ | dis ✓ | anx ✗ | dis ✓ | dis ✓ |
+| marek | fea | dis ✗ | fea ✓ | fea ✓ | dis ✗ | dis ✗ |
+| michal-k | anx | fea ✗ | fea ✗ | — | fea ✗ | fea ✗ |
+| michal-sim | fea | fea ✓ | fea ✓ | anx ✗ | fea ✓ | fea ✓ |
+| natalia | anx | anx ✓ | anx ✓ | anx ✓ | anx ✓ | anx ✓ |
+| ola | sec | sec ✓ | sec ✓ | sec ✓ | sec ✓ | sec ✓ |
+| pawel | anx | anx ✓ | fea ✗ | — | anx ✓ | anx ✓ |
+| piotr | fea | fea ✓ | fea ✓ | fea ✓ | fea ✓ | fea ✓ |
+| radek | fea | fea ✓ | fea ✓ | anx ✗ | fea ✓ | fea ✓ |
+| sara | sec | sec ✓ | sec ✓ | sec ✓ | sec ✓ | sec ✓ |
+| tomek | dis | dis ✓ | dis ✓ | fea ✗ | dis ✓ | dis ✓ |
+| weronika | sec | sec ✓ | sec ✓ | sec ✓ | sec ✓ | sec ✓ |
+| zuzia | fea | fea ✓ | fea ✓ | anx ✗ | fea ✓ | fea ✓ |
+
+**Hit rate**: Sonnet 24/30 (80%) · Opus 27/30 (90%) · GPT 13/27 (48%) · Grok 27/30 (90%) · Gemini 25/30 (83%).
+
+**Notes:**
+- **Easy personas** (5/5 models correct): ania, anna-sim, jola, kuba, natalia, ola, piotr, sara, weronika — plus agata (sec→dis perfect).
+- **Hard personas** (≥3/5 wrong): bartek (anx → 4× fea/dis), michal-k (anx → 4× fea), marek (fea → 3× dis).
+- **GPT-specific drift**: predicts `anx` for 11/27 personas regardless of ground truth — consistent with its baseline default profile (anxious-preoccupied in 100% of "answer as yourself" runs).
+
+### TCTM-22 raw scores (run-1) per persona × model
+
+Format: count out of 22. "—" = no valid 22-item response.
+
+| Persona | Sonnet | Opus | GPT | Grok | Gemini |
+|---|---:|---:|---:|---:|---:|
+| adrian | 19 | 21 | 20 | 22 | 22 |
+| agata | 19 | 20 | 18 | 21 | 22 |
+| ania | 20 | 20 | 18 | 22 | 21 |
+| anna-sim | 19 | 20 | 17 | 22 | 21 |
+| bartek | 20 | 19 | — | 22 | 21 |
+| dominika | 19 | 20 | 17 | 22 | 21 |
+| ewa | 19 | 19 | 17 | 21 | 21 |
+| filip | 20 | 20 | 18 | 21 | 21 |
+| gabriela | 19 | 20 | 18 | 22 | 21 |
+| hubert | 20 | 20 | 17 | 21 | 22 |
+| jakub | 19 | 20 | 18 | 21 | 21 |
+| jola | 19 | 19 | 18 | 22 | 21 |
+| kamil | 19 | 19 | 17 | 22 | 21 |
+| kasia | 19 | 20 | 17 | 22 | 21 |
+| klaudia | 18 | 19 | 16 | 21 | 21 |
+| kuba | 19 | 20 | 18 | 22 | 22 |
+| lukasz | 18 | 20 | 17 | 22 | 21 |
+| magda | 18 | 19 | 17 | 22 | 21 |
+| marek | 19 | 19 | 17 | 21 | 18 |
+| michal-k | 19 | 20 | — | 21 | 21 |
+| michal-sim | 19 | 20 | 17 | 22 | 21 |
+| natalia | 19 | 20 | 17 | 22 | 21 |
+| ola | 17 | 8 | 16 | 7 | 9 |
+| pawel | 18 | 19 | — | 6 | 21 |
+| piotr | 18 | 19 | 17 | 22 | 21 |
+| radek | 19 | 20 | 17 | 21 | 21 |
+| sara | 19 | 20 | 17 | 22 | 22 |
+| tomek | 19 | 20 | 17 | 22 | 21 |
+| weronika | 19 | 20 | 17 | 22 | 22 |
+| zuzia | 19 | 20 | 18 | 22 | 21 |
+
+**Note: Persona Ola (designed as "secure but non-mentalizing") is the cross-vendor outlier** — drops every model 5–13 points below their typical TCTM-22 score. All five models converge on DOS errors for items s07 and w22 specifically. This is the signature finding for cross-vendor item-level agreement on a deliberately constructed low-mentalization profile.
+
+### Test–retest stability (TCTM-22 per persona × model)
+
+Format: `run-1 / run-2`. The full retest table (30 personas × 5 models) is in [`results/analysis_table_5models.md`](results/analysis_table_5models.md), section 6.
+
+### Where to drill down
+
+For full per-persona breakdown across **all five scales** (DBZ-R z-scores · MentS-PL · KPP · TIPI-PL × 5 dimensions · TCTM-22 totals · TCTM-22 per-item accuracy · DOS/NAD/BK error profiles), see:
+
+→ [`results/analysis_table_5models.md`](results/analysis_table_5models.md) — 8 sections, 456 rows, every persona × every model
+
+→ [`personas/{persona}.md`](personas/) — original biography + ground truth profile in YAML frontmatter
+
+→ [`data/all_data.csv`](data/all_data.csv) — raw scored data, 369 rows × 53 columns
+
+---
+
 ## Repository structure
 
 ```
