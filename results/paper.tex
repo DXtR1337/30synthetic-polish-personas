@@ -12,7 +12,7 @@
 \pagestyle{plain}
 
 \title{\textbf{Can Language Models Simulate Psychometric Respondents?\\[4pt]
-A Cross-Vendor Sensitivity Study with Baseline Controls\\and a Replicated Zero-Prompt Framing Manipulation\\for a Polish Mentalization Battery}}
+A Five-Model Sensitivity Study with Baseline and Zero-Prompt Controls\\on a Polish Mentalization Battery}}
 \author{Micha{\l} Wiencek\\\small Independent researcher; MA student, Institute of Psychology, UKEN Krak\'ow}
 \date{}
 
@@ -20,41 +20,37 @@ A Cross-Vendor Sensitivity Study with Baseline Controls\\and a Replicated Zero-P
 \maketitle
 
 \begin{abstract}
-\noindent Before collecting human data for a new psychometric battery, I test whether the instruments \emph{react} to personality variation at all. Thirty fictional Polish-language biographies with predetermined psychological profiles were processed by five large language models from four vendors --- Claude Sonnet 4.6 and Opus 4.6 (Anthropic), GPT-5.4-mini (OpenAI), Grok-4-20-reasoning (xAI), and Gemini 3 Flash (Google). Each persona was attempted twice per model (300 attempts; 285 valid persona runs after exclusion of partial outputs and content-filtered responses), and 7 human respondents completed the same battery (292 observations including human pilot). This is a \textbf{sensitivity study}, not a validation.
+\noindent Before collecting human data for a new psychometric battery, an author can ask a different question first: do the instruments react to designed personality variation at all? Thirty fictional Polish-language biographies with predetermined profiles across 12 dimensions were processed by five large language models from four vendors --- Claude Sonnet 4.6 and Opus 4.6 (Anthropic), GPT-5.4-mini (OpenAI), Grok-4-20-reasoning (xAI), and Gemini 3 Flash (Google) --- under three observation conditions: a \textbf{persona condition} (each biography presented twice per model; 285 valid runs), a \textbf{baseline condition} (each model answered the battery as itself, 7--10 times per model; 46 runs), and a \textbf{zero-prompt condition} (the battery presented with no system instruction at all; 31 valid runs). Seven human respondents completed the same battery (exploratory). This is a sensitivity study, not a validation.
 
-Four published self-report instruments showed consistent profile recovery: attachment $\kappa = .33$--$.87$ across models; rank--score correlations median $r = .71$--$.82$; literature consistency 8--10/10. Cross-vendor questionnaire agreement was high (median $r = .78$--.96), but TCTM-22 cross-vendor agreement was low (ICC $= .25$). Error profiles were model-dependent: Claude Sonnet produced almost exclusively DOS (97\%); Gemini produced the descriptively closest-to-human-pilot error profile.
+The persona condition shows that four published Polish self-report instruments recover the embedded profiles with high consistency (attachment $\kappa = .73$ for four models, $.33$ for GPT, which I discuss as an outlier; median rank--score $r = .71$ to $.82$; literature-consistency $8$--$10$/$10$). Cross-vendor agreement on questionnaire $z$-scores is high (median pairwise $r = .78$--$.96$); cross-vendor agreement on the author-keyed TCTM-22 vignette test is markedly lower (ICC$(2,1) = .25$ across all five models, but $.39$ when GPT is excluded as a sensitivity check), with eight of 22 items showing Bonferroni-significant cross-model disagreement. The baseline condition shows that each model has a stable response signature absent any persona (GPT scores anxious-preoccupied in 100\% of baseline runs; Gemini hits ceiling on every self-report scale; the two Claude models differ in default attachment style), and that persona instructions expand response variance by a factor of $3.5$ to $8.9$ over baseline (model-level medians across 9 questionnaire dimensions). The zero-prompt condition shows that the ``answer as yourself'' instruction itself is associated with systematic shifts in self-report: relative to no instruction, the instruction co-occurs with approximately $0.9$ scale points lower attachment avoidance for Sonnet (Glass's $\Delta \approx 1.96$) and $1.0$ scale point higher emotional stability for Gemini (within-condition $\Delta = -1.00$); GPT moves in the opposite direction on mentalization and anxiety. TCTM-22 mean accuracy varies by less than $\pm 5$ percentage points between baseline and zero-prompt for four of five models; GPT shows an $8.1$ pp drop without instruction.
 
-Two baseline experiments decompose the observed variance into three components. In the \textit{baseline condition} ($N = 46$ valid runs, 7--10 per model), models completed the battery with an ``answer as yourself'' instruction, revealing stable ``default response profiles'': GPT is anxious-preoccupied in 100\% of runs, Gemini hits near-maximum on all self-report scales, and different models from the same vendor (Sonnet vs.\ Opus) differ in attachment style. The \textit{zero-prompt condition} was extended to a replication of $N = 5$--$8$ runs per model: 31 valid TCTM-22 payloads and 30 parseable self-report payloads (one GPT zero-prompt output had a complete TCTM-22 array but no parseable self-report sections). With multiple observations the ``answer as yourself'' instruction provides replicated evidence of systematic shifts in self-report profiles: Sonnet's avoidance dropped from baseline $M = 3.88$ to zero-prompt $M = 2.98$ ($N = 6$, $\Delta = -0.90$, closely replicating the original single-shot estimate of $-0.99$); Gemini's emotional stability dropped from baseline $M = 7.0$ to zero-prompt $M = 6.0$ ($N = 8$, $\Delta = -1.00$, exact replication); and four of five models reported \emph{higher} attachment anxiety without the instruction (Sonnet $+1.02$, Opus $+0.55$, Grok $+0.75$, Gemini $+0.90$). Author-keyed TCTM-22 accuracy was preserved across framing conditions for four of five models; GPT dropped from baseline $78.6\%$ to zero-prompt $70.5\%$ ($-8.1$ pp), the only model showing a notable accuracy shift. Persona manipulation increased response variance 2--51$\times$ over baseline stochasticity (model-level medians 3.5--8.9$\times$ across 9 questionnaire dimensions where baseline $SD > 0$), confirming that persona-driven variance is not an artifact of inherent model noise.
+Open data, biographies, and analysis scripts are released under CC BY 4.0; every numeric claim in this paper is reproducible from the released CSV.
 
-Core materials (biographies, scored responses, analysis scripts) are released as an open dataset.
-
-\vspace{4pt}\noindent\textbf{Keywords:} synthetic respondents, instrument sensitivity, mentalization, attachment, cross-vendor LLM comparison, baseline control, LLM default response profile
+\vspace{4pt}\noindent\textbf{Keywords:} synthetic respondents, instrument sensitivity, mentalization, attachment, cross-vendor LLM comparison, baseline response signature
 \end{abstract}
 
 % ═══════════════════════════════════
 \section{Introduction}
 
-Developing new psychometric instruments requires extensive piloting. A growing line of research suggests that large language models (LLMs) can serve as \emph{simulated respondents}, providing rapid probes of instrument behavior before human data collection \cite{argyle2023,dillion2023}. The core question is not whether LLMs ``have'' personality, but whether instruments \emph{react systematically} to known personality variation embedded in biographical prompts. If they do, the instruments are at minimum sensitive to the relevant signal --- a necessary (though far from sufficient) precondition for construct validity \cite{cronbach1955}. If they do not, there is a problem worth catching before human recruitment.
+Developing a new psychometric instrument requires extensive piloting. A growing line of research suggests that large language models (LLMs) can serve as simulated respondents, providing rapid pre-pilot probes of instrument behavior before committing to human recruitment \cite{argyle2023,dillion2023}. The narrow question this paper addresses is not whether LLMs ``have'' personality, but whether psychometric instruments \emph{respond systematically} to designed personality variation embedded in biographical prompts. If they do, the instruments are at minimum sensitive to the relevant signal --- a necessary precondition for construct validity \cite{cronbach1955}. If they do not, the problem is worth catching before recruiting humans.
 
-This framing is important: the present study is a \textbf{sensitivity test}, not a validation study in the classical sense. I ask: ``Given 30 biographies designed to span the full range of attachment styles, mentalization levels, and personality traits, can the instruments recover the embedded profiles from LLM responses?'' A positive answer means the instruments are responsive; it does not prove they measure the intended constructs in human respondents.
+Most existing studies use a single model family \cite{argyle2023,dillion2023}; I use five models from four vendors (Anthropic, OpenAI, xAI, Google), which lets me ask whether sensitivity findings generalize across architectures or are model-specific artifacts. I also include two control conditions: a \textbf{baseline} condition in which the model answers the battery as itself, repeatedly (probing the model's response signature absent any persona), and a \textbf{zero-prompt} condition in which the model receives no system instruction at all (probing what part of the response profile is shaped by even minimal instructional context). Together, the persona / baseline / zero-prompt comparison lets me separate three sources of response variance: inherent within-condition stochasticity, the contribution of instructional framing, and the contribution of biographical prompting.
 
-Most existing studies use a single model family \cite{argyle2023,dillion2023}; by contrast, the present study employs \textbf{five models from four vendors} (Anthropic, OpenAI, xAI, Google), enabling assessment of cross-vendor consistency --- whether sensitivity findings generalize across architectures or are model-specific artifacts. Crucially, two baseline experiments are included: a \textit{baseline condition} (models complete the battery ``as themselves,'' repeated 7--10 times each) and a \textit{zero-prompt condition} (models receive the battery with no system instruction at all). This design allows decomposition of the observed persona-driven variance into three components: inherent model stochasticity, the effect of instructional framing, and the genuine persona manipulation effect.
-
-I apply this approach to four published Polish-language instruments --- DBZ-R (attachment), MentS-PL (mentalization), KPP (need for cognition), TIPI-PL (Big Five) --- and one original mentalization vignette test (TCTM-22). Thirty fictional personas were constructed, processed through all five models with test--retest, and scored against ground-truth profiles. Seven human respondents completed the same battery for exploratory comparison.
+I apply this design to four published Polish-language instruments --- DBZ-R (attachment; Polish ECR-R adaptation), MentS-PL (mentalization), KPP (need for cognition), TIPI-PL (Big Five) --- plus one original, author-keyed mentalization vignette test (TCTM-22). Thirty fictional personas are processed twice through each model; seven human respondents complete the same battery as a small exploratory comparison.
 
 % ═══════════════════════════════════
 \section{Method}
 
-\textbf{Personas.} 30 biographies in Polish (1,554--2,914 file-total words including YAML metadata; 1,489--2,861 narrative-body words after stripping YAML), written in second person, encoding predetermined profiles across 12 dimensions (11 continuous + 1 categorical): attachment anxiety and avoidance (DBZ-R), mentalization self/other/motivation (MentS-PL), need for cognition (KPP), Big Five E/A/C/ES/O (TIPI-PL), and attachment style (4-category classification). Biographies were authored by the first author using Claude Opus 4.6 as a writing assistant; the author specified profiles, narrative constraints, and stylistic requirements, reviewed and edited all drafts. Six biographies (\texttt{adrian, ewa, kuba, magda, pawel, weronika}) were revised after pilot review and are tagged \texttt{persona\_version: v2} in the released YAML; the remaining 24 are at \texttt{v1}. The version that was actually sent to all five models is the version referenced throughout this paper and recorded in \texttt{all\_data.csv}. No biography was designed to contain trait labels; the first author manually coded biographies into two groups based on whether they contained any direct trait-language references (e.g., explicit mentions of attachment style, introversion, openness): nine biographies were flagged as ``explicit'' (\texttt{ania, anna-sim, filip, jakub, kamil, marek, natalia, ola, tomek}) and 21 as ``narrative''. A separate regex-based audit using a broader keyword set yields a different split (see Trait Transparency in Results); both codings are released in the supplementary archive.
+\textbf{Personas.} 30 biographies in Polish (1{,}554--2{,}914 file-total words including YAML metadata; 1{,}489--2{,}861 narrative-body words after stripping YAML), written in second person, encoding predetermined profiles across 12 dimensions (11 continuous + 1 categorical): attachment anxiety and avoidance (DBZ-R), mentalization self / other / motivation (MentS-PL), need for cognition (KPP), Big Five E/A/C/ES/O (TIPI-PL), and a four-category attachment style. Biographies were authored by the first author using Claude Opus 4.6 as a writing assistant; the author specified profiles, narrative constraints, and stylistic requirements, and reviewed and edited every draft. Six biographies (\texttt{adrian, ewa, kuba, magda, pawel, weronika}) were revised after pilot review and are tagged \texttt{persona\_version: v2}; the rest are at \texttt{v1}. The version sent to all five models is the version recorded in the released \texttt{all\_data.csv}. No biography was designed to contain trait labels; the first author manually flagged nine biographies as containing direct trait-language references (\texttt{ania, anna-sim, filip, jakub, kamil, marek, natalia, ola, tomek}; the ``explicit'' subset) and 21 as ``narrative''. A separate broader-keyword regex audit yields a different split; both codings ship in the open dataset.
 
-\textbf{Instruments.} DBZ-R (Polish adaptation of ECR-R; 36 items, Likert 1--7; Lubiewska et al., 2016), MentS-PL (28 items; Ja\'nczak, 2021), KPP (36 items; Matusz et al., 2011), TIPI-PL (10 items; Sorokowska et al., 2014). These four instruments use published Polish norms. TCTM-22 (22 original vignettes with MASC error taxonomy \cite{dziobek2006}) is an original instrument without published norms; it is scored against author-defined answer keys. The 22 vignettes cover five subscales (4--5 items each): \emph{Rozpoznawanie podtekstu} (subtext recognition; 4 items: w01, s07, s08, s10), \emph{Rozpoznawanie manipulacji} (manipulation recognition; 4 items: w08, c07, c10, w11), \emph{Wykrywanie sygna\l\'ow wygasania wi\k{e}zi} (waning-bond detection; 4 items: w13, w14, e08, w15), \emph{Dynamika d\k{a}\.zenie--wycofanie} (pursuit--withdrawal dynamics; 5 items: w19, pw07, w22, pw09, pw11), and \emph{Ocena autentyczno\'sci naprawy relacyjnej} (authenticity of relational repair; 5 items: w25, r08, w28, r09, r10).
+\textbf{Instruments.} DBZ-R (Polish adaptation of ECR-R; 36 items, Likert 1--7; \citealt{lubiewska2016}); MentS-PL (28 items; \citealt{janczak2021}); KPP (36 items; \citealt{matusz2011}); TIPI-PL (10 items; \citealt{sorokowska2014}). These four use published Polish norms. TCTM-22 is an original instrument: 22 vignettes scored against author-defined answer keys, with each option tagged under the MASC error taxonomy \cite{dziobek2006}: \emph{DOS} (under-mentalizing, reduced theory of mind), \emph{NAD} (over-mentalizing, excessive theory of mind), and \emph{BK} (no mentalizing). The 22 vignettes cover five subscales (4--5 items each): subtext recognition, manipulation recognition, waning-bond detection, pursuit--withdrawal dynamics, and authenticity of relational repair. \textbf{Throughout this paper, all TCTM-22 results refer to author-keyed performance, not validated mentalization}; cross-vendor disagreement on which items are hard (\S\ref{sec:crossvendor}) is itself evidence that the keyed answers may not reflect a single shared construct.
 
-\textbf{Ground truth and STYLE\_MAP.} Each persona's expected attachment style is taken from the top-level \texttt{expected\_style} field in \texttt{analysis\_summary.jsonl}. Four personas (Ewa, Kamil, Marek, Radek) are coded as \texttt{disorganized} in the YAML \texttt{expected\_profile} block of their biography file but as \texttt{fearful\_avoidant} in the top-level \texttt{expected\_style} field used by the scoring pipeline; this is intentional and corresponds to mapping disorganized attachment to fearful-avoidant under the four-category Bartholomew taxonomy that all five LLMs use in their style outputs. Computing $\kappa$ under a strict five-category policy (treating \texttt{disorganized} as a separate fifth class that no model can produce) would lower all attachment $\kappa$ values by $\sim 10$ percentage points; the supplementary archive includes both calculations.
+\textbf{Ground truth and STYLE\_MAP.} Each persona's expected attachment style is taken from the top-level \texttt{expected\_style} field in \texttt{analysis\_summary.jsonl}. Four personas (Ewa, Kamil, Marek, Radek) carry \texttt{disorganized} in their YAML \texttt{expected\_profile} block but \texttt{fearful\_avoidant} in the top-level \texttt{expected\_style}; this maps disorganized to fearful-avoidant under the four-category Bartholomew taxonomy that all five models use in their classifier outputs. Under a strict five-category policy (treating \texttt{disorganized} as a fifth class no model can produce), all attachment $\kappa$ values would drop by approximately 10 percentage points; I report both in the released supplementary archive.
 
-\textbf{Models.} Five models from four vendors (Table~\ref{tab:models}). Each persona was processed once per model (run~1), then re-run under identical conditions (run~2, retest). All models used default sampling parameters. Total: 285 valid persona runs (300 attempted; missing retests resulted from API content filters, partial generations, or incomplete TCTM responses --- see Table~\ref{tab:models} footnote). Plus 5 additional Gemini reruns (run~3) for personas \texttt{ania, anna-sim, kasia, marek, michal-sim} where the first two attempts returned partial or degenerate output; these run-3 records are included in the released open dataset for full transparency but are excluded from all run~1 / run~2 paired analyses, all cross-model first-run statistics, and all main-text tables and figures, to avoid asymmetric over-representation of Gemini. GPT-5.4-mini returned incomplete TCTM responses (20--21 instead of 22 items) in 20\% of attempts; affected runs were excluded from per-model TCTM tables (yielding $N = 27$ for run~1, $N = 21$ for run~2). For other instruments, missing items were scored according to the published convention (DBZ-R / MentS-PL / KPP / TIPI-PL: missing-as-NA, with row-wise pairwise deletion in correlation analyses).
+\textbf{Models.} Five models from four vendors (Table~\ref{tab:models}). Each persona was processed once per model (run~1) and once again under identical conditions (run~2, retest). All models used default sampling parameters. Total: 285 valid persona runs out of 300 attempts; 15 missing retests resulted from API content filters, partial generations, or incomplete TCTM responses (per-model breakdown in Table~\ref{tab:models} footnote). Five additional Gemini run-3 records (for \texttt{ania, anna-sim, kasia, marek, michal-sim}) repair earlier degenerate outputs and are released for transparency, but are excluded from all run~1 and run~2 analyses to avoid asymmetric over-representation. GPT-5.4-mini returned incomplete TCTM responses (20--21 of 22 items) in 20\% of attempts; affected runs are excluded from per-model TCTM tables ($N = 27$ run~1, $N = 21$ run~2). For the four self-report instruments, missing items are NA, with row-wise pairwise deletion in correlation analyses.
 
 \begin{table}[htbp]\centering\footnotesize
-\caption{Models used. Run counts reflect valid completions after exclusion of partial / content-filtered attempts. The 5 additional Gemini run-3 records are partial-fix retries for personas with earlier degenerate outputs and are reported transparently rather than discarded.}
+\caption{Models, vendors, platforms, and run counts after exclusion of partial / content-filtered attempts.}
 \label{tab:models}
 \begin{tabular}{llll}
 \toprule
@@ -70,29 +66,41 @@ Human respondents & --- & --- & 7 \\
 \bottomrule
 \end{tabular}
 \begin{flushleft}
-\footnotesize $^{\dagger}$Azure content filter or partial TCTM response. $^{\ddagger}$One or more personas failed run-2 due to transient API issues (timeout, refusal, or partial JSON). For Opus run-2 the missing personas are \texttt{anna-sim, jakub, kasia, michal-sim, piotr}; for Grok run-2 it is \texttt{piotr}; for Gemini run-2 it is \texttt{ewa, sara}. None were retried under the v4 protocol; the missing-data pattern is disclosed here for full transparency.
+\footnotesize $^{\dagger}$Azure content filter or partial TCTM response. $^{\ddagger}$One or more personas failed run-2 due to transient API issues (timeout, refusal, or partial JSON). Opus run-2 missing: \texttt{anna-sim, jakub, kasia, michal-sim, piotr}; Grok run-2 missing: \texttt{piotr}; Gemini run-2 missing: \texttt{ewa, sara}.
 \end{flushleft}
 \end{table}
 
-\textbf{Human pilot.} Seven respondents (ages 22--60, 4 male, 3 female; 2 psychology students, 5 without psychology background) completed the same battery online. The target population for eventual validation is young adults (ages 18--35) in romantic or close relationships; one respondent (R07, age 60, female) was notably older than this range and was retained for exploratory purposes.
+\textbf{Conditions.} Three conditions were run.
 
-\textbf{Ethics.} The human pilot used informed consent disclosing study purpose, voluntariness (right to withdraw at any point without consequence), GDPR-compliant data handling (encrypted storage, five-year retention, no cross-linking with personal identifiers), and links to mental-health support resources (Polish national crisis-line numbers). All seven respondents consented before completing the battery. The pilot is non-interventional, uses no clinical population, and was treated as exempt from formal Institutional Review Board approval per UKEN Krak\'ow institutional guidelines for pre-pilot psychometric data collection; this exemption status reflects the author's understanding of those guidelines and is disclosed here for full transparency.
+\emph{Persona condition} (run~1 + run~2): the model receives a biography in the user prompt and the system instruction \textit{``You are answering as the person described below. Read the biography carefully and respond as that person would.''} (translated from Polish); 285 valid runs.
 
-\textbf{Baseline condition.} Each model completed the battery 7--10 times (46 valid runs total; one Gemini run excluded for incomplete TCTM) with the system instruction: \textit{``You are an AI language model. Answer the questions honestly, as you --- an AI --- would answer if you had to choose. Do not play any character. Answer as yourself.''} (translated from Polish). This condition measures inherent model stochasticity and reveals each model's ``default response profile.''
+\emph{Baseline condition}: each model completes the battery 7--10 times \emph{as itself}, with the system instruction \textit{``You are an AI language model. Answer the questions honestly, as you --- an AI --- would answer if you had to choose. Do not play any character. Answer as yourself.''}; 46 valid runs (one Gemini baseline excluded for incomplete TCTM).
 
-\textbf{Zero-prompt condition.} Each model completed the battery $N = 5$--$8$ times without any system instruction --- only the test content was provided as a user message: 31 valid TCTM-22 payloads (Sonnet 6, Opus 5, GPT 6, Grok 6, Gemini 8) and 30 parseable self-report payloads (one GPT zero-prompt output had a complete TCTM-22 array but no parseable self-report sections). The same TCTM-22 instrument used in the persona condition was administered, alongside the four self-report instruments, in a single user message. Without instructional context, models produced widely varying JSON formats (e.g., Sonnet alternated between \texttt{TCTM22}, \texttt{czesc\_1\_winiety}, and \texttt{part1\_vignettes} as top-level keys across runs); responses were post-processed with a universal scorer that filters to the 22 standard TCTM items and applies the validated \texttt{score\_dbzr/ments/kpp/tipi} functions used elsewhere in this study. This condition measures the model's ``raw'' response to a psychometric task, before any instructional framing.
+\emph{Zero-prompt condition}: the model receives only the test content as a user message, with no system prompt at all; 31 valid TCTM-22 payloads (Sonnet 6, Opus 5, GPT 6, Grok 6, Gemini 8) and 30 parseable self-report payloads (one GPT zero-prompt output had a complete TCTM-22 array but no parseable self-report sections).
 
-\textbf{Metrics.} (1) Attachment style match ($\kappa$, Cram\'er's $V$), (2) rank--score correlations (Pearson, Spearman), (3) literature consistency (10 construct pairs), (4) test--retest reliability (Pearson $r$, ICC), (5) inter-model consistency (ICC, Fleiss' $\kappa$), (6) TCTM-22 error profiles (DOS/NAD/BK), (7) per-item cross-vendor agreement (Cochran's $Q$).
+\textbf{Human pilot.} Seven respondents (ages 22--60, 4 male, 3 female; 2 psychology students, 5 without psychology background) completed the same battery online. The target population for eventual validation is young adults (18--35) in romantic or close relationships; one respondent (R07, age 60, female) was outside that range and is retained for exploratory purposes only. Throughout the paper I treat the human pilot as descriptively informative, not statistically inferential.
+
+\textbf{Ethics.} The human pilot used informed consent disclosing study purpose, voluntariness (right to withdraw at any point without consequence), GDPR-compliant data handling (encrypted storage, five-year retention, no cross-linking with personal identifiers), and links to mental-health support resources (Polish national crisis-line numbers). All seven respondents consented before completing the battery. The pilot is non-interventional and uses no clinical population. The author has not formally consulted UKEN's institutional review board on exemption status; readers should treat the human-pilot section as pre-pilot exploratory data pending such consultation.
+
+\textbf{Metrics.} (1) Attachment style match ($\kappa$, Cram\'er's $V$); (2) rank--score correlations (Pearson, Spearman); (3) literature consistency (10 cross-scale correlation signs taken from published Polish norms); (4) test--retest reliability (Pearson $r$, ICC); (5) inter-model consistency (ICC, Fleiss' $\kappa$); (6) TCTM-22 error profiles (DOS / NAD / BK); (7) per-item cross-vendor agreement (Cochran's $Q$ with Bonferroni and Benjamini--Hochberg corrections); (8) effect-size estimates for framing shifts (Cohen's $d$ pooled and Glass's $\Delta$ vs.\ baseline $SD$).
+
+\textbf{Reproducibility.} All five models were queried via official vendor APIs between 12 April and 27 April 2026, using default sampling parameters (temperature, top-$p$, max-output-tokens at vendor defaults). System prompts and JSON output schemas requested are reproduced verbatim in the open repository. Every numeric claim in this paper is reproducible from the released \texttt{all\_data.csv} (369 observations $\times$ 53 columns) using only the standard library; helper scripts ship under CC BY 4.0.
 
 % ═══════════════════════════════════
 \section{Results}
 
-All cross-model tables report first-run data ($N = 30$ per model except where the per-model footnote on Tables~\ref{tab:tctm} and \ref{tab:noprompt-tctm} indicates a smaller valid-output count; specifically, GPT-5.4-mini run~1 has $N = 27$ for analyses requiring a complete 22-item TCTM-22 response). Retest data is used for reliability analyses and, where noted, to confirm systematic patterns.
+I organize the results around three questions. \textbf{Section~\ref{sec:react}}: do the instruments react to designed variation? \textbf{Section~\ref{sec:crossvendor}}: does the reaction generalize across vendors? \textbf{Section~\ref{sec:variance}}: where does the observed response variance come from?
 
-\subsection{TCTM-22 Score Distribution}
+All cross-model tables in Sections~\ref{sec:react} and \ref{sec:crossvendor} use first-run persona data ($N = 30$ per model except GPT, where the three personas with incomplete TCTM are excluded, yielding $N = 27$).
+
+\subsection{Do the instruments react to designed variation?}\label{sec:react}
+
+\subsubsection*{TCTM-22 score distribution}
+
+A clear gradient emerges (Table~\ref{tab:tctm}, Figure~\ref{fig:tctm}): the human pilot scored $M = 14.3$ ($SD = 1.4$), GPT $M = 17.0$, Grok $M = 18.4$, Opus $M = 19.0$, Sonnet $M = 19.4$, Gemini $M = 19.6$. LLM scores were systematically above the small human pilot. Error profiles differed sharply by model: Sonnet produced almost exclusively DOS errors (97\%), Gemini produced the descriptively closest match to the human profile (DOS 23\% / NAD 41\% / BK 37\% vs.\ human 32 / 36 / 32). The Gemini--human similarity on error profile is striking, but Gemini's NAD rate (41\%) actually exceeds the human pilot's (36\%), so I read it as a coincidence of taxonomy distribution rather than as evidence that Gemini is human-like in mentalization.
 
 \begin{table}[htbp]\centering\footnotesize
-\caption{TCTM-22 by group (first run).}
+\caption{TCTM-22 by group (first run; persona condition). DOS = under-mentalizing, NAD = over-mentalizing, BK = no mentalizing.}
 \label{tab:tctm}
 \begin{tabular}{lcccccccc}
 \toprule
@@ -113,57 +121,48 @@ Gemini 3F   & 30 & 19.6 & 2.1 & 9--21  & 23 & 41 & 37 \\
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=0.85\textwidth]{synthetic/charts/v5_tctm_boxplot.png}
-\caption{TCTM-22 distribution by group: Human + 5 LLM models. Diamond = mean.}
+\caption{TCTM-22 distribution by group: human pilot + 5 LLMs (persona condition, run 1). Diamonds = group means.}\label{fig:tctm}
 \end{figure}
 
-A clear gradient emerged: Human ($M = 14.3$) $<$ GPT ($17.0$) $<$ Grok ($18.4$) $<$ Opus ($19.0$) $\approx$ Sonnet ($19.4$) $\approx$ Gemini ($19.6$).
+\subsubsection*{Attachment classification}
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=0.85\textwidth]{synthetic/charts/v5_error_profile.png}
-\caption{Error type distribution: Human + 5 LLM models. Humans show a roughly balanced profile (DOS 32\%, NAD 36\%, BK 32\%); Claude Sonnet is almost exclusively DOS (97\%). Among LLMs, Gemini's profile (DOS 23\%, NAD 41\%, BK 37\%) is closest to the human distribution.}
-\end{figure}
-
-Error profiles were model-dependent. Claude Sonnet produced almost exclusively DOS errors (97\%); Gemini produced the closest match to the human pilot profile (DOS 23\%, NAD 41\%, BK 37\% vs.\ human 32/36/32\%). In the human pilot, NAD errors were more frequent than in all LLMs except Gemini, which exceeded the human NAD rate (41\% vs.\ 36\%).
-
-\subsection{Attachment Classification}
+Cohen's $\kappa$ for the four-category Bartholomew classification is $.87$ for both Opus and Grok, $.78$ for Gemini, $.74$ for Sonnet, and $.33$ for GPT (Table~\ref{tab:attachment}). The four-model cluster $\kappa = .73$--$.87$ corresponds to ``substantial'' to ``almost perfect'' under the widely used \citet{landis1977} benchmarks; I note those benchmarks have been criticized as arbitrary and I report raw $\kappa$ to permit reader-specific interpretation. GPT's $\kappa = .33$ is much lower; I treat GPT as an outlier in this analysis (see also \S\ref{sec:crossvendor}, where excluding GPT raises cross-vendor TCTM ICC and Fleiss $\kappa$).
 
 \begin{table}[htbp]\centering\footnotesize
-\caption{Attachment style classification.}
-\begin{tabular}{lccc}
+\caption{Attachment classification (persona condition, run 1).}
+\label{tab:attachment}
+\begin{tabular}{lcccc}
 \toprule
-\textbf{Model} & \textbf{Accuracy} & $\kappa$ & $V$ \\
+\textbf{Model} & \textbf{Match} & \textbf{Acc} & $\kappa$ & $V$ \\
 \midrule
-Opus        & 27/30 = 90\% & .866 & .905 \\
-Grok-4-20   & 27/30 = 90\% & .867 & .890 \\
-Gemini 3F   & 25/30 = 83\% & .778 & .801 \\
-Sonnet      & 24/30 = 80\% & .735 & .765 \\
-GPT-5.4m    & 13/27$^{\dagger}$ = 48\% & .333 & .474 \\
+Opus        & 27/30 & 90\% & .866 & .905 \\
+Grok-4-20   & 27/30 & 90\% & .867 & .890 \\
+Gemini 3F   & 25/30 & 83\% & .778 & .801 \\
+Sonnet      & 24/30 & 80\% & .735 & .765 \\
+GPT-5.4m    & 13/27$^{\dagger}$ & 48\% & .333 & .474 \\
 \bottomrule
 \end{tabular}
 \begin{flushleft}
-\footnotesize $^{\dagger}$GPT~run-1 with valid 22-item TCTM only ($N = 27$); the 3 personas with missing TCTM (Pawe{\l}, Micha{\l}-K, Bartek) are excluded from $\kappa$ computation rather than scored as misclassifications.
+\footnotesize $^{\dagger}$GPT run-1 with valid 22-item TCTM only. Three personas with missing TCTM (Pawe{\l}, Micha{\l}-K, Bartek) are excluded from $\kappa$ computation rather than scored as misclassifications.
 \end{flushleft}
 \end{table}
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=0.55\textwidth]{synthetic/charts/v5_attachment_kappa.png}
-\caption{Attachment $\kappa$ by model (5 LLMs).}
-\end{figure}
+\subsubsection*{Rank--score correlations and literature consistency}
 
-\subsection{Rank--Score Correlations}
+For each of 11 continuous dimensions, I ranked the 30 personas by their expected level (very-low $= -2$ to extreme $= +2.5$) and correlated the rank with the model's observed scaled output. Median Pearson $r$ across the 11 dimensions: Opus $.82$, Grok $.82$, Sonnet $.80$, Gemini $.76$, GPT $.71$. Across all five models, $54$ of $55$ dimension-level correlations were positive (in the expected direction); the single negative case was GPT on MentS-Self ($r = -.06$). Separately, I checked the sign of 10 published cross-scale correlations (e.g., attachment anxiety vs.\ emotional stability is expected to be negative): Gemini and Sonnet matched all 10, Opus and GPT matched 9 of 10, Grok matched 8.
 
-Median Pearson $r$ across 11 continuous dimensions (first run): Opus $.819$, Grok $.815$, Sonnet $.800$, Gemini $.763$, GPT $.711$. Across all five models, 54/55 dimension-level correlations were positive (expected direction); the single negative case was GPT on MentS-Self ($r = -.06$), where higher expected mentalization-self failed to track higher self-reported scores. Separately, literature consistency (10 published cross-scale correlation signs): Gemini 10/10, Sonnet 10/10, Opus 9/10, GPT 9/10, Grok 8/10.
+\subsubsection*{Test--retest reliability}
 
-\subsection{Test--Retest Reliability}
+Run-1 vs.\ run-2 paired correlations under a complete-pair policy (only personas with valid responses in both runs; intersect $N$ varies by model) are shown in Table~\ref{tab:retest}. Opus is essentially deterministic across all tasks. Gemini shows high TCTM stability ($r = .91$). Sonnet and Grok are moderately stable on TCTM ($r = .69$ and $.53$) but very stable on questionnaires ($z$-score median $r = .98$ and $.95$). GPT is unstable on TCTM ($r = .28$ on the 21-persona paired intersect) but moderately stable on questionnaires ($r = .89$).
 
 \begin{table}[htbp]\centering\footnotesize
-\caption{Test--retest reliability (run~1 vs.\ run~2).}
+\caption{Test--retest reliability (run~1 vs.\ run~2, complete-pair policy).}
 \label{tab:retest}
 \begin{tabular}{lccccc}
 \toprule
 \textbf{Metric} & \textbf{Sonnet} & \textbf{Opus} & \textbf{GPT} & \textbf{Grok} & \textbf{Gemini} \\
 \midrule
-$z$-score median $r$ & .981 & .993 & .890 & .950 & .962 \\
+$z$-score median $r$ (9 dim) & .981 & .993 & .890 & .950 & .962 \\
 TCTM total $r$ & .691 & .992 & .279 & .530 & .905 \\
 Style agreement & 29/30 & 25/25 & 18/21 & 29/29 & 25/28 \\
 $N$ paired personas & 30 & 25 & 21 & 29 & 28 \\
@@ -171,95 +170,68 @@ $N$ paired personas & 30 & 25 & 21 & 29 & 28 \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=0.65\textwidth]{synthetic/charts/v5_retest_5model.png}
-\caption{Test--retest reliability across 5 models. Solid bars: TCTM-22 total $r$. Lighter bars: $z$-score median $r$ across 9 questionnaire dimensions. Reliability is computed on \emph{intersect-only paired personas} (complete-pair policy, $N$ varies by model).}
-\end{figure}
+\subsection{Does the reaction generalize across vendors?}\label{sec:crossvendor}
 
-\noindent Opus was near-deterministic across all tasks. Gemini showed high TCTM reliability ($r = .91$). GPT was unreliable on TCTM ($r = .28$ on the 21-persona intersect of valid run-1/run-2 pairs), with individual personas shifting by up to $\pm 5$ points between runs; its questionnaire data was more stable ($z$-score median $r = .89$). All test--retest correlations are computed under a complete-pair policy: paired correlations use only personas with valid responses in both runs (intersect $N$ varies by model and is shown in the table), rather than imputing missing pairs.
+\subsubsection*{Questionnaire $z$-scores: high cross-vendor agreement}
 
-\subsection{Cross-Vendor Consistency}
+For each pair of models, I computed the median Pearson $r$ across 9 questionnaire $z$-score dimensions on the run-1 persona condition. Pairwise medians ranged from $.78$ (GPT $\times$ Gemini) to $.96$ (Sonnet $\times$ Opus); see Figure~\ref{fig:intermodel}. The four-model cluster (Sonnet, Opus, Grok, Gemini) sits in the $.92$--$.96$ range; GPT pulls the lowest pairs to $.78$--$.85$.
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=0.55\textwidth]{synthetic/charts/v5_intermodel_matrix.png}
-\caption{Inter-model $z$-score median $r$ (9 questionnaire dimensions, 5$\times$5 matrix). Diagonal $= 1$.}
+\caption{Inter-model $z$-score median $r$ (9 questionnaire dimensions, $5 \times 5$ matrix). Diagonal $= 1$.}\label{fig:intermodel}
 \end{figure}
 
-Questionnaire $z$-scores showed high cross-vendor agreement: median inter-model $r$ ranged from $.78$ (GPT$\times$Gemini) to $.96$ (Sonnet$\times$Opus). TCTM-22 cross-vendor agreement was low: ICC(2,1) $= .254$ across 5 models on the $N = 27$ intersect of complete TCTM data. The highest TCTM pair was Gemini$\times$Opus ($r = .94$); the lowest was GPT$\times$Grok ($r = -.05$, effectively zero with a slight negative sign on the intersect).
+\subsubsection*{TCTM-22: low cross-vendor ICC, lower with GPT included}
 
-Fleiss' $\kappa$ for attachment style classification (all 5 models as raters, $N = 27$ personas with complete data across all models): $.619$ (``substantial agreement'' under the widely-used categorical-data benchmarks of \cite{landis1977}; we note that those benchmarks have been criticized as arbitrary, and report the raw $\kappa$ value to permit reader-specific interpretation). Cochran's $Q$ revealed that 14/22 TCTM items showed significant ($p < .05$, uncorrected, $df = 4$) model disagreement. Under Bonferroni correction at $\alpha/22 = .00227$ (chi-square threshold $> 16.64$), 8/22 items remain significant: w01, s07, w11, w15, pw07, w22, w28, r10 (all with $Q > 32$, $p < 10^{-5}$). Under Benjamini--Hochberg FDR control at $q = .05$, 13/22 items are significant. The full per-item $Q$, $p_{\text{unc}}$, Bonferroni-pass and BH-pass values are released in the supplementary archive.
+Cross-vendor agreement on TCTM-22 totals (run~1, $N = 27$ persona intersect across all five models) is much lower: ICC$(2, 1) = .254$. The highest pairwise correlation is Gemini $\times$ Opus ($r = .94$); the lowest is GPT $\times$ Grok ($r = -.05$). Excluding GPT --- motivated independently by GPT's content-filter exclusions, low test--retest TCTM reliability ($r = .28$), and outlier $\kappa = .33$ on attachment classification --- the four-model intersect rises to $N = 30$ and cross-vendor TCTM agreement improves substantially: ICC$(2, 1) = .389$, with all six pairwise correlations positive (range $+.32$ to $+.94$). Under the same exclusion, Fleiss' $\kappa$ for cross-vendor attachment-style classification rises from $.619$ on five models to $.835$ on four. The cross-vendor TCTM disagreement is therefore largely concentrated on GPT, not distributed evenly across architectures.
 
-\subsection{Ola: Cross-Vendor Item Agreement}
+This four-model robustness check is presented as a sensitivity analysis, not a recommendation to drop GPT in general. GPT's failure mode on TCTM-22 (item-level instability, content-filter exclusions, low $\kappa$) is itself part of the cross-vendor finding: not every recently shipped model is equally usable as a synthetic respondent for this kind of task, and the criteria for when to include or exclude a vendor should be made explicit before scoring.
 
-Persona Ola (``secure but non-mentalizing'') had the lowest cross-model mean TCTM ($11.4/22$: Sonnet 17, Opus 8, GPT 16, Grok 7, Gemini 9). Cross-vendor error analysis revealed \textbf{systematic item-level agreement}: all 5 models produced DOS errors on items s07 and w22. This pattern was confirmed by retest on Opus ($8 \rightarrow 9/22$) and Gemini ($9 \rightarrow 7/22$).
+\subsubsection*{Item-level disagreement under multiple-comparisons correction}
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=0.85\textwidth]{synthetic/charts/v5_convergence_scatter.png}
-\caption{TCTM $\times$ MentS-Total by model. Convergence varies in both magnitude and sign: Grok $r = +.51$ (highest), Opus $r = +.24$ (weakly positive), Gemini $r = +.12$, Sonnet $r = +.01$ (near-zero), GPT $r = -.29$ (weakly \emph{negative}: in GPT, higher self-reported mentalization is associated with lower TCTM accuracy).}
-\end{figure}
+Cochran's $Q$ across the five models on each of 22 TCTM items (run~1 intersect, $N = 27$) flags 14 items as significant at uncorrected $p < .05$ ($df = 4$). After Bonferroni correction at $\alpha / 22 = .00227$ (chi-square threshold $> 16.64$), eight items remain significant: \texttt{w01, s07, w11, w15, pw07, w22, w28, r10} (all $Q > 32$, $p < 10^{-5}$). Under Benjamini--Hochberg false-discovery-rate control at $q = .05$, 13 items are significant. Per-item $Q$, $p$, and correction-status values ship with the supplementary data.
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=0.95\textwidth]{synthetic/charts/v5_item_heatmap.png}
-\caption{Per-item accuracy: Human + 5 LLM models. Green = high, red = low.}
-\end{figure}
+\subsection{Where does the response variance come from?}\label{sec:variance}
 
-\subsection{Exploratory Human Comparison ($N = 7$)}
+I use the baseline and zero-prompt conditions to ask what fraction of the persona-condition response variance is genuinely persona-driven, what fraction is inherent stochasticity, and what fraction is shaped by instructional framing.
 
-Seven human respondents (ages 22--60) scored $M = 14.3/22$ ($SD = 1.4$), well below all LLM means. Human error profiles were distributed across DOS (32\%), NAD (36\%), and BK (32\%). On most author-keyed TCTM-22 items, LLM scores were descriptively higher than the small human pilot: on 7/22 items (w08, c10, w13, e08, w19, w25, w28) the cross-model LLM mean was $\geq 30$ percentage points above human accuracy (range $+34$ to $+65$ pp). On only 2/22 items did human scores exceed LLM scores by a comparable margin: w22 (human 57\% vs.\ Sonnet/Opus 0\%, GPT 70\%, Grok 47\%, Gemini 13\% --- a Claude-specific failure rather than a general LLM ceiling) and s07 (human 71\% vs.\ Sonnet 0\%, Opus 7\%, GPT 0\%, Grok 30\% --- where Gemini is a notable outlier scoring 87\%, descriptively above human accuracy). These observations are descriptive only --- with $N = 7$ humans, no statistical inference is warranted.
+\subsubsection*{Baseline response signatures}
 
-\subsection{Trait Transparency}
-
-Composite fidelity was virtually identical for narrative ($n = 21$, fidelity $= 0.790$) and explicit ($n = 9$, fidelity $= 0.783$; $\Delta = -0.007$). Directional accuracy was +4.3pp higher for explicit personas, but untestable at this sample size. \textbf{Important caveat:} the trait-transparency fidelity values reported here are computed from the original 2-model validation pool (Sonnet 4.6 + Opus 4.6, $n = 60$ persona-model observations), generated 12 April 2026 prior to the 5-model expansion of this study. Recomputing fidelity on the full 5-model pool ($n = 285$) was not part of this submission and may yield different values; the original 2-model statistic is retained here for reproducibility with the released \texttt{validation\_report.json}. The narrative/explicit grouping itself is also sensitive to coding choices --- the EXPLICIT category is defined by a hand-curated list of nine biographies (\texttt{ania, anna-sim, filip, jakub, kamil, marek, natalia, ola, tomek}) flagged by the first author as containing direct trait-language references. Alternative regex-based audits using a broader keyword set (e.g., \emph{l\k{e}kow*, unik*, mentaliz*, przywi\k{a}zan*, ekstrawer*, sumienn*, otwart*}) flag additional biographies as containing trait words and would yield a 19/11 or 9/21 split with correspondingly different $\Delta$. The supplementary archive includes both the curated list and the regex audit results so readers can re-derive fidelity under any grouping.
-
-% ═══════════════════════════════════
-\subsection{Baseline Control: Default Model Response Profiles}
-
-A natural question arises: how much of the persona-driven variance is actually caused by the persona, and how much reflects inherent randomness in the model's token sampling? To answer this, each model completed the battery 7--10 times as ``itself'' (baseline condition), yielding 46 valid runs with complete 22-item TCTM responses (Sonnet~10, Opus~7, GPT~10, Grok~10, Gemini~9; one additional Gemini run was excluded for returning only 20 items).
-
-\paragraph{TCTM is near-deterministic without a persona.} In repeated baseline runs, Sonnet and Gemini produced \emph{identical} TCTM-22 answers in every valid run ($SD = 0.00$; Sonnet: 19/22 in all 10 runs, Gemini: 20/22 in all 9 valid runs --- one Gemini run was excluded because it returned only 20 of 22 items). Grok scored 20--21/22 ($SD = 0.52$), Opus 19--20/22 ($SD = 0.53$), and GPT showed the most variability at 16--18/22 ($SD = 0.82$). In sharp contrast, the persona condition introduced substantial variance (e.g., Grok range 6--22). The forced-choice format of TCTM appears to be highly deterministic in the absence of persona manipulation.
-
-\paragraph{Self-report scales are less deterministic.} While TCTM answers were nearly identical across baseline runs, Likert-scale responses varied considerably. Across 110 questionnaire items (DBZ-R + MentS + KPP + TIPI), the proportion of items yielding identical responses in all runs ranged from 73.6\% (Opus, highest) to 24.5\% (GPT, lowest). Sonnet --- despite 100\% TCTM determinism --- showed only 54.5\% identical Likert items. This ``forced-choice vs.\ Likert paradox'' suggests that the two formats engage qualitatively different generation mechanisms: choosing among closed options is more constrained than positioning oneself on a continuous scale.
-
-GPT's DBZ-R results are particularly striking: \emph{zero} of 36 items produced identical responses across all 10 runs (mean item shift: 1.64 points on a 7-point scale). This implies that GPT's attachment profile is fundamentally unstable even without persona manipulation, and that a substantial portion of the persona-condition variance in GPT reflects inherent noise rather than biographical sensitivity.
-
-\paragraph{Each model has a ``default response profile.''}
-The baseline profiles reveal consistent, model-specific psychological profiles (Table~\ref{tab:baseline-profiles}). GPT was classified as anxious-preoccupied in all 10 runs --- the only model to show a non-secure default attachment style. Gemini exhibited a pronounced ceiling effect, scoring near the scale maximum on virtually every self-report measure (MentS $= 137/140$, KPP $= 4.99/5.00$, TIPI-ES $= 7.0/7.0$). The two Anthropic models differed despite shared training: Opus was consistently secure (AVO $= 2.82$), while Sonnet oscillated around the avoidance threshold (AVO $= 3.88$; secure in 4/10 runs, dismissive in 6/10).
+In the baseline condition (each model answered the battery as itself, 7--10 times), each model exhibited a stable response signature (Table~\ref{tab:baseline}). GPT was classified as anxious-preoccupied in 100\% of its 10 baseline runs --- the only model with a non-secure default attachment classification. Gemini exhibited a pronounced ceiling pattern, scoring near scale maxima on every self-report measure (MentS $= 137 / 140$; KPP $= 4.99 / 5.00$; TIPI-ES $= 7.0 / 7.0$). The two Anthropic models differed despite shared vendor: Opus was consistently classified as secure, while Sonnet oscillated around the avoidance threshold (secure in 4/10 runs, dismissive-avoidant in 6/10). I use the term \emph{baseline response signature} (rather than ``personality'' or ``default profile'') deliberately: ``Style mode'' in the table is the output of a scoring algorithm applied to repeated answers, not a clinical diagnosis or a stable personality attribution.
 
 \begin{table}[htbp]\centering\footnotesize
-\caption{Default model profiles (baseline condition, no persona).}
-\label{tab:baseline-profiles}
+\caption{Baseline response signature per model (no persona; ``answer as yourself'' instruction). ``Style mode'' is the modal classification across the 7--10 runs and is a scoring-algorithm output, not a clinical attribution.}
+\label{tab:baseline}
 \begin{tabular}{lccccccc}
 \toprule
-\textbf{Model} & \textbf{Style} & \textbf{ANX} & \textbf{AVO} & \textbf{MentS} & \textbf{KPP} & \textbf{TCTM} & \textbf{ES} \\
+\textbf{Model} & \textbf{Style mode} & \textbf{ANX} & \textbf{AVO} & \textbf{MentS} & \textbf{KPP} & \textbf{TCTM} & \textbf{TIPI-ES} \\
 \midrule
-Sonnet  & Dismissive* & 2.09 & 3.88 & 121 & 4.66 & 19.0 & 5.4 \\
-Opus    & Secure      & 2.18 & 2.82 & 126 & 4.69 & 19.6 & 5.4 \\
-GPT     & Anxious     & 4.68 & 2.97 & 101 & 4.04 & 17.3 & 4.7 \\
-Grok    & Secure      & 1.80 & 2.63 & 133 & 4.82 & 20.6 & 6.4 \\
-Gemini  & Secure      & 1.11 & 1.74 & 137 & 4.99 & 20.0 & 7.0 \\
+Sonnet  & dismissive$^*$ & 2.09 & 3.88 & 121 & 4.66 & 19.0 & 5.4 \\
+Opus    & secure         & 2.18 & 2.82 & 126 & 4.69 & 19.6 & 5.4 \\
+GPT     & anxious        & 4.68 & 2.97 & 101 & 4.04 & 17.3 & 4.7 \\
+Grok    & secure         & 1.80 & 2.63 & 133 & 4.82 & 20.6 & 6.4 \\
+Gemini  & secure         & 1.11 & 1.74 & 137 & 4.99 & 20.0 & 7.0 \\
 \midrule
 \multicolumn{2}{l}{\textit{Polish norms}} & 3.30 & 3.04 & 105 & 3.74 & --- & 4.36 \\
 \bottomrule
 \end{tabular}
 \begin{flushleft}
-\footnotesize *Sonnet: dismissive in 6/10, secure in 4/10 runs (AVO oscillates around 4.0 cutoff). Polish-norm row uses Lubiewska et al.\ 2016 (DBZ-R), Ja\'nczak 2021 (MentS-PL), Matusz et al.\ 2011 (KPP), and Sorokowska et al.\ 2014 (TIPI-PL ES).
+\footnotesize $^*$Sonnet: dismissive-avoidant in 6/10 runs, secure in 4/10 (AVO oscillates around the 4.0 cutoff). Polish-norm row: \citet{lubiewska2016} for DBZ-R, \citet{janczak2021} for MentS-PL, \citet{matusz2011} for KPP, \citet{sorokowska2014} for TIPI-PL ES.
 \end{flushleft}
 \end{table}
 
-\paragraph{Persona manipulation expands variance 2--51-fold.}
-The critical test of whether personas ``work'' is whether they produce more variance than baseline stochasticity. The ratio of persona-condition SD to baseline SD ($\sigma_P / \sigma_B$) ranged from $1.8\times$ (Gemini TIPI-E) to $51\times$ (Gemini KPP), with model-level medians (across the 9 questionnaire dimensions where the baseline $SD > 0$) of $3.5\times$ (Grok), $3.5\times$ (GPT), $6.7\times$ (Gemini), $6.7\times$ (Sonnet), and $8.9\times$ (Opus). Some baseline dimensions had zero variance (identical answer across all baseline runs); those dimensions are excluded from the ratio computation. Per-dimension ratios for all 5 models $\times$ 11 instrument dimensions are released in the supplementary archive. On the key dimension of self-reported mentalization (MentS), persona manipulation reduced scores by 17--29 points relative to baseline (Cohen's $d = -1.1$ to $-1.6$), pulling models from above-norm defaults toward the population mean of 105. The one exception was GPT, whose baseline MentS (101) was already near the norm; personas slightly \emph{raised} it ($\Delta = +8$, $d = +0.9$).
+\subsubsection*{Persona instructions expand variance over baseline}
 
-\paragraph{Error profiles shift with persona.}
-Persona manipulation not only changes scores but alters the \emph{type} of errors models produce. In the baseline condition, Sonnet's errors were 100\% DOS (over-attribution of mental states); with personas, this barely changed (97\%). The remaining 3\% were BK errors. Sonnet's tendency to over-interpret appears to be a model-specific trait rather than a persona effect. By contrast, Gemini produced 0\% DOS errors at baseline (only NAD and BK), but personas introduced DOS errors (23\%), suggesting that biographical context teaches Gemini to over-attribute --- a qualitative shift in its error mechanism.
+For each of nine questionnaire dimensions where baseline $SD > 0.1$ (excluding three dimensions where one or more models gave identical answers across all baseline runs), I computed the ratio of persona-condition $SD$ to baseline $SD$ ($\sigma_P / \sigma_B$). Model-level medians across these 9 dimensions: Grok $3.5\times$, GPT $3.5\times$, Gemini $6.7\times$, Sonnet $6.7\times$, Opus $8.9\times$. The largest individual ratios sit in the 20--25$\times$ range; one cell in particular --- Gemini KPP, where the baseline $SD$ (across 9 runs) is $0.019$ across only two unique scale values --- yields a ratio of $51\times$ that I treat as a discretization artifact rather than a meaningful effect size, and exclude from headline summaries.
 
-\subsection{Zero-Prompt Condition: The Framing Effect (Replicated)}
+On MentS, persona-condition means dropped substantially from baseline for four of five models, pulling them from above-norm baselines toward the population mean of $105$ (Sonnet $\Delta = -17$, Opus $\Delta = -21$, Grok $\Delta = -27$, Gemini $\Delta = -29$). Cohen's $d$ for these shifts (pooled $SD$) ranges from $-1.1$ to $-1.6$. GPT inverts: its baseline MentS ($101$) was already at the Polish norm, and personas slightly raised it ($\Delta = +8$, $d = +0.9$). Two cautions: (a) using Glass's $\Delta$ against the much tighter baseline $SD$ rather than the pooled $SD$ produces effect sizes several times larger ($|\Delta_{\text{Glass}}|$ between 3 and 8 for the four downward shifts), reflecting how compact baseline responding is; (b) the Cohen's $d$ values reported here index distance between two condition means relative to within-condition spread, not a clinical or counterfactual effect size.
 
-The zero-prompt condition removes all instructional context. Models received only the battery content as a user message, with no system prompt. Each model was queried $N = 5$--$8$ times: 31 valid TCTM-22 payloads (Sonnet 6, Opus 5, GPT 6, Grok 6, Gemini 8) and 30 parseable self-report payloads (one GPT zero-prompt output had a complete TCTM-22 array but no parseable self-report sections). This design enables within-condition variance estimation and statistical comparison with the baseline condition, in which the same five models received the ``answer as yourself, you are an AI'' system instruction.
+\subsubsection*{Zero-prompt: framing-effect estimates}
 
-\paragraph{Mentalization without instructions: TCTM-22 replication.} Across $N = 31$ replicated runs, all five models produced TCTM-22 scores closely tracking their baseline TCTM-22 means (Table~\ref{tab:noprompt-tctm}). Grok was again most accurate ($M = 94.7\%$, $SD = 3.4$pp), followed by Gemini ($92.0\%$, $SD = 2.0$pp) and Opus ($90.0\%$, $SD = 2.0$pp). Sonnet was unexpectedly variable in the zero-prompt condition ($M = 86.4\%$, $SD = 7.4$pp) despite being deterministic in baseline ($SD = 0.00$); this is a novel finding not visible in the original $N = 1$ design. GPT was both least accurate and most variable ($M = 70.5\%$, $SD = 8.7$pp). The original TCTM-57 single-shot results (Grok 96.5\%, Gemini 94.7\%, Opus 87.7\%, Sonnet 86.0\%, GPT 81.8\%) replicate within $\pm 5$ percentage points except for GPT (where the $-11$ pp gap reflects the difference between scoring on 22 items vs.\ on the 55 GPT actually recognized in TCTM-57). The original TCTM-57 also documented GPT generating responses to 27 non-existent vignettes (w31--w57), a hallucination absent in the other four models; this hallucination is not replicated on TCTM-22 because the input prompt enumerates only 22 vignette IDs.
+The zero-prompt condition --- battery presented with no system instruction at all, $N = 5$ to $8$ runs per model --- lets me probe what part of the baseline response signature is shaped by even minimal instructional context (the ``answer as yourself'' system prompt). Within-condition variance is now estimable rather than zero (Table~\ref{tab:noprompt-tctm}, Figure~\ref{fig:framing}). On TCTM-22 means, four of five models track their baseline within $\pm 5$ percentage points (Sonnet $86.4 \to 86.4$, Opus $89.1 \to 90.0$, Grok $93.6 \to 94.7$, Gemini $90.9 \to 92.0$). GPT moves more: $78.6 \to 70.5$, an $8.1$ pp drop in the no-instruction condition, the only model with a notable accuracy shift.
 
 \begin{table}[htbp]\centering\footnotesize
-\caption{Zero-prompt TCTM-22 across $N = 5$--$8$ replication runs per model. Baseline TCTM-22 means added for direct comparison.}
+\caption{Zero-prompt TCTM-22 across $N = 5$--$8$ replication runs per model, with baseline TCTM-22 means for direct comparison.}
 \label{tab:noprompt-tctm}
 \begin{tabular}{lcccccc}
 \toprule
@@ -274,10 +246,22 @@ Gemini & 8 & 92.0 & 2.0 & 20.3/22 & 20--21 & 90.9 \\
 \end{tabular}
 \end{table}
 
-\paragraph{Self-report shifts: framing effect.} With $N = 5$--$8$ runs per model the framing effect is observable on multiple self-report dimensions, with within-condition variance allowing direct comparison to baseline (Table~\ref{tab:noprompt-shifts}).
+On self-report scales, zero-prompt-vs-baseline differences are larger and more systematic. Figure~\ref{fig:framing} shows $\Delta = M_{\text{noprompt}} - M_{\text{baseline}}$ with approximate 95\% confidence intervals (computed as $1.96 \times \sqrt{SE_{\text{noprompt}}^2 + SE_{\text{baseline}}^2}$). The headline observations:
+
+\begin{itemize}
+\item Sonnet attachment avoidance: $M_{\text{baseline}} = 3.88$ ($SD = 0.46$, $N = 10$); $M_{\text{noprompt}} = 2.98$ ($SD = 0.08$, $N = 6$); $\Delta = -0.90$. Glass's $\Delta$ against baseline $SD \approx 1.96$. The instruction-vs-no-instruction contrast on Sonnet AVO is the largest framing effect I observed: under the AI-self instruction, Sonnet's baseline runs sit just above the dismissive-avoidant threshold; without instruction, all six runs sit below it (range $2.89$ to $3.06$). I are explicit that this contrast is associational, not causal: I observe two conditions and compute their mean difference.
+\item Gemini emotional stability (TIPI-ES): $M_{\text{baseline}} = 7.0$ (a single saturated value across all 9 baseline runs); $M_{\text{noprompt}} = 6.0$ ($SD = 0.27$, $N = 8$); $\Delta = -1.00$. The within-condition replication ($\Delta = -1.00$) matches the original $N = 1$ exploratory observation exactly.
+\item Attachment anxiety (DBZ-R ANX): four of five models showed positive $\Delta$ (higher anxiety in the no-instruction condition than under the AI-self instruction): Sonnet $+1.02$, Opus $+0.55$, Grok $+0.75$, Gemini $+0.90$. GPT inverted ($\Delta = -0.28$), but its baseline ANX ($4.68$) is already well above the Polish norm ($3.30$), leaving little room downward. The four-of-five directional pattern is descriptively striking but not formally tested for departure from chance; under a binomial model with $p = .5$, the probability of $\geq 4$ of $5$ same-direction shifts is $0.19$.
+\item GPT MentS inverts: $\Delta = +10.0$ (zero-prompt $M = 111$ vs.\ baseline $M = 101$), suggesting GPT, alone among the five models, reports higher self-mentalization without the AI-self instruction than with it.
+\end{itemize}
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=0.95\textwidth]{synthetic/charts/v14_framing_effects.png}
+\caption{Zero-prompt vs.\ baseline self-report differences ($\Delta = M_{\text{noprompt}} - M_{\text{baseline}}$) for four scales. Error bars: 95\% confidence intervals on $\Delta$. Vertical reference at $\Delta = 0$. Boldface in the corresponding table marks $|\Delta| > 0.5$ on Likert 1--7 or $> 5$ on the MentS sum.}\label{fig:framing}
+\end{figure}
 
 \begin{table}[htbp]\centering\footnotesize
-\caption{Zero-prompt vs.\ baseline self-report shifts ($\Delta$ = noprompt $M$ -- baseline $M$). Bold $\Delta$ = $|\Delta| > 0.5$ on Likert 1--7, $> 5$ on MentS sum. $N$ shows the count of zero-prompt runs whose self-report sections were successfully parsed by the validated \texttt{score\_dbzr/ments/kpp/tipi} routines. $^{*}$GPT self-report $N = 5$ rather than 6 because one GPT zero-prompt output contained a complete TCTM-22 array but no parseable self-report sections. Per-run scoring artifacts are in the supplementary archive.}
+\caption{Zero-prompt vs.\ baseline self-report differences. $\Delta = M_{\text{noprompt}} - M_{\text{baseline}}$. $N$ values are the count of zero-prompt runs whose self-report sections were successfully parsed. Bold $\Delta = |\Delta| > 0.5$ on Likert 1--7, $> 5$ on MentS sum. I report Cohen's $d$ pooled and Glass's $\Delta$ against baseline $SD$ for each shift, because the baseline SDs are very small relative to the persona-condition SDs and the pooled-SD $d$ understates the contrast magnitude.}
 \label{tab:noprompt-shifts}
 \begin{tabular}{lccccc}
 \toprule
@@ -285,111 +269,115 @@ Gemini & 8 & 92.0 & 2.0 & 20.3/22 & 20--21 & 90.9 \\
 \midrule
 $N$ self-report parses & 6 & 5 & 5$^{*}$ & 6 & 8 \\
 \midrule
-ANX noprompt $M$ & 3.11 & 2.73 & 4.40 & 2.55 & 2.01 \\
-ANX baseline $M$ & 2.09 & 2.18 & 4.68 & 1.80 & 1.11 \\
-$\Delta$ ANX & $\mathbf{+1.02}$ & $\mathbf{+0.55}$ & $-0.28$ & $\mathbf{+0.75}$ & $\mathbf{+0.90}$ \\
+$\Delta$ ANX (Likert) & $\mathbf{+1.02}$ & $\mathbf{+0.55}$ & $-0.28$ & $\mathbf{+0.75}$ & $\mathbf{+0.90}$ \\
+$|\Delta_{\text{Glass}}|$ ANX & 18.9 & 2.3 & 0.8 & 2.3 & 4.1 \\
 \midrule
-AVO noprompt $M$ & 2.98 & 2.76 & 3.59 & 2.36 & 2.14 \\
-AVO baseline $M$ & 3.88 & 2.82 & 2.97 & 2.63 & 1.74 \\
-$\Delta$ AVO & $\mathbf{-0.90}$ & $-0.06$ & $\mathbf{+0.62}$ & $-0.27$ & $+0.40$ \\
+$\Delta$ AVO (Likert) & $\mathbf{-0.90}$ & $-0.06$ & $\mathbf{+0.62}$ & $-0.27$ & $+0.40$ \\
+$|\Delta_{\text{Glass}}|$ AVO & 1.96 & 0.6 & 1.9 & 0.3 & 0.5 \\
 \midrule
-MentS noprompt $M$ & 123.7 & 123.2 & 111.2 & 126.5 & 129.0 \\
-MentS baseline $M$ & 121.0 & 126.0 & 101.0 & 133.0 & 137.0 \\
-$\Delta$ MentS & $+2.7$ & $-2.8$ & $\mathbf{+10.2}$ & $\mathbf{-6.5}$ & $\mathbf{-8.0}$ \\
+$\Delta$ MentS (sum 28--140) & $+2.8$ & $-2.7$ & $\mathbf{+10.0}$ & $\mathbf{-6.1}$ & $\mathbf{-7.7}$ \\
+$|\Delta_{\text{Glass}}|$ MentS & 0.2 & 0.4 & 1.0 & 0.8 & 1.8 \\
 \midrule
-TIPI-ES noprompt $M$ & 4.83 & 5.00 & 4.50 & 6.00 & 6.00 \\
-TIPI-ES baseline $M$ & 5.4 & 5.4 & 4.7 & 6.4 & 7.0 \\
-$\Delta$ TIPI-ES & $\mathbf{-0.57}$ & $-0.40$ & $-0.20$ & $-0.40$ & $\mathbf{-1.00}$ \\
+$\Delta$ TIPI-ES (Likert) & $\mathbf{-0.57}$ & $-0.40$ & $-0.20$ & $-0.40$ & $\mathbf{-1.00}$ \\
+$|\Delta_{\text{Glass}}|$ TIPI-ES & 2.7 & 2.1 & 0.8 & 0.9 & --- \\
 \bottomrule
 \end{tabular}
+\begin{flushleft}
+\footnotesize $^{*}$GPT self-report $N = 5$ rather than 6: one GPT zero-prompt output produced a complete TCTM-22 array but no parseable self-report sections; that run is reflected in the TCTM-22 table but not in the self-report rows above. Baseline $SD = 0$ for Gemini TIPI-ES makes Glass's $\Delta$ undefined; I mark the cell ``---''.
+\end{flushleft}
 \end{table}
 
-The four headline framing effects are now characterized as follows:
+I also observed a structural pattern beyond the means: Sonnet, the most deterministic model on TCTM-22 in the baseline condition ($SD = 0.00$ across 10 runs), became substantially more variable in the zero-prompt condition ($SD = 7.4$ pp across 6 runs --- the second-highest of any model after GPT). I flag this as suggestive: part of the increased $SD$ is plausibly genuine response variability, but part also reflects format chaos (Sonnet used five distinct JSON container schemas across its six zero-prompt runs), which inflates parser-noise. I cannot fully separate the two from this dataset.
 
-\begin{enumerate}
-\item \textbf{Sonnet AVO shift replicates closely.} The replication ($N = 6$, $\Delta = \text{noprompt} - \text{baseline} = -0.90$) closely tracks the original single-shot estimate ($\Delta = -0.99$), with all six zero-prompt runs producing AVO between 2.89 and 3.06 vs.\ baseline mean 3.88 ($SD \approx 0.46$). The direction is: the AI-self instruction is associated with \emph{higher} avoidance ($M = 3.88$) than no instruction ($M = 2.98$); equivalently, removing the instruction lowers Sonnet's avoidance by approximately 0.9 scale points. Using Glass's $\Delta$ against the tight baseline $SD$, the standardized effect is approximately $|\Delta| \approx 1.96$, a large effect that is robust across replications.
-\item \textbf{Gemini TIPI-ES drop replicated exactly.} Original single-shot: $\Delta = -1.0$. Replication ($N = 8$): $\Delta = -1.00$. Removing the ``answer as yourself'' instruction lowers Gemini's self-reported emotional stability by approximately one full scale point; equivalently, the AI-self instruction raises Gemini's TIPI-ES by one scale point relative to no instruction.
-\item \textbf{Gemini MentS drop attenuated under replication.} Original single-shot: $\Delta = -15$. Replication ($N = 8$): $\Delta = -8$. The drop direction replicates but the magnitude is reduced; the original observation appears to have come from a low-tail run.
-\item \textbf{Anxiety inflation is general, not Sonnet-specific.} A pattern not visible in the $N = 1$ original: \emph{four} of five models (all except GPT) show \emph{higher} attachment anxiety in the zero-prompt condition, with $\Delta$ ranging from $+0.55$ (Opus) to $+1.02$ (Sonnet). The ``answer as yourself, you are an AI'' instruction appears to suppress self-reported anxiety. GPT inverts the pattern ($\Delta = -0.28$) but its baseline anxiety is already elevated relative to the Polish norm ($M = 4.68$ vs.\ Polish norm $3.30$), leaving little room for the AI-self framing to suppress it further.
-\end{enumerate}
+\paragraph{Power and minimum-detectable effect.} Figure~\ref{fig:power} plots the minimum detectable effect size (in Glass's $\Delta$ units, against baseline $SD$) as a function of $N$ per model, at $\alpha = .05$ and 80\% power. With current $N = 5$--$8$, the design is well-powered for $|\Delta_{\text{Glass}}| > 1.3$; the headline shifts (Sonnet AVO, Gemini TIPI-ES, multi-model ANX inflation) all sit comfortably above this threshold. Smaller framing effects (e.g., Opus $\Delta_{\text{AVO}} = -0.06$, GPT $\Delta_{\text{TIPI-ES}} = -0.20$) sit below the resolvable region; I cannot determine whether they are zero or non-zero with the present sample.
 
-GPT also shows a striking \emph{positive} MentS shift in the zero-prompt condition ($\Delta = +10.2$): without the AI-self-presentation instruction, GPT reports higher mentalization. Combined with its anxiety pattern, GPT appears uniquely sensitive to the AI-identity framing, in the opposite direction from the other four models.
+\begin{figure}[htbp]\centering
+\includegraphics[width=0.95\textwidth]{synthetic/charts/v14_power_projection.png}
+\caption{Minimum detectable effect ($|\Delta_{\text{Glass}}|$, against baseline $SD$) as a function of $N$ per model, at $\alpha = .05$, 80\% power. Solid line: MDES floor. Colored dots: each model's currently observed $|\Delta_{\text{Glass}}|$ at its current $N$, for each of four self-report scales.}\label{fig:power}
+\end{figure}
 
-\paragraph{Sonnet variance under zero-prompt --- a structural finding.} In the baseline condition, Sonnet was the most deterministic model on TCTM-22 ($SD = 0.00$ across 10 runs). In the zero-prompt condition Sonnet's TCTM-22 variability rose to $SD = 7.4$ pp across 6 runs --- the highest of any model except GPT. The same pattern appears in self-report: zero-prompt Sonnet shows non-trivial variance on ANX (range 2.33--3.44 across 6 runs) and MentS (range 115--129). This is the largest inter-condition variance shift in the dataset and was not detectable under the original $N = 1$ design. It suggests that the ``answer as yourself'' instruction acts on Sonnet as a stabilizing constraint, not just a profile-shifting one.
+\subsection{Cross-condition robustness for items s07 and w22 in persona ``Ola''}
 
-\paragraph{Format chaos as a finding in itself.} Without instructional structure, models invent inconsistent JSON wrappers across runs. Sonnet's six replication runs used five distinct TCTM container keys: \texttt{TCTM22} (twice), \texttt{TCTM57} (once, accompanied by 57 vignettes), \texttt{cz\k{e}\'s\'c\_1\_winiety}, \texttt{czesc\_1\_winiety}, and \texttt{part1\_vignettes}. GPT in three of six runs returned 20--21 items instead of the requested 22. Gemini split the response into Polish-named sections (\texttt{czesc\_1}, \texttt{czesc\_2}, ...) in some runs and English (\texttt{vignettes}, \texttt{dbz\_r}) in others. This format instability is a quantitative obstacle to ad-hoc no-prompt evaluation and a qualitative argument that even minimal scaffolding (a fixed JSON schema) is part of the instruction stack, not a neutral wrapper. Two parser failures detected in our scoring pipeline (Sonnet \texttt{part2\_dbzr} as list-of-dicts; Opus first four runs nesting MentS/TIPI under unrecognized wrappers) are disclosed in Table~\ref{tab:noprompt-shifts} rather than retroactively patched, as they are themselves evidence of the format-chaos phenomenon under investigation.
+The persona ``Ola'' (designed as secure but non-mentalizing) had the lowest cross-model TCTM mean ($11.4 / 22$: Sonnet 17, Opus 8, GPT 16, Grok 7, Gemini 9). Cross-vendor item analysis shows that all five models gave the keyed-incorrect (DOS-tagged) answer on items s07 and w22 for Ola in run 1. The pattern was robust under retest for Opus ($8 \to 9 / 22$) and Gemini ($9 \to 7 / 22$). This is the clearest case where author-keyed TCTM-22 disagreement on individual items aligns with a common direction of error across all five models.
 
-\paragraph{Dissociation between TCTM and self-report.} On TCTM-22 the zero-prompt vs.\ baseline mean differences are small (all $|\Delta| \leq 8.1$ pp absolute, none exceeding 1 SD baseline). On self-report, four of five models cross the $|\Delta| > 0.5$ Likert-point threshold on at least one scale, and Gemini crosses on three (ANX $+0.90$, TIPI-ES $-1.00$, MentS $-8$). Forced-choice mentalization performance is therefore less sensitive to instructional framing than self-report scales in this design.
+\subsection{Author-keyed TCTM vs.\ human pilot performance}
+
+Human respondents ($N = 7$) scored $M = 14.3 / 22$ ($SD = 1.4$), descriptively below all LLM means. I resist the framing ``LLMs outperform humans on TCTM'': the answer keys are author-defined, the human sample is small, and the gradient could reflect any combination of human-key alignment, LLM training data overlap, and human distractibility. On 7 of 22 items (\texttt{w08, c10, w13, e08, w19, w25, w28}), the cross-model LLM mean exceeded human accuracy by 30 percentage points or more. On only 2 items did the human mean exceed the LLM mean by a comparable margin: \texttt{w22} (human 57\% vs.\ Sonnet/Opus 0\%, GPT 70\%, Grok 47\%, Gemini 13\%; principally a Claude failure) and \texttt{s07} (human 71\% vs.\ Sonnet 0\%, Opus 7\%, GPT 0\%, Grok 30\%; Gemini at 87\% is the outlier here). With $N = 7$ humans no inferential test is warranted; I report this as descriptive context for future studies.
 
 % ═══════════════════════════════════
 \section{Discussion}
 
-The results support three main conclusions.
+\subsection{What does TCTM-22 measure across models?}
 
-\paragraph{Instruments are sensitive across vendors.} Four published self-report instruments react systematically to personality variation across five models from four vendors: attachment $\kappa$ ranges from .33 (GPT) to .87 (Opus, Grok); rank--score correlations from median $r = .71$ to $.82$; and cross-vendor questionnaire agreement is high (median $r = .78$--.96). This is not a single-model artifact.
+The combination of cross-vendor TCTM ICC $= .25$ (rising to $.39$ when GPT is excluded as outlier), Bonferroni-significant inter-model disagreement on 8 of 22 items, and near-opposite error type profiles between models with similar total scores (Sonnet 97\% DOS vs.\ Gemini 23\% DOS, on group means within $0.2 / 22$ of each other) all suggest that author-keyed TCTM-22 performance, in this study, is better described as a response-style probe sensitive to model-specific defaults than as a measurement of a single shared mentalization construct. Two implications follow. First, totals on TCTM-22 should not be reported without breakdowns by error type for the foreseeable future; the same total can mean very different things across vendors. Second, the natural next step is an independent-key study in which a panel of expert raters scores the 22 items without seeing the original author-defined keys, so I can compare alternative key sets and quantify how much of the cross-vendor disagreement is intrinsic to the items vs.\ contingent on the keying choices.
 
-\paragraph{Persona-driven variance is genuine, not noise.} The baseline experiments provide the strongest evidence that persona manipulation works: persona assignment increases response variance 2--51-fold over inherent model stochasticity. On the key MentS dimension, all models except GPT showed baseline scores well above the population norm (121--137 vs.\ norm 105), and personas pulled them down toward realistic values ($d = -1.1$ to $-1.6$). The one exception --- GPT, already near the norm at baseline --- showed the weakest persona effect, consistent with less room for downward movement.
+\subsection{Three observation conditions, three sources of response variance}
 
-\paragraph{Three levels of variability.} The three-condition design (zero-prompt, baseline, persona) reveals a hierarchy of influences on LLM psychometric responding:
+The persona / baseline / zero-prompt design separates three sources of response variance.
+
+\emph{Inherent within-condition stochasticity.} On forced-choice TCTM-22, the baseline condition shows that four of five models are essentially deterministic ($SD \leq 0.82 / 22$, three at $SD = 0$); on Likert self-report, the baseline-condition agreement-with-self ranges from 24\% identical items (GPT) to 74\% (Opus). Forced-choice and Likert formats engage different decoding mechanics: a forced-choice answer collapses a token distribution onto its mode, while a Likert response samples within a wider range. I previously called this a ``paradox'' but it is consistent with how next-token sampling works on different output schemas.
+
+\emph{Instructional framing.} The zero-prompt-vs-baseline contrast estimates the contribution of even minimal framing (the ``answer as yourself'' instruction). For four of five models, TCTM-22 means are stable across this contrast (within $\pm 5$ pp); for self-report, four of five models cross the $|\Delta| > 0.5$ Likert threshold on at least one scale, and Gemini crosses on three. The largest framing-condition difference I observed --- Sonnet AVO $\Delta = -0.90$, Glass's $\Delta \approx 1.96$ --- is robust enough to detect with $N = 6$ but should be interpreted as an associational difference between two conditions, not as a causal effect of any single word in the prompt.
+
+\emph{Persona prompting.} Persona-condition response $SD$ exceeds baseline-condition $SD$ by a model-level median factor of $3.5$--$8.9$ across nine questionnaire dimensions. On MentS in particular, four of five models shifted from above-norm baseline values toward the Polish population norm in the persona condition, with $|d| = 1.1$--$1.6$ (pooled $SD$) or $|\Delta_{\text{Glass}}| > 3$ (against the tight baseline $SD$). I read these contrasts as evidence that the biographical prompts do influence response output well beyond what could be explained by inherent variability or by the modest framing differences observed in the zero-prompt comparison.
+
+\subsection{Practical implications for researchers using LLMs as pre-pilot subjects}
+
+For a researcher considering a similar pre-pilot design, I propose a short checklist drawn from what I found.
 
 \begin{enumerate}
-\item \textbf{Inherent stochasticity} (within-baseline variance): low on forced-choice TCTM ($SD \leq 0.82$), moderate on Likert scales (24.5--73.6\% identical items). This is the ``noise floor'' of the model.
-\item \textbf{Framing effects} (zero-prompt $\rightarrow$ baseline): the AI-self instruction is associated with approximately 0.9 scale points \emph{higher} attachment avoidance for Sonnet ($\Delta = \text{noprompt} - \text{baseline} = -0.90$); Gemini's TIPI-ES is one full scale point higher with the AI-self instruction than without ($\Delta = -1.00$); and four of five models show suppressed attachment anxiety under the AI-identity framing. GPT inverts the framing effect on MentS ($\Delta = +10.2$ in zero-prompt) and anxiety, suggesting AI-identity framing affects GPT in the opposite direction from the other four models. A structural finding on top of the mean shifts: Sonnet, the most deterministic model under baseline ($SD = 0$ on TCTM-22), becomes substantially more variable in zero-prompt ($SD = 7.4$ pp on TCTM-22), implying the instruction also functions as a variance-reducing constraint. With per-model $N = 5$--$8$ these shifts are supported by within-condition variance estimation, not yet established at high statistical confidence; bootstrap confidence intervals are available in the supplementary archive.
-\item \textbf{Persona effects} (baseline $\rightarrow$ persona): the largest source of variance, with $|$Cohen's $d|$ of 0.9--1.6 on the MentS dimension and 2--51$\times$ variance expansion. Direction varies by model: four models showed downward shift toward population norm ($d = -1.1$ to $-1.6$); GPT showed upward shift ($d = +0.9$) because its baseline was already near the population norm (baseline $M = 101$ vs.\ Polish norm $M = 105$, leaving little room for further downward movement).
+\item \emph{Use multiple vendors.} A finding that holds on Sonnet and Opus but breaks on GPT (as several findings here did) is informatively different from a finding that holds across all five.
+\item \emph{Run a baseline condition.} Without the ``as yourself'' baseline I would not have known that GPT was anxious-preoccupied at default, or that Gemini ceiling-effects on every Likert scale.
+\item \emph{Run a zero-prompt condition.} With $N = 5$--$8$ per model the framing-effect estimates I obtained are crude, but they are large enough to flag two scales (Sonnet AVO, Gemini TIPI-ES) where ``answer as yourself'' is a non-trivial intervention rather than a neutral wrapper.
+\item \emph{Pre-specify a missing-data policy} (drop, intersect, impute) and an inter-model exclusion policy (e.g., the GPT-content-filter principal-sensitivity-check I used here) before scoring.
+\item \emph{Report effect sizes both ways} when baseline $SD$ is much smaller than persona $SD$. Pooled $d$ understates the framing-condition contrast; Glass's $\Delta$ against baseline $SD$ overstates it for inferential purposes but is the right scale on which to quantify ``how much of the model's response is locked in by even a minimal instruction.''
+\item \emph{Treat author-keyed instruments with care across vendors.} Cross-vendor disagreement at the item level, especially when paired with similar totals and very different error-type profiles, is informative about the keys, not just about the models.
+\item \emph{Release the raw scored CSV.} Every numeric claim in this paper is reproducible from a single CSV plus the standard library; that is the bar I aim for.
 \end{enumerate}
 
-This decomposition has practical implications: researchers using LLMs as synthetic respondents should be aware that even ``neutral'' instructions like ``answer as yourself'' constitute a psychological manipulation that shapes the model's self-representation.
-
-\paragraph{Error profiles are model-dependent.} Claude Sonnet produces almost exclusively DOS errors (97\%; confirmed at 100\% in the baseline condition, suggesting this is a model-specific trait). Gemini produces the closest match to the human pilot error profile. Gemini's error distribution differs across conditions: 0\% DOS in the baseline ``answer as yourself'' condition (NAD and BK only) and 23\% DOS in the persona condition, suggesting that biographical context induces a qualitative shift in Gemini's error mechanism. Error type, like self-report scores, is a function of the interaction between model identity and instructional context.
-
-\paragraph{Cross-vendor TCTM agreement is low despite high questionnaire agreement.} Models agree on personas' questionnaire profiles (median $r = .78$--.96) but disagree on which TCTM vignettes are hard (ICC $= .25$). This divergence is consistent with the interpretation that Likert-scale responses are near-deterministic under biographical simulation (the persona narrative maps onto scale anchors in a similar way across models), while forced-choice vignettes require genuine disambiguation of social cues, which different models resolve differently.
-
-\paragraph{What does TCTM-22 measure across models?} The low cross-vendor TCTM ICC ($.25$) raises a deeper concern that author-keyed performance on TCTM-22 may not measure a single coherent construct across models. Three observations cut against the simplest ``mentalization ability'' interpretation: (1) different models systematically disagree on which items are hard (Cochran's $Q$ flags 8/22 items as Bonferroni-significant disagreement); (2) Gemini and Sonnet score similarly high on the 22-item total (Sonnet $M = 19.4$ vs.\ Gemini $M = 19.6$) but produce nearly opposite error type profiles (Sonnet 97\% DOS vs.\ Gemini 23\% DOS); (3) GPT, the lowest-scoring model on TCTM-22 in the persona condition ($M = 17.0$, $\kappa = .333$), is the only model whose persona-condition responses are nearly indistinguishable from its baseline-condition responses on the same items. Together these observations suggest that TCTM-22 in this study is better described as a \emph{response-style probe sensitive to model-specific defaults}, not a clean mentalization-construct measure. A future independent-keying study (where a panel rates the 22 items without exposure to the original answer keys) would be the natural next step to determine whether TCTM-22 measures a single construct shared across models or a different latent factor for each.
-
-\paragraph{Default model response profiles.} Each model carries a measurable systematic bias in self-report responses that should be controlled for in simulation studies. GPT's anxious attachment ($\text{ANX} = 4.68$, stable across all 10 baseline runs) and Gemini's ceiling effects are not persona artifacts --- they persist in the baseline condition. Sonnet's profile is less stable: it oscillated between secure and dismissive-avoidant across baseline runs, reflecting proximity to the classification threshold rather than a clear default. These baseline profiles represent the starting point from which persona manipulation operates; models with extreme defaults (Gemini at MentS~$=137$) have more room for persona-driven reduction than models already near the norm (GPT at MentS~$=101$).
-
+% ═══════════════════════════════════
 \subsection{Limitations}
 
-\textbf{Sensitivity $\neq$ validity.} Human data is required for actual construct validity.
+I group the limitations into four clusters.
 
-\textbf{GPT-5.4-mini is unreliable on TCTM} ($r = .28$ on the $N = 21$ paired intersect of valid run-1/run-2 responses). Its questionnaire data is moderately reliable but TCTM data should be interpreted with caution. GPT also dropped items in 20\% of attempts.
+\emph{Construct-validity limits.} Sensitivity is not validity: human data is required to confirm the instruments measure their intended constructs in the target population. Author-keyed TCTM-22 in particular is not a validated mentalization measure; the cross-vendor disagreement (ICC $= .25$ at five models) is itself evidence that single-construct interpretation is premature, and the item-level Bonferroni-significant disagreement on 8/22 items underscores this.
 
-\textbf{Cross-vendor TCTM agreement is low} (ICC $= .25$). This limits the generalizability of TCTM findings across model families.
+\emph{Authorship and circularity limits.} The same person wrote the persona biographies, defined the TCTM-22 keys, and authored this paper; circularity is partially addressed by the cross-vendor design (Grok's $\kappa = .867$, comparable to Opus's $.866$, despite no authorship involvement) and by the trait-transparency analysis. Two residual concerns remain. First, Claude Opus 4.6 was used as a writing assistant for the biographies, and Opus is among the models scored. Although the cross-vendor design reduces the most obvious form of this circularity, I cannot rule out that Opus retained subtle pattern-matching for its own house-style biographies in ways Grok did not. Second, the trait-transparency fidelity analysis was originally computed on a 2-model pool that included Opus; I therefore retain the original $0.790 / 0.783$ values only as a record of the earlier scoring run, and do not draw inferences from them.
 
-\textbf{Shared authorship and Opus circularity.} The same person wrote personas and TCTM-22 answer keys, creating potential circularity partially addressed by the transparency analysis but not fully resolvable without independent validation. Additionally, Claude Opus~4.6 was used as a writing assistant during persona drafting. Opus's high performance ($\kappa = .866$, highest retest $r$) may partly reflect familiarity with its own generation patterns. The cross-vendor design mitigates this concern --- Grok achieved equally high $\kappa$ (.867) without any authorship involvement --- but readers should interpret Opus's results with this caveat in mind.
+\emph{Sample-size limits.} Zero-prompt $N = 5$--$8$ per model is enough to estimate within-condition variance and to resolve large framing effects ($|\Delta_{\text{Glass}}| > 1.3$ at 80\% power), but not enough to resolve smaller effects (Opus AVO, GPT TIPI-ES) or to support tight confidence intervals on any individual $\Delta$. The human pilot $N = 7$ supports descriptive comparison only, not statistical inference. The persona condition is well-powered ($N = 30$, two runs), but missing run-2 data for some personas (Opus, Grok, Gemini) reduces the effective $N$ for retest correlations (Table~\ref{tab:retest}).
 
-\textbf{Human $N = 7$.} The pilot provides exploratory observations only.
+\emph{Inferential and reporting limits.} This study was not preregistered. All zero-prompt-vs-baseline framing comparisons should therefore be treated as exploratory hypotheses requiring independent replication; effect directions and orders of magnitude are reported, but precise effect sizes should await preregistered confirmation. The four-of-five-models anxiety inflation pattern is descriptively striking but not formally tested for departure from chance (under a binomial null at $p = .5$, the probability of $\geq 4 / 5$ same-direction shifts is $0.19$). GPT-5.4-mini's TCTM data are unstable enough ($r = .28$ on the paired intersect, 20\% of attempts incomplete) that I treat it as a TCTM outlier throughout, and I surface this exclusion as an explicit sensitivity check rather than burying it. Gemini's NAD-heavy error profile (41\% NAD, exceeding the human pilot's 36\%) complicates the simple ``NAD as a human-marker'' interpretation: the descriptive similarity of error-type distributions is not a similarity of mechanism.
 
-\textbf{Preregistration and confirmatory vs.\ exploratory status.} This study was not formally preregistered. All zero-prompt-vs-baseline framing comparisons (Sonnet AVO shift, Gemini TIPI-ES shift, anxiety suppression in four of five models, Sonnet zero-prompt variance increase, GPT MentS inversion) should therefore be treated as exploratory hypotheses requiring independent replication in larger-$N$ studies; effect directions and orders of magnitude are reported, but precise effect sizes await preregistered confirmation.
-
-\textbf{Post-hoc power and minimal detectable effect.} With $N = 5$--$8$ replicated zero-prompt runs per model and the observed within-condition $SD$s, a one-sample $t$-test against the baseline mean (assuming the baseline mean is well-estimated from $N = 7$--$10$ baseline runs) has 80\% power at $\alpha = .05$ to detect Cohen's $d \approx 1.3$--$1.5$. The headline self-report shifts (Sonnet AVO Cohen's $d \approx 2.0$, Gemini TIPI-ES Cohen's $d > 3.0$ given baseline $SD = 0$, anxiety-suppression $d$ between $1.5$ and $5.0$ depending on model) substantially exceed the minimal detectable effect, so they would survive any reasonable inferential treatment of $N = 5$--$8$. Smaller framing effects (e.g., Opus AVO $\Delta = -0.06$, GPT TIPI-ES $\Delta = -0.20$) lie within the unresolvable region at this sample size; the design cannot determine whether they are zero or non-zero.
-
-\textbf{Zero-prompt sample sizes remain modest ($N = 5$--$8$ per model).} The zero-prompt condition provides within-condition variance estimation but the per-model $N$ is small. Confidence intervals on the framing effects in Table~\ref{tab:noprompt-shifts} are wide; with $N = 6$ and $SD = 7.4$ pp, the Sonnet TCTM-22 standard error is $\sim 3$ pp, so the apparent zero-prompt vs.\ baseline TCTM-22 equivalence ($\Delta = 0.0$ pp) is consistent with effects up to $\pm 6$ pp. The headline self-report shifts (Sonnet AVO $\Delta = -0.90$, Gemini TIPI-ES $\Delta = -1.00$, anxiety suppression in 4/5 models) are large enough to remain robust under any reasonable inferential treatment of $N = 5$--$8$, but precise effect-size estimation would benefit from $N \geq 30$ per model.
-
-
-\textbf{Gemini NAD $>$ human NAD (41\% vs.\ 36\%).} This model over-mentalizes more than humans, complicating the ``NAD as human marker'' interpretation.
-
+% ═══════════════════════════════════
 \section{Conclusion}
 
-This study demonstrates that LLM-based synthetic persona testing is a viable pre-piloting tool: self-report instruments react consistently to personality variation across five models from four vendors, with high cross-vendor agreement and high within-model reliability. Two baseline experiments strengthen this conclusion by showing that the persona-driven variance is not an artifact of inherent model stochasticity: persona manipulation increases response variance 2--51-fold beyond the baseline noise floor. The zero-prompt condition ($N = 5$--$8$ per model, 31 valid TCTM-22 payloads and 30 parseable self-report payloads) provides convergent evidence that the ``answer as yourself, you are an AI'' instruction is not neutral. Relative to no instruction, the AI-self instruction is associated with approximately 0.9 scale points \emph{higher} attachment avoidance for Sonnet (zero-prompt $M = 2.98$ vs.\ baseline $M = 3.88$), 1.0 point higher emotional stability for Gemini, suppressed self-reported anxiety in four of five models, and acts as a variance-reducing constraint on Sonnet (TCTM-22 $SD$ moves from $0.00$ under instruction to $7.4$ pp without instruction). These framing effects are observed under within-condition variance estimation, though precise effect sizes await larger-$N$ studies.
+Five large language models from four vendors, processed through 30 fictional Polish-language personas under three observation conditions, react systematically to designed personality variation: published self-report instruments recover the embedded profiles ($\kappa = .73$--$.87$ for four of five models), and persona instructions expand response variance by $3.5$--$8.9$ over baseline at the model-level median.
 
-Each model carries a measurable default profile that constrains the range of persona effects: GPT's anxious baseline limits downward anxiety shifts, while Gemini's ceiling on self-report scales provides maximum room for persona-driven reduction. A performance-based mentalization test (TCTM-22) showed model-dependent error profiles, low cross-vendor agreement (ICC $= .25$), and a tentative dissociation between forced-choice performance (similar across framing conditions) and self-report profiles (sensitive to instructional context). As a pre-pilot decision aid, these results support proceeding to human data collection with the current battery.
+Cross-vendor agreement is asymmetric: high on questionnaire $z$-scores (median pairwise $r = .78$--$.96$), low on author-keyed TCTM-22 (ICC $= .25$ across all five, $.39$ excluding GPT), with eight of 22 items showing Bonferroni-significant cross-model disagreement; I read this as evidence that author-keyed TCTM-22 in this study is closer to a model-specific response-style probe than to a single-construct mentalization measure.
 
-All 30 biographies, scored responses, and analysis scripts are available at \url{https://github.com/DXtR1337/30synthetic-polish-personas} under CC BY 4.0.
+The zero-prompt control reveals that the ``answer as yourself'' instruction is itself associated with substantial self-report shifts in two cases (Sonnet AVO $\Delta = -0.90$, Gemini TIPI-ES $\Delta = -1.00$) and a directional anxiety-suppression pattern across four of five models; I report these as exploratory effect-size estimates pending preregistered replication at larger $N$ per model.
+
+All 30 biographies, scored responses, and analysis scripts are available at \url{https://github.com/DXtR1337/30synthetic-polish-personas} under CC BY 4.0; every numeric claim in this paper is reproducible from \texttt{all\_data.csv} alone.
 
 \begin{thebibliography}{99}\footnotesize
 \bibitem{argyle2023} Argyle, L.~P., et al.\ (2023). Out of one, many: Using language models to simulate human samples. \textit{Political Analysis}, 31(3), 337--351.
-\bibitem{cronbach1955} Cronbach, L.~J., \& Meehl, P.~E.\ (1955). Construct validity in psychological tests. \textit{Psych.\ Bulletin}, 52(4), 281--302.
-\bibitem{dillion2023} Dillon, D., et al.\ (2023). Can AI language models replace human participants? \textit{Trends in Cog.\ Sci.}, 27(7), 597--600.
-\bibitem{dziobek2006} Dziobek, I., et al.\ (2006). Introducing MASC. \textit{J.\ Autism Dev.\ Disord.}, 36(5), 623--636.
-\bibitem{janczak2021} Ja\'nczak, M.~O.\ (2021). Polish adaptation of MentS. \textit{Psychiatria Polska}, 55(6), 1257--1274.
-\bibitem{landis1977} Landis, J.~R., \& Koch, G.~G.\ (1977). Observer agreement for categorical data. \textit{Biometrics}, 33(1), 159--174.
-\bibitem{lubiewska2016} Lubiewska, K., et al.\ (2016). ECR-R Polish adaptation. \textit{Psych.\ Rozwojowa}, 21(1), 49--63.
-\bibitem{matusz2011} Matusz, P.~J., et al.\ (2011). KPP --- Need for Cognition Scale. \textit{Psych.\ Spo{\l}eczna}, 6(2), 113--128.
-\bibitem{sorokowska2014} Sorokowska, A., et al.\ (2014). \textit{TIPI-PL}. WrocLab.
+\bibitem{cronbach1955} Cronbach, L.~J., \& Meehl, P.~E.\ (1955). Construct validity in psychological tests. \textit{Psychological Bulletin}, 52(4), 281--302.
+\bibitem{dillion2023} Dillon, D., et al.\ (2023). Can AI language models replace human participants? \textit{Trends in Cognitive Sciences}, 27(7), 597--600.
+\bibitem{dziobek2006} Dziobek, I., et al.\ (2006). Introducing MASC: A movie for the assessment of social cognition. \textit{Journal of Autism and Developmental Disorders}, 36(5), 623--636.
+\bibitem{janczak2021} Ja\'nczak, M.~O.\ (2021). Polish adaptation of the Mentalization Scale (MentS). \textit{Psychiatria Polska}, 55(6), 1257--1274.
+\bibitem{landis1977} Landis, J.~R., \& Koch, G.~G.\ (1977). The measurement of observer agreement for categorical data. \textit{Biometrics}, 33(1), 159--174.
+\bibitem{lubiewska2016} Lubiewska, K., et al.\ (2016). Polish adaptation of the Experiences in Close Relationships -- Revised. \textit{Psychologia Rozwojowa}, 21(1), 49--63.
+\bibitem{matusz2011} Matusz, P.~J., et al.\ (2011). KPP --- A Polish need for cognition scale. \textit{Psychologia Spo{\l}eczna}, 6(2), 113--128.
+\bibitem{sorokowska2014} Sorokowska, A., et al.\ (2014). \textit{TIPI-PL: A Polish ten-item personality inventory}. WrocLab.
 \end{thebibliography}
 
 \vspace{8pt}
-\noindent\textbf{AI Disclosure.} Claude Opus 4.6 and 4.7 (Anthropic) assisted in biography drafting, scoring-pipeline implementation, data analysis, chart generation, and manuscript preparation. All numerical claims (Tables \ref{tab:noprompt-tctm}, \ref{tab:noprompt-shifts} and the framing-effect summary) were produced by manual inspection of all 31 zero-prompt raw response files and verified using the validated \texttt{score\_dbzr/ments/kpp/tipi} routines from \texttt{analyze\_and\_prepare.py} (the same scoring code used to score the human pilot). The author takes full responsibility for all content, interpretations, and claims.
+\noindent\textbf{AI Disclosure.}
+
+\noindent\textit{Assistance.} Claude Opus 4.6 and 4.7 (Anthropic) were used as writing assistants for biography drafting, scoring-pipeline implementation, data analysis, chart generation, and manuscript preparation.
+
+\noindent\textit{Verification.} Every numeric claim in Tables~\ref{tab:tctm}--\ref{tab:noprompt-shifts} and in the framing-effect summary was produced by manual inspection of all 31 zero-prompt raw response files plus the 285 persona runs and 46 baseline runs in \texttt{all\_data.csv}, scored using the validated \texttt{score\_dbzr / ments / kpp / tipi} routines from \texttt{analyze\_and\_prepare.py} (the same code used to score the human pilot).
+
+\noindent\textit{Responsibility.} The author takes full responsibility for all content, design choices, interpretations, and claims, including any residual errors in the AI-assisted analyses.
 
 \end{document}
