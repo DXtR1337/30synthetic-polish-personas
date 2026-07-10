@@ -81,6 +81,89 @@ deposited at Zenodo.
 
 ---
 
+## Per-persona results (corrected collection, 7 models)
+
+Computed directly from `data/all_data_v20_public.csv` (waves 3–4). The
+counts below reproduce Table 2 and Figure 1 of the manuscript exactly.
+
+### Attachment style — first corrected-collection administration, per persona × 7 models
+
+Author label from the biography header; `disorganized` is scored as equivalent to fearful-avoidant (see manuscript Section 2.2). Codes: **sec** secure · **anx** anxious-preoccupied · **dis** dismissive-avoidant · **fea** fearful-avoidant. Bold = mismatch with the author label.
+
+| Persona | Author | Sonnet | Opus | 5.4-mini | 5.4 (full) | GPT-5.5 | Grok | Gemini |
+|---|---|---|---|---|---|---|---|---|
+| adrian | dis | dis | dis | dis | dis | dis | dis | dis |
+| agata | dis | dis | dis | dis | dis | dis | dis | dis |
+| ania | anx | anx | anx | anx | anx | anx | anx | anx |
+| anna-sim | sec | sec | sec | sec | sec | sec | sec | sec |
+| bartek | anx | **dis** | **fea** | anx | **fea** | **fea** | **fea** | **fea** |
+| dominika | dis | dis | dis | dis | dis | dis | dis | dis |
+| ewa | dis* | fea | fea | fea | fea | fea | fea | fea |
+| filip | fea | fea | fea | fea | fea | fea | fea | fea |
+| gabriela | anx | **sec** | **sec** | anx | anx | **sec** | anx | anx |
+| hubert | dis | dis | dis | dis | dis | dis | dis | dis |
+| jakub | dis | dis | dis | dis | dis | dis | dis | dis |
+| jola | anx | anx | anx | anx | anx | anx | anx | anx |
+| kamil | dis* | **dis** | fea | fea | **dis** | fea | fea | **dis** |
+| kasia | sec | sec | sec | sec | sec | sec | sec | sec |
+| klaudia | anx | **sec** | anx | anx | anx | anx | anx | anx |
+| kuba | sec | sec | sec | sec | sec | sec | sec | sec |
+| lukasz | sec | sec | sec | sec | sec | sec | sec | **anx** |
+| magda | dis | dis | dis | dis | dis | dis | dis | dis |
+| marek | dis* | **dis** | **dis** | **dis** | **dis** | **dis** | **dis** | **dis** |
+| michal-k | anx | **fea** | **fea** | anx | **fea** | **fea** | **fea** | **fea** |
+| michal-sim | fea | fea | fea | fea | fea | fea | fea | fea |
+| natalia | anx | anx | anx | anx | anx | anx | anx | anx |
+| ola | sec | sec | sec | sec | sec | sec | sec | sec |
+| pawel | anx | anx | **fea** | anx | anx | anx | **fea** | anx |
+| piotr | fea | fea | fea | fea | fea | fea | fea | fea |
+| radek | dis* | fea | fea | fea | fea | fea | fea | fea |
+| sara | sec | sec | sec | sec | sec | sec | sec | sec |
+| tomek | dis | dis | dis | dis | dis | dis | dis | dis |
+| weronika | sec | sec | sec | sec | sec | sec | sec | sec |
+| zuzia | fea | **dis** | fea | fea | fea | fea | fea | fea |
+
+Per-model agreement with the author label: Sonnet **23/30** · Opus **25/30** · 5.4-mini **29/30** · 5.4 (full) **26/30** · GPT-5.5 **26/30** · Grok **26/30** · Gemini **25/30**. Unanimously correct: **21/30** personas.
+
+### TCTM-22 author-key agreement (of 22) — mean over the two corrected administrations
+
+| Persona | Sonnet | Opus | 5.4-mini | 5.4 (full) | GPT-5.5 | Grok | Gemini |
+|---|---|---|---|---|---|---|---|
+| adrian | 21 | 19.5 | 17.3 | 21 | 21 | 20.7 | 20.5 |
+| agata | 22 | 19 | 19 | 21 | 21.5 | 20.5 | 20.5 |
+| ania | 21 | 20 | 19 | 20 | 21 | 19 | 19 |
+| anna-sim | 21 | 18.5 | 18 | 20.5 | 21 | 18.5 | 20.5 |
+| bartek | 21 | 18.5 | 17.5 | 20.5 | 21 | 22 | 19 |
+| dominika | 21 | 19 | 18 | 21 | 21 | 20 | 19.5 |
+| ewa | 21 | 20 | 18 | 20.5 | 21 | 21 | 18.5 |
+| filip | 21 | 19 | 20 | 20.5 | 21 | 21.5 | 19 |
+| gabriela | 21 | 19.5 | 17 | 20 | 21.5 | 21.5 | 19 |
+| hubert | 21 | 19.5 | 18 | 20.5 | 21 | 17 | 19.5 |
+| jakub | 22 | 19 | 19.5 | 20.5 | 21 | 17.5 | 20.5 |
+| jola | 21 | 19 | 19 | 20 | 21 | 18.5 | 19.5 |
+| kamil | 21 | 20 | 19 | 21 | 20.5 | 21.5 | 19 |
+| kasia | 20 | 20 | 18.5 | 20 | 21 | 21 | 20 |
+| klaudia | 21 | 20 | 18.5 | 20.5 | 21 | 22 | 19.5 |
+| kuba | 21.5 | 20 | 17 | 21 | 21 | 21 | 19.5 |
+| lukasz | 20 | 20 | 18 | 21 | 21 | 21.5 | 19.5 |
+| magda | 21 | 18.5 | 17 | 21 | 22 | 20 | 20.5 |
+| marek | 21 | 19.5 | 19.5 | 21 | 21.5 | 20 | 20 |
+| michal-k | 21 | 20 | 18 | 21 | 21 | 20 | 20 |
+| michal-sim | 21.5 | 17.5 | 20 | 20 | 21 | 21.5 | 20 |
+| natalia | 21 | 19 | 18.5 | 18.5 | 18.5 | 19 | 18.5 |
+| ola | 19.5 | 11 | 15 | 13.5 | 16.5 | 7.5 | 9 |
+| pawel | 21 | 20 | 18.5 | 20 | 19 | 20.5 | 19.5 |
+| piotr | 21 | 18.5 | 20 | 20 | 21 | 21 | 19.5 |
+| radek | 21.5 | 21 | 21 | 21 | 21 | 21 | 19.5 |
+| sara | 20 | 20 | 15.5 | 20 | 21 | 21 | 20 |
+| tomek | 21 | 19 | 19 | 21 | 21.5 | 20.5 | 20 |
+| weronika | 20 | 20 | 15.5 | 20.5 | 21 | 21.5 | 21 |
+| zuzia | 22 | 20 | 19.5 | 21 | 21 | 21.5 | 19.5 |
+
+**The paradox persona `ola`** (secure attachment + low mentalization by design) is classified secure by all seven models while degrading their TCTM-22 scores relative to the other 29 personas: Sonnet −1.5 · Opus −8.4 · 5.4-mini −3.4 · 5.4 (full) −7.0 · GPT-5.5 −4.4 · Grok −12.9 · Gemini −10.7 points. The models adopt the biography's low-mentalization stance at the cost of test agreement - the biography, not an answer key, governs the response.
+
+---
+
 ## Legacy snapshot (initial collection, 5–6 models)
 
 Files from the first public snapshot of this repository describe the **initial
