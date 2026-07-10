@@ -235,6 +235,12 @@ Section 2.4 and Supplement S2 of the manuscript.
 - **Runs are nested.** Hundreds of runs are repetitions within 30 personas and
   7 models — not independent observations.
 - **Human pilot is N = 7**, used only as a difficulty floor.
+- **Known stimulus artifact:** the `zuzia` biography contains a leaked
+  editorial parenthetical (a cross-persona reference from drafting,
+  self-corrected in the same sentence). It was present identically in every
+  administration of that persona in both collections, so the released file
+  is the stimulus exactly as administered — documented here rather than
+  retroactively edited (see manuscript Supplement S8).
 - Not preregistered; exploratory analyses are labeled as such in the text.
 
 ---
