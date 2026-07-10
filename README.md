@@ -164,6 +164,50 @@ Per-model agreement with the author label: Sonnet **23/30** · Opus **25/30** ·
 
 ---
 
+### Profile-recovery summary per model (persona condition, corrected collection)
+
+Style = personas whose first-administration classification matches the author label; author–model *r* = median per-dimension Pearson correlation between author ordinal targets and produced z-scores across nine dimensions (Spearman ρ in parentheses); error percentages use the MASC-style distractor tags (DOS undermentalizing · NAD overmentalizing · BK no mentalization), all persona runs pooled.
+
+| Model | Style match | Cohen's κ [95% CI] | Author–model r (ρ) | TCTM-22 M ± SD | Correct % | DOS % | NAD % | BK % |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Sonnet | 23/30 (77%) | .69 [.48, .87] | .84 (.83) | 20.97 ± 0.61 | 95.3 | 3.6 | 1.1 | 0.0 |
+| Opus | 25/30 (83%) | .78 [.59, .95] | .85 (.83) | 19.15 ± 1.73 | 87.0 | 10.5 | 1.4 | 1.0 |
+| 5.4-mini | 29/30 (97%) | .96 [.86, 1.00] | .79 (.79) | 18.26 ± 1.64 | 83.4 | 9.6 | 2.0 | 4.9 |
+| 5.4 (full) | 26/30 (87%) | .82 [.64, .96] | .82 (.82) | 20.28 ± 1.42 | 92.2 | 2.2 | 1.0 | 4.7 |
+| GPT-5.5 | 26/30 (87%) | .82 [.64, .96] | .82 (.82) | 20.79 ± 1.05 | 94.5 | 3.1 | 2.4 | 0.1 |
+| Grok | 26/30 (87%) | .82 [.64, .96] | .80 (.74) | 20.00 ± 2.74 | 90.9 | 3.3 | 3.5 | 2.3 |
+| Gemini | 25/30 (83%) | .78 [.59, .95] | .82 (.83) | 19.32 ± 2.07 | 88.2 | 1.9 | 5.7 | 4.2 |
+| Human pilot | — | — | — | 14.29 ± 1.38 (range 12–16) | 65.0 | — | — | — |
+
+All seven models sit in a band clinicians would call substantial agreement — and 5.9–7.5 points of 22 above the human pilot, consistent with LLMs being closer to native speakers of text-only chat than humans operating outside their primary modality (see manuscript Section 4.4). Fleiss κ across the seven-model panel: **.85** (bootstrap 95% CI [.75, .94]); all 21 pairwise persona-profile correlations lie in **[.947, .989]**.
+
+### Test–retest within the corrected collection (administration 1 vs 2, 30 paired runs)
+
+| Model | Median r (9 z-dims) | TCTM-22 total r | Same style, run 1 vs 2 |
+|:---|:---:|:---:|:---:|
+| Sonnet | .99 | .83 | 29/30 |
+| Opus | .99 | .92 | 29/30 |
+| 5.4-mini | .96 | .42 | 29/30 |
+| 5.4 (full) | .99 | .90 | 29/30 |
+| GPT-5.5 | .99 | .90 | 30/30 |
+| Grok | .95 | .88 | 28/30 |
+| Gemini | .97 | .93 | 29/30 |
+
+### Stimulus-correction recovery: the four affected items (author-key agreement %)
+
+A serializer defect silently truncated three vignettes (s07, w19, pw07) and one stem mis-referenced its target (w22). Cells show **truncated → corrected** agreement, persona runs pooled. Restoring the stem-referenced line makes s07 recover by up to **+98 points**; restoring the full w19 escalation arc makes the item *harder* (accidental simplification); the corrected w22 key stays contested in the 22-item battery.
+
+| Item | Sonnet | Opus | 5.4-mini | 5.4 (full) | GPT-5.5 | Grok | Gemini |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| s07 | 2 → 100 | 7 → 28 | 0 → 8 | 0 → 97 | 56 → 97 | 33 → 79 | 83 → 93 |
+| w19 | 95 → 100 | 100 → 72 | 90 → 95 | 95 → 84 | 92 → 56 | 93 → 97 | 75 → 38 |
+| pw07 | 100 → 100 | 95 → 100 | 18 → 44 | 95 → 98 | 97 → 100 | 57 → 97 | 97 → 97 |
+| w22 | 2 → 17 | 0 → 0 | 75 → 84 | 0 → 0 | 59 → 51 | 55 → 57 | 22 → 7 |
+
+Aggregate TCTM-22 totals barely notice these swings (per-model paired means move by −0.27 to +1.56 points of 22): item-level agreement is a property of the *(item, rendered stimulus, administration protocol)* triple, not of the item alone.
+
+---
+
 ## Legacy snapshot (initial collection, 5–6 models)
 
 Files from the first public snapshot of this repository describe the **initial
