@@ -1,0 +1,15 @@
+model,collection,persona,baseline,zero_prompt
+Claude Sonnet 4.6,initial,60,10,6
+Claude Sonnet 4.6,corrected,60,10,6
+Claude Opus 4.6,initial,60,7,5
+Claude Opus 4.6,corrected,60,10,6
+GPT-5.4-mini,initial,60,31,6
+GPT-5.4-mini,corrected,61,10,6
+GPT-5.4,initial,60,31,6
+GPT-5.4,corrected,61,10,5
+GPT-5.5,initial,61,50,6
+GPT-5.5,corrected,61,10,6
+Grok-4-20,initial,60,10,6
+Grok-4-20,corrected,61,10,6
+Gemini 3 Flash,initial,65,10,8
+Gemini 3 Flash,corrected,60,10,9

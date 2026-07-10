@@ -1,0 +1,8 @@
+model,matches_equiv,matches_strict
+Claude Sonnet 4.6,23,21
+Claude Opus 4.6,25,22
+GPT-5.4-mini,29,26
+GPT-5.4,26,24
+GPT-5.5,26,23
+Grok-4-20,26,23
+Gemini 3 Flash,25,23

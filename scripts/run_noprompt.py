@@ -96,8 +96,9 @@ def call_bedrock_noprompt(user, model_id):
     return text, usage.get('input_tokens',0), usage.get('output_tokens',0), model_id
 
 def call_azure_gpt_noprompt(user):
-    key = os.environ.get('AZURE_GPT_KEY', '')  # set in .env.local
-    url = 'https://synthetic-benchmark.openai.azure.com/openai/deployments/gpt-5.4-mini/chat/completions?api-version=2024-10-21'
+    key = os.environ.get('AZURE_OPENAI_KEY', '')
+    endpoint = os.environ.get('AZURE_OPENAI_ENDPOINT', 'https://synthetic-benchmark.openai.azure.com/').rstrip('/')
+    url = f'{endpoint}/openai/deployments/gpt-5.4-mini/chat/completions?api-version=2024-10-21'
     body = json.dumps({'messages':[{'role':'user','content':user}],'max_completion_tokens':16000}).encode()
     req = urllib.request.Request(url, data=body, headers={'Content-Type':'application/json','api-key':key}, method='POST')
     with urllib.request.urlopen(req, timeout=300) as resp:
@@ -106,9 +107,22 @@ def call_azure_gpt_noprompt(user):
     usage = r.get('usage',{})
     return text, usage.get('prompt_tokens',0), usage.get('completion_tokens',0), 'gpt-5.4-mini'
 
+def call_azure_gpt55_noprompt(user):
+    key = os.environ.get('AZURE_OPENAI_KEY', '')
+    deployment = os.environ.get('AZURE_OPENAI_DEPLOYMENT_GPT55', 'gpt-5.5')
+    endpoint = os.environ.get('AZURE_OPENAI_ENDPOINT', 'https://synthetic-benchmark.openai.azure.com/').rstrip('/')
+    url = f'{endpoint}/openai/deployments/{deployment}/chat/completions?api-version=2024-10-21'
+    body = json.dumps({'messages':[{'role':'user','content':user}],'max_completion_tokens':16000}).encode()
+    req = urllib.request.Request(url, data=body, headers={'Content-Type':'application/json','api-key':key}, method='POST')
+    with urllib.request.urlopen(req, timeout=300) as resp:
+        r = json.loads(resp.read())
+    text = r['choices'][0]['message']['content']
+    usage = r.get('usage',{})
+    return text, usage.get('prompt_tokens',0), usage.get('completion_tokens',0), deployment
+
 def call_grok_noprompt(user):
-    key = os.environ.get('AZURE_GROK_KEY', '')  # set in .env.local
-    url = 'https://michalseido-0654-resource.openai.azure.com/openai/v1/chat/completions'
+    key = os.environ.get('AZURE_GROK_KEY', '')
+    url = os.environ.get('AZURE_GROK_ENDPOINT', 'https://michalseido-0654-resource.openai.azure.com/openai/v1/chat/completions')
     body = json.dumps({'model':'grok-4-20-reasoning','messages':[{'role':'user','content':user}],'max_completion_tokens':16000}).encode()
     req = urllib.request.Request(url, data=body, headers={'Content-Type':'application/json','api-key':key}, method='POST')
     with urllib.request.urlopen(req, timeout=300) as resp:
@@ -118,7 +132,7 @@ def call_grok_noprompt(user):
     return text, usage.get('prompt_tokens',0), usage.get('completion_tokens',0), 'grok-4-20-reasoning'
 
 def call_gemini_noprompt(user):
-    key = os.environ.get('GEMINI_API_KEY', '')  # set in .env.local
+    key = os.environ.get('GEMINI_API_KEY', '')
     url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key={key}'
     body = json.dumps({'contents':[{'parts':[{'text':user}]}],'generationConfig':{'maxOutputTokens':16000}}).encode()
     req = urllib.request.Request(url, data=body, headers={'Content-Type':'application/json'}, method='POST')
@@ -140,6 +154,7 @@ if __name__ == '__main__':
         'sonnet': lambda u: call_bedrock_noprompt(u,'eu.anthropic.claude-sonnet-4-6'),
         'opus': lambda u: call_bedrock_noprompt(u,'eu.anthropic.claude-opus-4-6-v1'),
         'gpt': lambda u: call_azure_gpt_noprompt(u),
+        'gpt55': lambda u: call_azure_gpt55_noprompt(u),
         'grok': lambda u: call_grok_noprompt(u),
         'gemini': lambda u: call_gemini_noprompt(u),
     }
