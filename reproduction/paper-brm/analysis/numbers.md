@@ -1,7 +1,7 @@
 # numbers.md — primary analysis manifest (seed 20260611)
 
 [design] corrected rows=538 (persona=424, baseline=70, zero-prompt=44); initial rows=618 (persona=426, baseline=149, zero-prompt=43)
-[design] total scored runs incl. human pilot = 1156
+[design] total scored runs incl. human sanity check = 1156
 [intercepts/corrected] Anx z: mini=-1.33 vs 5.4(full)=-1.51 (gap 0.18 SD)
 [intercepts/corrected] largest between-model spread: DBZ-R Avo = 1.75 z (per-dim spreads: DBZ-R Anx 1.00, DBZ-R Avo 1.75, MentS total 1.03, KPP mean 0.64, TIPI E 1.54, TIPI A 1.50, TIPI C 1.33, TIPI ES 1.06, TIPI O 0.57)
 [slopes/corrected] 6-model cluster median r range: 0.948-0.989 (median of medians 0.965)
@@ -37,9 +37,10 @@
 [longitudinal style run1<->run1] Sonnet 29/30; Opus 28/30; 5.4-mini 15/30; 5.4 (full) 30/30; GPT-5.5 29/30; Grok 29/30; Gemini 28/30
 [longitudinal baseline drift |delta raw|>0.5] 5.4-mini MentS total: 103.03(SD 4.09)->131.00(SD 4.69), d=+27.97; 5.4 (full) MentS total: 128.74(SD 3.39)->122.90(SD 3.81), d=-5.84; Opus MentS total: 125.86(SD 2.34)->129.00(SD 5.12), d=+3.14; 5.4-mini DBZ-R Anx: 4.68(SD 0.30)->1.69(SD 0.39), d=-2.99; 5.4-mini TIPI ES: 4.65(SD 0.29)->6.25(SD 0.26), d=+1.60; 5.4-mini TIPI O: 4.90(SD 0.30)->6.30(SD 0.35), d=+1.40; Gemini TIPI E: 4.65(SD 1.00)->3.35(SD 1.03), d=-1.30; Grok MentS total: 132.60(SD 5.58)->131.50(SD 3.63), d=-1.10; Gemini MentS total: 137.00(SD 3.74)->135.90(SD 4.70), d=-1.10; Gemini DBZ-R Avo: 1.71(SD 0.76)->2.77(SD 2.06), d=+1.06; GPT-5.5 MentS total: 128.74(SD 2.30)->127.70(SD 1.83), d=-1.04; 5.4-mini KPP mean: 4.04(SD 0.09)->4.96(SD 0.06), d=+0.92; Sonnet MentS total: 120.90(SD 2.33)->121.80(SD 1.55), d=+0.90; 5.4-mini TIPI C: 5.16(SD 0.37)->6.05(SD 0.37), d=+0.89; 5.4 (full) DBZ-R Avo: 4.32(SD 1.39)->3.54(SD 1.03), d=-0.77; GPT-5.5 TIPI E: 4.23(SD 0.52)->4.90(SD 0.57), d=+0.67; 5.4 (full) TIPI A: 6.97(SD 0.12)->6.30(SD 0.42), d=-0.67; Opus TIPI A: 5.64(SD 0.24)->5.00(SD 0.00), d=-0.64; 5.4-mini TIPI A: 5.32(SD 0.30)->5.90(SD 0.21), d=+0.58; 5.4-mini TIPI E: 4.48(SD 0.42)->3.95(SD 0.86), d=-0.53
 [test-retest/corrected] Sonnet z-med r=0.99, TCTM r=0.83; Opus z-med r=0.99, TCTM r=0.92; 5.4-mini z-med r=0.96, TCTM r=0.42; 5.4 (full) z-med r=0.99, TCTM r=0.90; GPT-5.5 z-med r=0.99, TCTM r=0.90; Grok z-med r=0.95, TCTM r=0.88; Gemini z-med r=0.97, TCTM r=0.93
+[test-retest/corrected absolute agreement] Sonnet TCTM CCC=0.82, Mdiff=+0.07, MAE=0.13, ident=87%, z-med CCC=0.99; Opus TCTM CCC=0.90, Mdiff=-0.03, MAE=0.43, ident=63%, z-med CCC=0.99; 5.4-mini TCTM CCC=0.42, Mdiff=+0.13, MAE=1.33, ident=30%, z-med CCC=0.95; 5.4 (full) TCTM CCC=0.88, Mdiff=-0.07, MAE=0.40, ident=63%, z-med CCC=0.99; GPT-5.5 TCTM CCC=0.89, Mdiff=-0.03, MAE=0.23, ident=77%, z-med CCC=0.99; Grok TCTM CCC=0.87, Mdiff=-0.30, MAE=0.97, ident=33%, z-med CCC=0.95; Gemini TCTM CCC=0.92, Mdiff=+0.03, MAE=0.63, ident=40%, z-med CCC=0.96
 [masc/corrected baseline] Sonnet DOS 4.5 / NAD 0.0 / BK 0.0; Opus DOS 9.1 / NAD 0.0 / BK 0.0; 5.4-mini DOS 6.8 / NAD 1.4 / BK 5.0; 5.4 (full) DOS 0.9 / NAD 0.0 / BK 4.5; GPT-5.5 DOS 0.0 / NAD 0.9 / BK 0.0; Grok DOS 0.0 / NAD 1.4 / BK 0.5; Gemini DOS 0.0 / NAD 5.0 / BK 4.5
 [zero-prompt/corrected] Sonnet n=6, TCTM M=20.83 SD=0.41; Opus n=6, TCTM M=21.00 SD=0.00; 5.4-mini n=6, TCTM M=17.83 SD=1.72; 5.4 (full) n=5, TCTM M=20.80 SD=0.45; GPT-5.5 n=6, TCTM M=22.00 SD=0.00; Grok n=6, TCTM M=21.50 SD=0.84; Gemini n=9, TCTM M=19.78 SD=0.44
-[human pilot] N=7 (from aggregate file), TCTM correct: M=14.29, SD=1.38, range 12-16 of 22
+[human sanity check] N=7 (from aggregate file), TCTM correct: M=14.29, SD=1.38, range 12-16 of 22
 [author-target/corrected] median per-dim r: Sonnet 0.84 (min 0.76); Opus 0.85 (min 0.76); 5.4-mini 0.79 (min 0.57); 5.4 (full) 0.82 (min 0.68); GPT-5.5 0.82 (min 0.73); Grok 0.80 (min 0.57); Gemini 0.82 (min 0.72)
 [cohen-kappa/corrected run1] Sonnet 0.69 [0.48,0.87]; Opus 0.78 [0.59,0.95]; 5.4-mini 0.96 [0.86,1.00]; 5.4 (full) 0.82 [0.64,0.96]; GPT-5.5 0.82 [0.64,0.96]; Grok 0.82 [0.64,0.96]; Gemini 0.78 [0.59,0.95]
 [subsets/corrected] all7/explicit_n9=0.972; all7/narrative_n21=0.957; pair_54f_55/explicit_n9=0.991; pair_54f_55/narrative_n21=0.988
@@ -73,3 +74,8 @@
 [review2 persona avo g, persona-clustered bootstrap] g=+0.007, 95% CI [-0.51,+0.53]
 [review2 exclusion of 4 disorganized personas] Sonnet 21/26 (kappa 0.74); Opus 22/26 (kappa 0.80); 5.4-mini 26/26 (kappa 1.00); 5.4 (full) 24/26 (kappa 0.90); GPT-5.5 23/26 (kappa 0.85); Grok 23/26 (kappa 0.85); Gemini 23/26 (kappa 0.85)
 [review2 ola vs other-29 mean] Sonnet 19.5 vs 21.0 (-1.5); Opus 11.0 vs 19.4 (-8.4); 5.4-mini 15.0 vs 18.4 (-3.4); 5.4 (full) 13.5 vs 20.5 (-7.0); GPT-5.5 16.5 vs 20.9 (-4.4); Grok 7.5 vs 20.4 (-12.9); Gemini 9.0 vs 19.7 (-10.7)
+[style threshold sensitivity t=3.5] matches 24-27/30, kappa 0.73-0.87
+[style threshold sensitivity t=3.75] matches 25-26/30, kappa 0.78-0.82
+[style threshold sensitivity t=4.0] matches 23-29/30, kappa 0.69-0.96
+[style threshold sensitivity t=4.25] matches 23-27/30, kappa 0.69-0.87
+[style threshold sensitivity t=4.5] matches 20-27/30, kappa 0.56-0.87

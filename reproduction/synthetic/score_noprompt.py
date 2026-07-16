@@ -30,6 +30,23 @@ TCTM_KEYS_PATTERNS = [
 LETTER_TO_INT = {'A': 0, 'B': 1, 'C': 2, 'D': 3}
 
 
+def normalize_item_id(iid):
+    """Normalizuje wymyślone przez modele warianty ID itemów do kanonicznych.
+
+    Zaobserwowane (wave 4, Sonnet zero-prompt): prefiks 'winieta_'/'vignette_'
+    + zgubiona litera klasy przy itemach w- ('winieta_01' = w01, 'winieta_s07' = s07).
+    Remainder czysto cyfrowy → klasa 'w' (jedyna klasa, której litera ginie w tym wzorcu).
+    """
+    s = str(iid).strip().lower()
+    for prefix in ('winieta_', 'vignette_', 'item_'):
+        if s.startswith(prefix):
+            s = s[len(prefix):]
+            break
+    if s.isdigit():
+        s = 'w' + s
+    return s
+
+
 def find_tctm_container(d, depth=0):
     """Walk dict to find a container with TCTM answers. Returns (container, key_path)."""
     if depth > 4 or not isinstance(d, dict):
@@ -103,6 +120,7 @@ def score_raw_file(raw_path, vignettes_dict):
     raw_scores = {'subtext': 0, 'court': 0, 'eks': 0, 'pursuit': 0, 'repair': 0}
     n_items = 0  # only count items that exist in TCTM-22
     for iid, letter in answers.items():
+        iid = normalize_item_id(iid)
         if iid not in vignettes_dict:
             continue  # filter to 22 standard items
         n_items += 1

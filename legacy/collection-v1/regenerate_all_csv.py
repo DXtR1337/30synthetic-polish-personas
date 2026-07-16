@@ -1,3 +1,9 @@
+# =============================================================================
+# ARCHIVAL ONLY -- DO NOT USE TO REPRODUCE THE CORRECTED COLLECTION.
+# This is the early-snapshot pipeline (pre-correction serializer, old paths).
+# The pipeline actually used for the corrected collections lives in
+# /reproduction/synthetic/ (run_wave3/4/5, corrected run_synthetic.py).
+# =============================================================================
 # -*- coding: utf-8 -*-
 """
 Full CSV regenerator — 6 vendors.

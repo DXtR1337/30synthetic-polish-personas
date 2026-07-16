@@ -4,7 +4,9 @@
 *Baseline Intercepts Versus Persona Slopes: Stimulus and Administration Fidelity of Polish Narrative-Biography Personas in Large Language Models.*
 Michał Wiencek, Institute of Psychology, University of the National Education Commission (UKEN), Kraków.
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![License: CC BY 4.0](https://img.shields.io/badge/Data%20%26%20stimuli-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-lightgrey.svg)](LICENSE-CODE)
+[![reproduce-analysis](https://github.com/DXtR1337/30synthetic-polish-personas/actions/workflows/reproduce.yml/badge.svg)](https://github.com/DXtR1337/30synthetic-polish-personas/actions/workflows/reproduce.yml)
 
 ---
 
@@ -29,7 +31,7 @@ independently adjudicated.
 - Two full collections: initial (April 12 – May 11 + May 28, 2026; truncated stimulus) and corrected re-collection (May 31 Azure; June 10–11 Bedrock/Gemini)
 - Scored runs: persona 426 initial + 424 corrected; baseline 149 + 70; zero-prompt 43 + 44
 - Extended 57-vignette battery: 123 runs (Sonnet + GPT-5.5, both stimulus versions)
-- Human pilot N = 7 (released in aggregate form only, per consent scope)
+- Human sanity check N = 7 (comprehensibility check, not a psychometric pilot; released in aggregate form only, per consent scope)
 - Instruments: DBZ-R, MentS-PL, KPP, TIPI-PL + TCTM-22 (author-keyed subtext-recognition vignette test)
 
 **Headline results (corrected collection):** attachment-style agreement with
@@ -48,7 +50,7 @@ context while aggregate scores hold.
 |:---|:---|
 | `data/all_data_v20_public.csv` | 1,156 scored model runs × 54 columns, 22-item battery, all collection events (`wave` column: 1–2 = initial, 3 = corrected Azure, 4 = corrected Bedrock/Gemini, 5 = extended battery) |
 | `data/tctm57_runs_v20.csv` | 123 runs of the 57-vignette extended battery |
-| `data/human_pilot_aggregate.csv` | human pilot (N = 7), aggregate statistics only |
+| `data/human_pilot_aggregate.csv` | human sanity check (N = 7; file name keeps the historical `pilot` label), aggregate statistics only |
 | `personas/` | 30 biographies (YAML ground-truth header + Polish narrative body) |
 
 Every statistic cited in the manuscript regenerates with one command from the
@@ -59,10 +61,31 @@ cd reproduction/paper-brm/analysis
 python primary_analysis.py        # Python 3.12: numpy, pandas, scipy, scikit-learn
 ```
 
-This rewrites 35 tables and `numbers.md` (the manifest of every cited
+This rewrites 36 tables and `numbers.md` (the manifest of every cited
 statistic) from the public data with the fixed seed 20260611; Supplement S1
-maps each table and figure to its generating code. The same package is
-deposited at Zenodo.
+maps each table and figure to its generating code. Pinned environment:
+`requirements.txt`; file integrity: `reproduction/CHECKSUMS.sha256`. The same
+package is deposited at Zenodo. CI (`.github/workflows/reproduce.yml`) re-runs
+the analysis and the hygiene test on every push and fails if any released
+output changes.
+
+`reproduction/synthetic/` additionally contains the **collection pipeline
+actually used** (per-vendor runners, wave 3/4/5 orchestrators, scoring and
+CSV-assembly scripts — instrument items externalized for copyright, see
+`THIRD_PARTY_NOTICES.md`) plus the audit artifacts:
+
+- `run_manifest.csv` — 1,265 rows, one per archived API call: UTC timestamp,
+  condition, persona, exact model/deployment ID, token counts, sampling
+  parameters and endpoint/API version where recorded, number of vignettes
+  rendered, and SHA-256 of the exact system prompt, user prompt, and raw
+  response;
+- `test_prompt_build_hygiene.py` + `prompt_build_hashes.csv` — fail-closed
+  build-path test proving that no persona target-header content can reach a
+  model-facing prompt (the YAML ground-truth headers were researcher-only
+  metadata; an exhaustive scan of all 2,884 archived prompt files finds zero
+  occurrences of any header field or target value);
+- `verify_prompt_hygiene.py` — the corresponding scan for the raw prompt
+  artifacts (deposited with the Zenodo release).
 
 ---
 
@@ -70,13 +93,16 @@ deposited at Zenodo.
 
 ```
 .
-├── manuscript/     current manuscript + supplement (PDF)
-├── data/           scored run-level data (v20 files above + legacy snapshot)
-├── personas/       30 biographies (YAML ground-truth header + narrative body)
-├── reproduction/   self-contained analysis package (data + script + outputs)
-├── results/        legacy: early drafts, tables, and charts (initial collection)
-├── scripts/        legacy: collection and scoring scripts of the early snapshot
-└── LEGACY_README.md
+├── manuscript/            current manuscript + supplement (PDF)
+├── data/                  scored run-level data (v20 files above + legacy snapshot)
+├── personas/              30 biographies (YAML ground-truth header + narrative body)
+├── reproduction/          self-contained package: data + analysis + collection
+│                          pipeline + audit manifests (mirrors the Zenodo deposit)
+├── results/               legacy: early drafts, tables, and charts (initial collection)
+├── legacy/collection-v1/  ARCHIVAL ONLY: early-snapshot collection scripts
+│                          (pre-correction serializer) + the original README
+├── .github/workflows/     CI: clean-environment reproduction gate
+├── CITATION.cff · requirements.txt · THIRD_PARTY_NOTICES.md · LICENSE · LICENSE-CODE
 ```
 
 ---
@@ -177,9 +203,9 @@ Style = personas whose first-administration classification matches the author la
 | GPT-5.5 | 26/30 (87%) | .82 [.64, .96] | .82 (.82) | 20.79 ± 1.05 | 94.5 | 3.1 | 2.4 | 0.1 |
 | Grok | 26/30 (87%) | .82 [.64, .96] | .80 (.74) | 20.00 ± 2.74 | 90.9 | 3.3 | 3.5 | 2.3 |
 | Gemini | 25/30 (83%) | .78 [.59, .95] | .82 (.83) | 19.32 ± 2.07 | 88.2 | 1.9 | 5.7 | 4.2 |
-| Human pilot | — | — | — | 14.29 ± 1.38 (range 12–16) | 65.0 | — | — | — |
+| Human sanity check | — | — | — | 14.29 ± 1.38 (range 12–16) | 65.0 | — | — | — |
 
-All seven models sit in a band clinicians would call substantial agreement — and 5.9–7.5 points of 22 above the human pilot, consistent with LLMs being closer to native speakers of text-only chat than humans operating outside their primary modality (see manuscript Section 4.4). Fleiss κ across the seven-model panel: **.85** (bootstrap 95% CI [.75, .94]); all 21 pairwise persona-profile correlations lie in **[.947, .989]**.
+All seven models sit in a band clinicians would call substantial agreement — and 5.9–7.5 points of 22 above the human sanity check, consistent with LLMs being closer to native speakers of text-only chat than humans operating outside their primary modality (see manuscript Section 4.4). Fleiss κ across the seven-model panel: **.85** (bootstrap 95% CI [.75, .94]); all 21 pairwise persona-profile correlations lie in **[.947, .989]**.
 
 ### Test–retest within the corrected collection (administration 1 vs 2, 30 paired runs)
 
@@ -217,7 +243,20 @@ the corrected collection and the v20 files above:
 
 - `data/all_data.csv` (early scored subset), `data/*.jsonl`, `data/*.json`
 - `results/` (early paper drafts, tables, and charts)
-- `LEGACY_README.md` — the original README with the early per-persona tables
+- `legacy/collection-v1/` — the early-snapshot collection scripts, each marked
+  `ARCHIVAL ONLY`; the pipeline used for the corrected collections lives in
+  `reproduction/synthetic/`
+- `legacy/collection-v1/LEGACY_README.md` — the original README with the early
+  per-persona tables
+
+Two retroactive redactions to the legacy snapshot (2026-07-17): (1) seven
+individual-level human sanity-check rows were removed from
+`data/all_data.csv` — the consent covers aggregate-only publication
+(`data/human_pilot_aggregate.csv` is the released form; the individual rows
+remain privately retained by the author); (2) verbatim third-party instrument
+items were removed from the archival `run_synthetic.py` for copyright reasons
+(see `THIRD_PARTY_NOTICES.md`). Earlier git history predating these
+redactions is scheduled to be rewritten before the archival release.
 
 The stimulus-rendering defect that motivated the re-collection (three vignettes
 silently truncated by the serializer, one stem corrected) is documented in
@@ -234,7 +273,8 @@ Section 2.4 and Supplement S2 of the manuscript.
   shared method variance cannot be excluded.
 - **Runs are nested.** Hundreds of runs are repetitions within 30 personas and
   7 models — not independent observations.
-- **Human pilot is N = 7**, used only as a difficulty floor.
+- **Human sanity check is N = 7** — a comprehensibility check and small
+  descriptive reference point, not a psychometric pilot; it sets no norm.
 - **Known stimulus artifact:** the `zuzia` biography contains a leaked
   editorial parenthetical (a cross-persona reference from drafting,
   self-corrected in the same sentence). It was present identically in every
@@ -253,9 +293,14 @@ Section 2.4 and Supplement S2 of the manuscript.
 
 ## License
 
-All materials (biographies, scored data, analysis scripts) are released under
-**CC BY 4.0**. The TCTM vignettes are CC BY 4.0; the answer keys are
-author-defined.
+Split by material type (full breakdown in `THIRD_PARTY_NOTICES.md`):
+
+- **Code** (`*.py`, workflows) — **MIT** (`LICENSE-CODE`);
+- **Author-created data and stimuli** (biographies, TCTM vignettes and keys,
+  scored CSVs, tables, manifests) — **CC BY 4.0** (`LICENSE`);
+- **Published psychometric instruments** (DBZ-R, MentS-PL, KPP, TIPI-PL) —
+  **not distributed** in this repository and not covered by these licenses;
+  the collection scripts load them from a local, user-supplied module.
 
 ## AI disclosure
 

@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use these data, scripts, or biographies, please cite the manuscript below."
+title: "Baseline Intercepts Versus Persona Slopes - Data and Analysis Package"
+authors:
+  - family-names: Wiencek
+    given-names: Michal
+type: dataset
+license: CC-BY-4.0
+# DOI of the Zenodo deposit - fill in after the deposit is created:
+# doi: 10.5281/zenodo.XXXXXXX
+preferred-citation:
+  type: article
+  title: "Baseline Intercepts Versus Persona Slopes: Stimulus and Administration Fidelity of Polish Narrative-Biography Personas in Large Language Models"
+  authors:
+    - family-names: Wiencek
+      given-names: Michal
+  year: 2026

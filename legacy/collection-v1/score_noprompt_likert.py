@@ -1,3 +1,9 @@
+# =============================================================================
+# ARCHIVAL ONLY -- DO NOT USE TO REPRODUCE THE CORRECTED COLLECTION.
+# This is the early-snapshot pipeline (pre-correction serializer, old paths).
+# The pipeline actually used for the corrected collections lives in
+# /reproduction/synthetic/ (run_wave3/4/5, corrected run_synthetic.py).
+# =============================================================================
 """Apply paper-validated score_dbzr/ments/kpp/tipi to all noprompt raw.txt files.
 Uses analyze_and_prepare module (same as _export_csv.py uses).
 """

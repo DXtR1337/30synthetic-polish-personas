@@ -1,0 +1,27 @@
+# Drop this file into .github/workflows/reproduce.yml in the public GitHub
+# repository. It re-runs the full analysis and fails if any released table,
+# the statistics manifest, or the prompt-build hashes change — i.e., it
+# proves the release is bit-reproducible on a clean environment.
+name: reproduce-analysis
+on: [push, pull_request]
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Re-run primary analysis
+        run: |
+          cd paper-brm/analysis
+          python primary_analysis.py
+      - name: Re-run prompt-build hygiene test
+        run: |
+          cd synthetic
+          python test_prompt_build_hygiene.py
+      - name: Fail if any released output changed
+        run: |
+          git diff --exit-code -- paper-brm/analysis/tables \
+            paper-brm/analysis/numbers.md synthetic/prompt_build_hashes.csv

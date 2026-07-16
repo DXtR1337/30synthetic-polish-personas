@@ -145,7 +145,7 @@ def design_counts(df: pd.DataFrame) -> None:
          f"baseline={int((c.condition=='baseline').sum())}, zero-prompt={int((c.condition=='noprompt').sum())}); "
          f"initial rows={len(i)} (persona={int((i.condition=='persona').sum())}, "
          f"baseline={int((i.condition=='baseline').sum())}, zero-prompt={int((i.condition=='noprompt').sum())})")
-    note(f"[design] total scored runs incl. human pilot = {len(df)}")
+    note(f"[design] total scored runs incl. human sanity check = {len(df)}")
 
 
 # ------------------------------------------------------------------
@@ -619,18 +619,35 @@ def test_retest(df: pd.DataFrame) -> None:
         gm = g[g.model == model]
         w = gm.pivot_table(index="persona", columns="run", values="tctm_correct", aggfunc="first")
         r_tctm = pearson(w[1], w[2])
-        zrs = []
+        # Absolute-agreement companions to r (r tracks ordering only; near a
+        # ceiling it can be low despite tiny point differences).
+        pair = w.dropna()
+        diff = pair[2] - pair[1]
+        ccc_tctm = ccc(pair[1], pair[2])
+        mean_diff = float(diff.mean())
+        mae = float(diff.abs().mean())
+        pct_identical = float((diff == 0).mean())
+        zrs, zcccs = [], []
         for d in Z_DIMS:
             wd = gm.pivot_table(index="persona", columns="run", values=d, aggfunc="first")
             zrs.append(pearson(wd[1], wd[2]))
+            zcccs.append(ccc(wd.dropna()[1], wd.dropna()[2]))
         rows.append({"model": model, "tctm_r": r_tctm,
+                     "tctm_ccc": ccc_tctm, "tctm_mean_diff": mean_diff,
+                     "tctm_mae": mae, "tctm_pct_identical": pct_identical,
                      "median_z_r": float(np.nanmedian(zrs)),
                      "min_z_r": float(np.nanmin(zrs)),
+                     "median_z_ccc": float(np.nanmedian(zcccs)),
+                     "min_z_ccc": float(np.nanmin(zcccs)),
                      **{f"r_{d}": v for d, v in zip(Z_DIMS, zrs)}})
     out = pd.DataFrame(rows)
     out.to_csv(TABLES / "test_retest_corrected.csv", index=False)
     note("[test-retest/corrected] " + "; ".join(
         f"{SHORT[r.model]} z-med r={r.median_z_r:.2f}, TCTM r={r.tctm_r:.2f}" for r in out.itertuples()))
+    note("[test-retest/corrected absolute agreement] " + "; ".join(
+        f"{SHORT[r.model]} TCTM CCC={r.tctm_ccc:.2f}, Mdiff={r.tctm_mean_diff:+.2f}, "
+        f"MAE={r.tctm_mae:.2f}, ident={r.tctm_pct_identical:.0%}, z-med CCC={r.median_z_ccc:.2f}"
+        for r in out.itertuples()))
 
 
 # ------------------------------------------------------------------
@@ -656,7 +673,7 @@ def masc_fingerprint(df: pd.DataFrame) -> None:
 
 
 # ------------------------------------------------------------------
-# 12. zero-prompt condition (corrected) + human pilot
+# 12. zero-prompt condition (corrected) + human sanity check
 # ------------------------------------------------------------------
 def zero_prompt_and_human(df: pd.DataFrame) -> None:
     rows = []
@@ -674,13 +691,13 @@ def zero_prompt_and_human(df: pd.DataFrame) -> None:
     h = df[df.model == "Human"]
     if len(h) > 0:
         vals = h.tctm_correct.astype(int)
-        note(f"[human pilot] N={len(h)}, TCTM correct: M={vals.mean():.2f}, SD={vals.std(ddof=1):.2f}, "
+        note(f"[human sanity check] N={len(h)}, TCTM correct: M={vals.mean():.2f}, SD={vals.std(ddof=1):.2f}, "
              f"range {vals.min()}-{vals.max()} of 22")
     else:
         # Public release: individual pilot records are not distributed —
         # read the published aggregate instead.
         agg = pd.read_csv(SYNTH / "human_pilot_aggregate.csv").set_index("statistic")["value"]
-        note(f"[human pilot] N={agg['n_respondents']} (from aggregate file), TCTM correct: "
+        note(f"[human sanity check] N={agg['n_respondents']} (from aggregate file), TCTM correct: "
              f"M={agg['tctm22_total_mean']}, SD={agg['tctm22_total_sd']}, "
              f"range {agg['tctm22_total_min']}-{agg['tctm22_total_max']} of 22")
 
@@ -1142,6 +1159,49 @@ def review2_checks(df: pd.DataFrame, expected: dict[str, str]) -> None:
         f"{SHORT[r.model]} {r.ola:.1f} vs {r.others:.1f} ({r.delta:+.1f})" for r in oo.itertuples()))
 
 
+def style_threshold_sensitivity(df: pd.DataFrame, expected: dict[str, str]) -> None:
+    """Sensitivity of attachment-style classification to the scale-midpoint
+    threshold (the operational cut at 4.0 on the 1-7 DBZ-R means). Re-derives
+    per-run style labels at thresholds 3.5-4.5 and reports per-model matches
+    and Cohen's kappa versus the author labels."""
+    g = df[(df.condition == "persona") & (df.collection == "corrected") & (df.run == 1)]
+
+    def derive(anx: float, avo: float, t: float) -> str:
+        if anx >= t and avo >= t:
+            return "fearful_avoidant"
+        if anx >= t:
+            return "anxious_preoccupied"
+        if avo >= t:
+            return "dismissive_avoidant"
+        return "secure"
+
+    # Guard: the derivation must reproduce the recorded style column at t=4.0.
+    mismatches = sum(
+        derive(r.anx_mean, r.avo_mean, 4.0) != r.style
+        for r in df[df.condition == "persona"].itertuples()
+    )
+    assert mismatches == 0, f"threshold-4 rule does not reproduce style column ({mismatches})"
+
+    rows = []
+    for t in (3.5, 3.75, 4.0, 4.25, 4.5):
+        for model in MODEL_ORDER:
+            gm = g[g.model == model].set_index("persona")
+            present = [p for p in PERSONAS if p in gm.index]
+            a = [derive(gm.loc[p, "anx_mean"], gm.loc[p, "avo_mean"], t) for p in present]
+            b = [expected[p] for p in present]
+            k = sum(x == y for x, y in zip(a, b))
+            rows.append({"threshold": t, "model": model, "matches": k,
+                         "n": len(present), "accuracy": k / len(present),
+                         "kappa": cohen_kappa(a, b)})
+    out = pd.DataFrame(rows)
+    out.to_csv(TABLES / "style_threshold_sensitivity.csv", index=False)
+    for t in (3.5, 3.75, 4.0, 4.25, 4.5):
+        sub = out[out.threshold == t]
+        note(f"[style threshold sensitivity t={t}] matches "
+             f"{int(sub.matches.min())}-{int(sub.matches.max())}/30, "
+             f"kappa {sub.kappa.min():.2f}-{sub.kappa.max():.2f}")
+
+
 def main() -> None:
     df, df57 = load()
     exp = expected_styles()
@@ -1164,6 +1224,7 @@ def main() -> None:
     formal_decomposition(df)
     revision_checks(df, exp)
     review2_checks(df, exp)
+    style_threshold_sensitivity(df, exp)
     (HERE / "numbers.md").write_text("\n".join(MANIFEST) + "\n", encoding="utf-8")
     print(f"\nWrote {len(list(TABLES.glob('*.csv')))} tables to {TABLES}")
     print(f"Wrote manifest to {HERE / 'numbers.md'}")

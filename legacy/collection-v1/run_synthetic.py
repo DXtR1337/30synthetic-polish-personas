@@ -1,3 +1,9 @@
+# =============================================================================
+# ARCHIVAL ONLY -- DO NOT USE TO REPRODUCE THE CORRECTED COLLECTION.
+# This is the early-snapshot pipeline (pre-correction serializer, old paths).
+# The pipeline actually used for the corrected collections lives in
+# /reproduction/synthetic/ (run_wave3/4/5, corrected run_synthetic.py).
+# =============================================================================
 """
 Synthetic respondent runner — Claude Opus 4.6 jako ,,Piotr'' (lub inna persona)
 wypełnia pełną baterię magisterki (TCTM-22 + DBZ-R + MentS-PL + KPP + TIPI-PL).
@@ -179,10 +185,17 @@ def load_tctm_vignettes():
     return vignettes
 
 # DBZ-R (ECR-R) — 36 items, Likert 1-7
-# [REDACTED: verbatim third-party instrument items (DBZ-R, MentS-PL,
-#  KPP, TIPI-PL) removed from the public history for copyright reasons;
-#  see THIRD_PARTY_NOTICES.md]
-ECRR_ITEMS = MENTS_ITEMS = KPP_ITEMS = TIPI_ITEMS = None
+# ---------------------------------------------------------------------------
+# REDACTED (2026-07-17): the verbatim items of DBZ-R, MentS-PL, KPP and
+# TIPI-PL were removed from this public archival copy for copyright reasons
+# (see /THIRD_PARTY_NOTICES.md). The collection runs used the full item lists
+# at this point in the file. Provide instruments_local.py with ECRR_ITEMS,
+# MENTS_ITEMS, KPP_ITEMS, TIPI_ITEMS to reconstruct battery prompts.
+# ---------------------------------------------------------------------------
+try:
+    from instruments_local import ECRR_ITEMS, MENTS_ITEMS, KPP_ITEMS, TIPI_ITEMS
+except ImportError:
+    ECRR_ITEMS = MENTS_ITEMS = KPP_ITEMS = TIPI_ITEMS = None  # fail closed at use
 
 # ══════════════════════════════════════════════════════════════════════
 # KONSTRUKCJA PROMPTU

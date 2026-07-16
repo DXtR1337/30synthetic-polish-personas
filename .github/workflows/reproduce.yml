@@ -1,0 +1,28 @@
+# Re-runs the full analysis and the prompt-build hygiene test on a clean
+# environment and fails if any released table, the statistics manifest, or
+# the prompt-build hashes change — i.e., proves the release is reproducible.
+name: reproduce-analysis
+on: [push, pull_request]
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Re-run primary analysis
+        run: |
+          cd reproduction/paper-brm/analysis
+          python primary_analysis.py
+      - name: Re-run prompt-build hygiene test
+        run: |
+          cd reproduction/synthetic
+          python test_prompt_build_hygiene.py
+      - name: Fail if any released output changed
+        run: |
+          git diff --exit-code -- \
+            reproduction/paper-brm/analysis/tables \
+            reproduction/paper-brm/analysis/numbers.md \
+            reproduction/synthetic/prompt_build_hashes.csv

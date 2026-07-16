@@ -1,3 +1,9 @@
+# =============================================================================
+# ARCHIVAL ONLY -- DO NOT USE TO REPRODUCE THE CORRECTED COLLECTION.
+# This is the early-snapshot pipeline (pre-correction serializer, old paths).
+# The pipeline actually used for the corrected collections lives in
+# /reproduction/synthetic/ (run_wave3/4/5, corrected run_synthetic.py).
+# =============================================================================
 # Export all data to single CSV for JASP/jamovi/SPSS
 import json, glob, os, csv, re
 from analyze_and_prepare import score_dbzr, score_ments, score_kpp, score_tipi

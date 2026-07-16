@@ -1,0 +1,7 @@
+# Reproduction environment for primary_analysis.py and make_figures.py
+# (Python 3.12.10; versions used to generate the released tables/manifest)
+numpy==2.4.3
+pandas==2.3.3
+scipy==1.17.0
+scikit-learn==1.9.0
+matplotlib>=3.9
