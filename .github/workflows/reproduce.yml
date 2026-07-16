@@ -3,6 +3,9 @@
 # the prompt-build hashes change — i.e., proves the release is reproducible.
 name: reproduce-analysis
 on: [push, pull_request]
+permissions:
+  contents: read
+  issues: write
 jobs:
   reproduce:
     runs-on: ubuntu-latest
@@ -26,3 +29,18 @@ jobs:
             reproduction/paper-brm/analysis/tables \
             reproduction/paper-brm/analysis/numbers.md \
             reproduction/synthetic/prompt_build_hashes.csv
+      - name: Report diff on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "Reproduction diff on ${{ github.sha }}:"
+            echo '```'
+            git diff --stat
+            echo '---'
+            git diff | head -120
+            echo '```'
+          } > /tmp/diff-report.md
+          gh issue create --title "CI reproduce diff ${{ github.sha }}" \
+            --body-file /tmp/diff-report.md || true
