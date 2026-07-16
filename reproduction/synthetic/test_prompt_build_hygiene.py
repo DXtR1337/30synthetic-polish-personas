@@ -99,7 +99,7 @@ def main() -> int:
 
     out = HERE / "prompt_build_hashes.csv"
     with out.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=["persona", "system_prompt_sha256", "body_chars"])
+        w = csv.DictWriter(fh, fieldnames=["persona", "system_prompt_sha256", "body_chars"], lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
     print(f"PASS: {len(rows)}/30 personas build clean prompts; hashes -> {out.name}")

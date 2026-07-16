@@ -113,7 +113,7 @@ def main() -> None:
 
     out = HERE / "run_manifest.csv"
     with out.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
+        w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
     print(f"wrote {len(rows)} rows -> {out.name}")
