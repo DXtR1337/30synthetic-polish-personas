@@ -1,5 +1,5 @@
 models,subset,median_of_pairwise_medians
-all7,explicit_n9,0.9719572389131935
-all7,narrative_n21,0.9568560722931467
-pair_54f_55,explicit_n9,0.9910361506098615
-pair_54f_55,narrative_n21,0.988355214371972
+all7,explicit_n9,0.9719572389
+all7,narrative_n21,0.9568560723
+pair_54f_55,explicit_n9,0.9910361506
+pair_54f_55,narrative_n21,0.9883552144

@@ -138,7 +138,7 @@ def design_counts(df: pd.DataFrame) -> None:
                 "baseline": int((g.condition == "baseline").sum()),
                 "zero_prompt": int((g.condition == "noprompt").sum()),
             })
-    pd.DataFrame(rows).to_csv(TABLES / "design_counts.csv", index=False)
+    pd.DataFrame(rows).to_csv(TABLES / "design_counts.csv", index=False, float_format="%.10g")
     c = df[df.collection == "corrected"]
     i = df[df.collection == "initial"]
     note(f"[design] corrected rows={len(c)} (persona={int((c.condition=='persona').sum())}, "
@@ -165,7 +165,7 @@ def baseline_intercepts(df: pd.DataFrame) -> pd.DataFrame:
             row[f"{rd}_SD"] = raw.std(ddof=1)
         rows.append(row)
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "baseline_intercepts_corrected.csv", index=False)
+    out.to_csv(TABLES / "baseline_intercepts_corrected.csv", index=False, float_format="%.10g")
     # headline contrasts
     z = out.set_index("model")
     note(f"[intercepts/corrected] Anx z: mini={z.loc['GPT-5.4-mini','z_anx_M']:+.2f} "
@@ -210,7 +210,7 @@ def slope_correlations(df: pd.DataFrame) -> pd.DataFrame:
                          "max_r": float(np.nanmax(list(rs.values()))),
                          **{f"r_{d}": v for d, v in rs.items()}})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "slope_correlations_corrected.csv", index=False)
+    out.to_csv(TABLES / "slope_correlations_corrected.csv", index=False, float_format="%.10g")
 
     pairs = out[out.model_1 < out.model_2]
     six = [m for m in MODEL_ORDER if m != "GPT-5.4-mini"]
@@ -257,7 +257,7 @@ def style_fidelity(df: pd.DataFrame, expected: dict[str, str]) -> pd.DataFrame:
             if p in gm.index:
                 style_mat.setdefault(p, {})[model] = gm.loc[p, "style"]
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "style_fidelity_corrected.csv", index=False)
+    out.to_csv(TABLES / "style_fidelity_corrected.csv", index=False, float_format="%.10g")
     note("[fidelity/corrected run1] " + "; ".join(
         f"{SHORT[r.model]} {r.matches}/{r.n}" for r in out.itertuples()))
 
@@ -271,7 +271,7 @@ def style_fidelity(df: pd.DataFrame, expected: dict[str, str]) -> pd.DataFrame:
                                   if style_mat.get(p, {}).get(model) == expected[p])
         mat_rows.append(row)
     mat = pd.DataFrame(mat_rows)
-    mat.to_csv(TABLES / "style_matrix_corrected_run1.csv", index=False)
+    mat.to_csv(TABLES / "style_matrix_corrected_run1.csv", index=False, float_format="%.10g")
     hard = mat[mat.matches_of_7 <= 4][["persona", "expected", "matches_of_7"]]
     note(f"[fidelity/corrected] personas with <=4/7 models matching: "
          + (", ".join(f"{r.persona}({r.expected},{r.matches_of_7})" for r in hard.itertuples()) or "none"))
@@ -302,7 +302,7 @@ def style_fidelity(df: pd.DataFrame, expected: dict[str, str]) -> pd.DataFrame:
     pd.DataFrame([
         {"raters": "7 models", "fleiss_kappa": k7, "ci_lo": lo7, "ci_hi": hi7},
         {"raters": "6 models (excl. 5.4-mini)", "fleiss_kappa": k6, "ci_lo": lo6, "ci_hi": hi6},
-    ]).to_csv(TABLES / "fleiss_kappa_corrected.csv", index=False)
+    ]).to_csv(TABLES / "fleiss_kappa_corrected.csv", index=False, float_format="%.10g")
     note(f"[fidelity/corrected] Fleiss kappa 7 models = {k7:.3f} [{lo7:.2f}, {hi7:.2f}]; "
          f"6 models (excl. mini) = {k6:.3f} [{lo6:.2f}, {hi6:.2f}]")
 
@@ -315,7 +315,7 @@ def style_fidelity(df: pd.DataFrame, expected: dict[str, str]) -> pd.DataFrame:
         ok = int((w[1] == w[2]).sum())
         n = int(w[[1, 2]].dropna().shape[0])
         agree_rows.append({"model": model, "style_agree": ok, "n": n})
-    pd.DataFrame(agree_rows).to_csv(TABLES / "style_run_agreement_corrected.csv", index=False)
+    pd.DataFrame(agree_rows).to_csv(TABLES / "style_run_agreement_corrected.csv", index=False, float_format="%.10g")
     note("[fidelity/corrected run1-vs-run2 agreement] " + "; ".join(
         f"{SHORT[r['model']]} {r['style_agree']}/{r['n']}" for r in agree_rows))
     return out
@@ -342,7 +342,7 @@ def tctm_totals(df: pd.DataFrame) -> None:
                          "mean_correct": g.tctm_correct.mean(),
                          "sd_correct": g.tctm_correct.std(ddof=1)})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "tctm_totals_corrected.csv", index=False)
+    out.to_csv(TABLES / "tctm_totals_corrected.csv", index=False, float_format="%.10g")
     pers = out[out.condition == "persona"].set_index("model")
     note("[tctm/corrected persona totals] " + "; ".join(
         f"{SHORT[m]} {pers.loc[m,'pct_correct']:.1f}% (M={pers.loc[m,'mean_correct']:.2f}, SD={pers.loc[m,'sd_correct']:.2f})"
@@ -362,7 +362,7 @@ def item_analysis(df: pd.DataFrame) -> None:
             rows.append({"model": model, "item": it.replace("tctm_", ""),
                          "n": len(vals), "accuracy": vals.mean() if len(vals) else np.nan})
     acc = pd.DataFrame(rows)
-    acc.to_csv(TABLES / "item_accuracy_corrected.csv", index=False)
+    acc.to_csv(TABLES / "item_accuracy_corrected.csv", index=False, float_format="%.10g")
     grand = acc.groupby("item").apply(
         lambda x: np.average(x.accuracy, weights=x.n), include_groups=False).sort_values()
     note(f"[items/corrected] hardest 5 items (pooled): "
@@ -401,7 +401,7 @@ def item_analysis(df: pd.DataFrame) -> None:
         qvals[idx] = prev
     qtab["p_fdr_bh"] = qvals
     qtab = qtab.sort_values("cochran_q", ascending=False)
-    qtab.to_csv(TABLES / "item_heterogeneity_cochranq_corrected.csv", index=False)
+    qtab.to_csv(TABLES / "item_heterogeneity_cochranq_corrected.csv", index=False, float_format="%.10g")
     sig = int((qtab.p_fdr_bh < 0.05).sum())
     top = qtab.iloc[0]
     note(f"[items/corrected] Cochran Q: {sig}/{len(qtab)} items FDR-significant across models; "
@@ -430,7 +430,7 @@ def natural_experiment(df: pd.DataFrame) -> None:
             r["delta_pp"] = r["corrected_pct"] - r["initial_pct"]
             rows.append(r)
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "natural_experiment_items.csv", index=False)
+    out.to_csv(TABLES / "natural_experiment_items.csv", index=False, float_format="%.10g")
     for it in AFFECTED:
         seg = out[out.item == it]
         note(f"[natural-exp {it}] " + "; ".join(
@@ -447,7 +447,7 @@ def natural_experiment(df: pd.DataFrame) -> None:
         trows.append({"model": model, "n_personas": len(common),
                       "mean_delta_items": di.mean(), "sd_delta": di.std(ddof=1)})
     tout = pd.DataFrame(trows)
-    tout.to_csv(TABLES / "natural_experiment_totals.csv", index=False)
+    tout.to_csv(TABLES / "natural_experiment_totals.csv", index=False, float_format="%.10g")
     note("[natural-exp totals] per-persona TCTM delta (corrected-initial): " + "; ".join(
         f"{SHORT[r.model]} {r.mean_delta_items:+.2f}" for r in tout.itertuples()))
 
@@ -477,7 +477,7 @@ def admin_context(df: pd.DataFrame, df57: pd.DataFrame) -> None:
                 r[f"{label}_pct"] = 100 * vals.mean() if len(vals) else np.nan
             rows.append(r)
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "admin_context_2x2.csv", index=False)
+    out.to_csv(TABLES / "admin_context_2x2.csv", index=False, float_format="%.10g")
     for r in out.itertuples():
         note(f"[admin-context {SHORT[r.model]} {r.item}] battery22 trunc {r.b22_truncated_pct:.1f}% "
              f"(n={r.b22_truncated_n}) vs corr {r.b22_corrected_pct:.1f}% (n={r.b22_corrected_n}); "
@@ -503,7 +503,7 @@ def determinism(df: pd.DataFrame) -> None:
                         rows.append({"model": model, "condition": cond, "collection": coll,
                                      "metric": met, "n": len(vals), "value": vals.iloc[0]})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "zero_variance_cells.csv", index=False)
+    out.to_csv(TABLES / "zero_variance_cells.csv", index=False, float_format="%.10g")
     note("[determinism] zero-variance cells (n>=3): " + "; ".join(
         f"{SHORT[r.model]}/{r.condition}/{r.collection}/{r.metric}={r.value:g}(n={r.n})"
         for r in out.itertuples()))
@@ -541,7 +541,7 @@ def determinism(df: pd.DataFrame) -> None:
         "largest_gap": gaps[gi], "gap_lo": np.sort(vals)[gi], "gap_hi": np.sort(vals)[gi + 1],
         "n_below_4": len(lower), "n_above_4": len(upper),
         "lower_mean": lower.mean(), "upper_mean": upper.mean(),
-    }]).to_csv(TABLES / "avo_bimodality_initial.csv", index=False)
+    }]).to_csv(TABLES / "avo_bimodality_initial.csv", index=False, float_format="%.10g")
     note(f"[avo-bimodality 5.4(full) baseline initial] N={len(vals)}, BIC1={gm1.bic(x):.1f} vs BIC2={gm2.bic(x):.1f}, "
          f"bootstrap LRT p={p_boot:.4f}; gap {gaps[gi]:.3f} in [{np.sort(vals)[gi]:.2f},{np.sort(vals)[gi+1]:.2f}]; "
          f"{len(lower)} below / {len(upper)} above 4; cluster means {lower.mean():.2f}/{upper.mean():.2f}")
@@ -570,7 +570,7 @@ def longitudinal(df: pd.DataFrame, expected: dict[str, str]) -> None:
                      "min_r": float(np.nanmin(list(rs.values()))),
                      **{f"r_{d}": v for d, v in rs.items()}})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "longitudinal_slope_stability.csv", index=False)
+    out.to_csv(TABLES / "longitudinal_slope_stability.csv", index=False, float_format="%.10g")
     note("[longitudinal slopes initial<->corrected] " + "; ".join(
         f"{SHORT[r.model]} med r={r.median_r:.3f} (min {r.min_r:.3f})" for r in out.itertuples()))
 
@@ -582,7 +582,7 @@ def longitudinal(df: pd.DataFrame, expected: dict[str, str]) -> None:
         gc = g[(g.model == model) & (g.collection == "corrected")].set_index("persona")["style"]
         common = gi.index.intersection(gc.index)
         arow.append({"model": model, "agree": int((gi[common] == gc[common]).sum()), "n": len(common)})
-    pd.DataFrame(arow).to_csv(TABLES / "longitudinal_style_agreement.csv", index=False)
+    pd.DataFrame(arow).to_csv(TABLES / "longitudinal_style_agreement.csv", index=False, float_format="%.10g")
     note("[longitudinal style run1<->run1] " + "; ".join(
         f"{SHORT[r['model']]} {r['agree']}/{r['n']}" for r in arow))
 
@@ -602,7 +602,7 @@ def longitudinal(df: pd.DataFrame, expected: dict[str, str]) -> None:
                           "delta_raw": vc.mean() - vi.mean(),
                           "delta_z": zc.mean() - zi.mean()})
     dout = pd.DataFrame(drows)
-    dout.to_csv(TABLES / "longitudinal_baseline_drift.csv", index=False)
+    dout.to_csv(TABLES / "longitudinal_baseline_drift.csv", index=False, float_format="%.10g")
     big = dout[dout.delta_raw.abs() > 0.5].sort_values("delta_raw", key=abs, ascending=False)
     note("[longitudinal baseline drift |delta raw|>0.5] " + ("; ".join(
         f"{SHORT[r.model]} {r.dim}: {r.initial_M:.2f}(SD {r.initial_SD:.2f})->{r.corrected_M:.2f}"
@@ -641,7 +641,7 @@ def test_retest(df: pd.DataFrame) -> None:
                      "min_z_ccc": float(np.nanmin(zcccs)),
                      **{f"r_{d}": v for d, v in zip(Z_DIMS, zrs)}})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "test_retest_corrected.csv", index=False)
+    out.to_csv(TABLES / "test_retest_corrected.csv", index=False, float_format="%.10g")
     note("[test-retest/corrected] " + "; ".join(
         f"{SHORT[r.model]} z-med r={r.median_z_r:.2f}, TCTM r={r.tctm_r:.2f}" for r in out.itertuples()))
     note("[test-retest/corrected absolute agreement] " + "; ".join(
@@ -665,7 +665,7 @@ def masc_fingerprint(df: pd.DataFrame) -> None:
                          "nad_pct": 100 * pd.to_numeric(g.nad, errors="coerce").sum() / tot,
                          "bk_pct": 100 * pd.to_numeric(g.bk, errors="coerce").sum() / tot})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "masc_fingerprint_corrected.csv", index=False)
+    out.to_csv(TABLES / "masc_fingerprint_corrected.csv", index=False, float_format="%.10g")
     b = out[out.condition == "baseline"].set_index("model")
     note("[masc/corrected baseline] " + "; ".join(
         f"{SHORT[m]} DOS {b.loc[m,'dos_pct']:.1f} / NAD {b.loc[m,'nad_pct']:.1f} / BK {b.loc[m,'bk_pct']:.1f}"
@@ -684,7 +684,7 @@ def zero_prompt_and_human(df: pd.DataFrame) -> None:
                      "anx_mean": pd.to_numeric(g.anx_mean, errors="coerce").mean(),
                      "avo_mean": pd.to_numeric(g.avo_mean, errors="coerce").mean()})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "zero_prompt_corrected.csv", index=False)
+    out.to_csv(TABLES / "zero_prompt_corrected.csv", index=False, float_format="%.10g")
     note("[zero-prompt/corrected] " + "; ".join(
         f"{SHORT[r.model]} n={r.n_scored}, TCTM M={r.tctm_mean:.2f} SD={r.tctm_sd:.2f}" for r in out.itertuples()))
 
@@ -761,7 +761,7 @@ def extras(df: pd.DataFrame, expected: dict[str, str]) -> None:
                      "max_r": float(np.nanmax(list(rs.values()))),
                      **{f"r_{d}": v for d, v in rs.items()}})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "author_target_agreement_corrected.csv", index=False)
+    out.to_csv(TABLES / "author_target_agreement_corrected.csv", index=False, float_format="%.10g")
     note("[author-target/corrected] median per-dim r: " + "; ".join(
         f"{SHORT[r.model]} {r.median_r:.2f} (min {r.min_r:.2f})" for r in out.itertuples()))
 
@@ -782,7 +782,7 @@ def extras(df: pd.DataFrame, expected: dict[str, str]) -> None:
         lo, hi = np.nanpercentile(boots, [2.5, 97.5])
         krows.append({"model": model, "kappa": k, "ci_lo": lo, "ci_hi": hi})
     kout = pd.DataFrame(krows)
-    kout.to_csv(TABLES / "cohen_kappa_corrected.csv", index=False)
+    kout.to_csv(TABLES / "cohen_kappa_corrected.csv", index=False, float_format="%.10g")
     note("[cohen-kappa/corrected run1] " + "; ".join(
         f"{SHORT[r.model]} {r.kappa:.2f} [{r.ci_lo:.2f},{r.ci_hi:.2f}]" for r in kout.itertuples()))
 
@@ -804,7 +804,7 @@ def extras(df: pd.DataFrame, expected: dict[str, str]) -> None:
             sub_rows.append({"models": label, "subset": sname,
                              "median_of_pairwise_medians": subset_median(models, pset)})
     sout = pd.DataFrame(sub_rows)
-    sout.to_csv(TABLES / "subset_slopes_corrected.csv", index=False)
+    sout.to_csv(TABLES / "subset_slopes_corrected.csv", index=False, float_format="%.10g")
     note("[subsets/corrected] " + "; ".join(
         f"{r.models}/{r.subset}={r.median_of_pairwise_medians:.3f}" for r in sout.itertuples()))
 
@@ -821,7 +821,7 @@ def extras(df: pd.DataFrame, expected: dict[str, str]) -> None:
                       "kpp_M": g.kpp_mean.mean(), "kpp_SD": g.kpp_mean.std(ddof=1),
                       "styles": "; ".join(f"{k}:{v}" for k, v in styles.items())})
     oout = pd.DataFrame(orows)
-    oout.to_csv(TABLES / "openai_baseline_corrected.csv", index=False)
+    oout.to_csv(TABLES / "openai_baseline_corrected.csv", index=False, float_format="%.10g")
     for r in oout.itertuples():
         note(f"[openai/corrected baseline {SHORT[r.model]}] TCTM {r.tctm_M:.2f}±{r.tctm_SD:.2f}, "
              f"Anx {r.anx_M:.2f}±{r.anx_SD:.2f}, Avo {r.avo_M:.2f}±{r.avo_SD:.2f}, "
@@ -879,7 +879,7 @@ def extras(df: pd.DataFrame, expected: dict[str, str]) -> None:
                         "overall_M": g.tctm_correct.mean(),
                         "delta": ola.mean() - g.tctm_correct.mean()})
     ola = pd.DataFrame(olarows)
-    ola.to_csv(TABLES / "ola_paradox_corrected.csv", index=False)
+    ola.to_csv(TABLES / "ola_paradox_corrected.csv", index=False, float_format="%.10g")
     note("[ola/corrected] TCTM ola-vs-overall: " + "; ".join(
         f"{SHORT[r.model]} {r.ola_M:.1f} vs {r.overall_M:.1f} ({r.delta:+.1f})"
         for r in ola.itertuples()))
@@ -918,7 +918,7 @@ def formal_decomposition(df: pd.DataFrame) -> None:
                          "min_ccc": float(np.nanmin(list(cs.values()))),
                          **{f"ccc_{d}": v for d, v in cs.items()}})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "pairwise_ccc_corrected.csv", index=False)
+    out.to_csv(TABLES / "pairwise_ccc_corrected.csv", index=False, float_format="%.10g")
     note(f"[ccc/corrected pairwise] median CCC range {out.median_ccc.min():.3f}-{out.median_ccc.max():.3f}; "
          f"global min per-dim CCC {out.min_ccc.min():.3f} "
          f"({out.loc[out.min_ccc.idxmin(), 'model_1']}-{out.loc[out.min_ccc.idxmin(), 'model_2']})")
@@ -944,7 +944,7 @@ def formal_decomposition(df: pd.DataFrame) -> None:
         note(f"[consensus-reg/corrected {SHORT[m]}] slope b median {np.median(slopes):.2f} "
              f"(range {min(slopes):.2f}-{max(slopes):.2f}), |intercept a| median "
              f"{np.median(np.abs(icepts)):.2f} (max {max(np.abs(icepts)):.2f}), R2 median {np.median(r2s):.2f}")
-    pd.DataFrame(crows).to_csv(TABLES / "consensus_regression_corrected.csv", index=False)
+    pd.DataFrame(crows).to_csv(TABLES / "consensus_regression_corrected.csv", index=False, float_format="%.10g")
 
     # (c) cross-collection per-model: r vs CCC per dim (level vs ordering diagnostic)
     xrows = []
@@ -962,7 +962,7 @@ def formal_decomposition(df: pd.DataFrame) -> None:
                       **{f"r_{d}": rs[d] for d in Z_DIMS},
                       **{f"ccc_{d}": cs[d] for d in Z_DIMS}})
     xout = pd.DataFrame(xrows)
-    xout.to_csv(TABLES / "cross_collection_r_vs_ccc.csv", index=False)
+    xout.to_csv(TABLES / "cross_collection_r_vs_ccc.csv", index=False, float_format="%.10g")
     note("[cross-collection r vs CCC] " + "; ".join(
         f"{SHORT[r.model]} r={r.median_r:.3f}/CCC={r.median_ccc:.3f} (min CCC {r.min_ccc:.2f} on {r.min_ccc_dim})"
         for r in xout.itertuples()))
@@ -983,7 +983,7 @@ def revision_checks(df: pd.DataFrame, expected: dict[str, str]) -> None:
         k_strict = sum(1 for p in PERSONAS if p in gm.index and gm.loc[p, "style"] == raw_styles[p])
         rows.append({"model": model, "matches_equiv": k_equiv, "matches_strict": k_strict})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "strict_coding_sensitivity.csv", index=False)
+    out.to_csv(TABLES / "strict_coding_sensitivity.csv", index=False, float_format="%.10g")
     note("[strict-4class/corrected run1] " + "; ".join(
         f"{SHORT[r.model]} {r.matches_equiv}->{r.matches_strict}" for r in out.itertuples()))
     note(f"[strict-4class] personas declared 'disorganized' in source headers: "
@@ -1008,7 +1008,7 @@ def revision_checks(df: pd.DataFrame, expected: dict[str, str]) -> None:
         urows.append({"model": model, "median_abs_delta_pp": med,
                       "max_abs_delta_pp": abs(deltas[mx_item]), "max_item": mx_item})
     uout = pd.DataFrame(urows)
-    uout.to_csv(TABLES / "unaffected_item_deltas.csv", index=False)
+    uout.to_csv(TABLES / "unaffected_item_deltas.csv", index=False, float_format="%.10g")
     note("[unaffected-items delta] " + "; ".join(
         f"{SHORT[r.model]} med {r.median_abs_delta_pp:.1f}pp / max {r.max_abs_delta_pp:.1f}pp ({r.max_item})"
         for r in uout.itertuples()))
@@ -1021,7 +1021,7 @@ def revision_checks(df: pd.DataFrame, expected: dict[str, str]) -> None:
         rows2.append({"model": model, "run_weighted_M": g.tctm_correct.mean(),
                       "persona_weighted_M": pm[model]["tctm_correct"].mean()})
     w = pd.DataFrame(rows2)
-    w.to_csv(TABLES / "run_vs_persona_weighting.csv", index=False)
+    w.to_csv(TABLES / "run_vs_persona_weighting.csv", index=False, float_format="%.10g")
     note("[weighting check] max |run-weighted - persona-weighted| TCTM M = "
          f"{(w.run_weighted_M - w.persona_weighted_M).abs().max():.3f} items")
 
@@ -1095,7 +1095,7 @@ def review2_checks(df: pd.DataFrame, expected: dict[str, str]) -> None:
         rows.append({"model": model, "median_pearson": float(np.nanmedian(rs_p)),
                      "median_spearman": float(np.nanmedian(rs_s))})
     at = pd.DataFrame(rows)
-    at.to_csv(TABLES / "author_target_spearman.csv", index=False)
+    at.to_csv(TABLES / "author_target_spearman.csv", index=False, float_format="%.10g")
     note("[review2 author-target spearman] " + "; ".join(
         f"{SHORT[r.model]} rho={r.median_spearman:.2f} (r={r.median_pearson:.2f})"
         for r in at.itertuples()))
@@ -1142,7 +1142,7 @@ def review2_checks(df: pd.DataFrame, expected: dict[str, str]) -> None:
         rows2.append({"model": model, "matches": sum(1 for x, y in zip(a, b) if x == y),
                       "n": len(pl), "kappa": k})
     ex = pd.DataFrame(rows2)
-    ex.to_csv(TABLES / "disorganized_exclusion_sensitivity.csv", index=False)
+    ex.to_csv(TABLES / "disorganized_exclusion_sensitivity.csv", index=False, float_format="%.10g")
     note("[review2 exclusion of 4 disorganized personas] " + "; ".join(
         f"{SHORT[r.model]} {r.matches}/{r.n} (kappa {r.kappa:.2f})" for r in ex.itertuples()))
 
@@ -1154,7 +1154,7 @@ def review2_checks(df: pd.DataFrame, expected: dict[str, str]) -> None:
         others = g[g.persona != "ola"].tctm_correct.mean()
         orows.append({"model": model, "ola": ola, "others": others, "delta": ola - others})
     oo = pd.DataFrame(orows)
-    oo.to_csv(TABLES / "ola_vs_others_corrected.csv", index=False)
+    oo.to_csv(TABLES / "ola_vs_others_corrected.csv", index=False, float_format="%.10g")
     note("[review2 ola vs other-29 mean] " + "; ".join(
         f"{SHORT[r.model]} {r.ola:.1f} vs {r.others:.1f} ({r.delta:+.1f})" for r in oo.itertuples()))
 
@@ -1194,7 +1194,7 @@ def style_threshold_sensitivity(df: pd.DataFrame, expected: dict[str, str]) -> N
                          "n": len(present), "accuracy": k / len(present),
                          "kappa": cohen_kappa(a, b)})
     out = pd.DataFrame(rows)
-    out.to_csv(TABLES / "style_threshold_sensitivity.csv", index=False)
+    out.to_csv(TABLES / "style_threshold_sensitivity.csv", index=False, float_format="%.10g")
     for t in (3.5, 3.75, 4.0, 4.25, 4.5):
         sub = out[out.threshold == t]
         note(f"[style threshold sensitivity t={t}] matches "

@@ -1,56 +1,56 @@
 model,condition,collection,metric,n,value
 Claude Sonnet 4.6,baseline,initial,tipi_a,10,5.5
-Claude Sonnet 4.6,baseline,initial,tctm_correct,10,19.0
-Claude Sonnet 4.6,baseline,corrected,tctm_correct,10,21.0
+Claude Sonnet 4.6,baseline,initial,tctm_correct,10,19
+Claude Sonnet 4.6,baseline,corrected,tctm_correct,10,21
 Claude Sonnet 4.6,noprompt,corrected,tipi_a,6,5.5
 Claude Sonnet 4.6,noprompt,corrected,tipi_c,6,5.5
-Claude Sonnet 4.6,noprompt,corrected,tipi_o,6,6.0
-Claude Opus 4.6,baseline,initial,tipi_e,7,5.0
-Claude Opus 4.6,baseline,initial,tipi_c,7,6.0
+Claude Sonnet 4.6,noprompt,corrected,tipi_o,6,6
+Claude Opus 4.6,baseline,initial,tipi_e,7,5
+Claude Opus 4.6,baseline,initial,tipi_c,7,6
 Claude Opus 4.6,baseline,initial,tipi_o,7,6.5
-Claude Opus 4.6,baseline,corrected,tipi_e,10,5.0
-Claude Opus 4.6,baseline,corrected,tipi_a,10,5.0
+Claude Opus 4.6,baseline,corrected,tipi_e,10,5
+Claude Opus 4.6,baseline,corrected,tipi_a,10,5
 Claude Opus 4.6,baseline,corrected,tipi_o,10,6.5
-Claude Opus 4.6,baseline,corrected,tctm_correct,10,20.0
-Claude Opus 4.6,noprompt,initial,tipi_e,5,5.0
+Claude Opus 4.6,baseline,corrected,tctm_correct,10,20
+Claude Opus 4.6,noprompt,initial,tipi_e,5,5
 Claude Opus 4.6,noprompt,initial,tipi_a,5,5.5
 Claude Opus 4.6,noprompt,initial,tipi_c,5,5.5
-Claude Opus 4.6,noprompt,initial,tipi_es,5,5.0
-Claude Opus 4.6,noprompt,initial,tipi_o,5,6.0
-Claude Opus 4.6,noprompt,corrected,tipi_e,6,5.0
+Claude Opus 4.6,noprompt,initial,tipi_es,5,5
+Claude Opus 4.6,noprompt,initial,tipi_o,5,6
+Claude Opus 4.6,noprompt,corrected,tipi_e,6,5
 Claude Opus 4.6,noprompt,corrected,tipi_c,6,5.5
-Claude Opus 4.6,noprompt,corrected,tipi_es,6,5.0
-Claude Opus 4.6,noprompt,corrected,tipi_o,6,6.0
-Claude Opus 4.6,noprompt,corrected,tctm_correct,6,21.0
-GPT-5.4,baseline,initial,anx_mean,31,1.0
+Claude Opus 4.6,noprompt,corrected,tipi_es,6,5
+Claude Opus 4.6,noprompt,corrected,tipi_o,6,6
+Claude Opus 4.6,noprompt,corrected,tctm_correct,6,21
+GPT-5.4,baseline,initial,anx_mean,31,1
 GPT-5.4,baseline,initial,kpp_mean,31,4.917
-GPT-5.4,baseline,initial,tctm_correct,31,19.0
-GPT-5.4,baseline,corrected,tipi_es,10,7.0
-GPT-5.4,noprompt,initial,ments_total,6,122.0
-GPT-5.4,noprompt,initial,tipi_e,6,5.0
-GPT-5.4,noprompt,initial,tipi_a,6,6.0
-GPT-5.4,noprompt,initial,tipi_c,6,6.0
-GPT-5.4,noprompt,initial,tipi_es,6,5.0
-GPT-5.4,noprompt,initial,tipi_o,6,6.0
-GPT-5.4,noprompt,initial,tctm_correct,6,20.0
+GPT-5.4,baseline,initial,tctm_correct,31,19
+GPT-5.4,baseline,corrected,tipi_es,10,7
+GPT-5.4,noprompt,initial,ments_total,6,122
+GPT-5.4,noprompt,initial,tipi_e,6,5
+GPT-5.4,noprompt,initial,tipi_a,6,6
+GPT-5.4,noprompt,initial,tipi_c,6,6
+GPT-5.4,noprompt,initial,tipi_es,6,5
+GPT-5.4,noprompt,initial,tipi_o,6,6
+GPT-5.4,noprompt,initial,tctm_correct,6,20
 GPT-5.4,noprompt,corrected,kpp_mean,5,4.583
-GPT-5.4,noprompt,corrected,tipi_e,5,5.0
-GPT-5.4,noprompt,corrected,tipi_a,5,6.0
-GPT-5.4,noprompt,corrected,tipi_c,5,6.0
-GPT-5.4,noprompt,corrected,tipi_es,5,5.0
-GPT-5.5,baseline,corrected,tipi_a,10,6.0
-GPT-5.5,baseline,corrected,tipi_es,10,7.0
-GPT-5.5,noprompt,initial,tipi_a,6,6.0
-GPT-5.5,noprompt,initial,tipi_c,6,6.0
-GPT-5.5,noprompt,initial,tipi_es,6,5.0
-GPT-5.5,noprompt,initial,tctm_correct,6,22.0
-GPT-5.5,noprompt,corrected,tipi_a,5,6.0
-GPT-5.5,noprompt,corrected,tipi_c,5,6.0
-GPT-5.5,noprompt,corrected,tipi_es,5,5.0
-GPT-5.5,noprompt,corrected,tctm_correct,6,22.0
-Grok-4-20,noprompt,corrected,tipi_e,6,6.0
-Gemini 3 Flash,baseline,initial,tipi_c,10,7.0
-Gemini 3 Flash,baseline,initial,tipi_es,10,7.0
-Gemini 3 Flash,baseline,corrected,tipi_es,10,7.0
-Gemini 3 Flash,noprompt,initial,tipi_a,7,6.0
-Gemini 3 Flash,noprompt,corrected,tipi_a,8,6.0
+GPT-5.4,noprompt,corrected,tipi_e,5,5
+GPT-5.4,noprompt,corrected,tipi_a,5,6
+GPT-5.4,noprompt,corrected,tipi_c,5,6
+GPT-5.4,noprompt,corrected,tipi_es,5,5
+GPT-5.5,baseline,corrected,tipi_a,10,6
+GPT-5.5,baseline,corrected,tipi_es,10,7
+GPT-5.5,noprompt,initial,tipi_a,6,6
+GPT-5.5,noprompt,initial,tipi_c,6,6
+GPT-5.5,noprompt,initial,tipi_es,6,5
+GPT-5.5,noprompt,initial,tctm_correct,6,22
+GPT-5.5,noprompt,corrected,tipi_a,5,6
+GPT-5.5,noprompt,corrected,tipi_c,5,6
+GPT-5.5,noprompt,corrected,tipi_es,5,5
+GPT-5.5,noprompt,corrected,tctm_correct,6,22
+Grok-4-20,noprompt,corrected,tipi_e,6,6
+Gemini 3 Flash,baseline,initial,tipi_c,10,7
+Gemini 3 Flash,baseline,initial,tipi_es,10,7
+Gemini 3 Flash,baseline,corrected,tipi_es,10,7
+Gemini 3 Flash,noprompt,initial,tipi_a,7,6
+Gemini 3 Flash,noprompt,corrected,tipi_a,8,6
