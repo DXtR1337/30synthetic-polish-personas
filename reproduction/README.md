@@ -106,4 +106,4 @@ vignette source with keys IS included (`stimuli/tctm54.ts`).
 ## Citation
 
 If you use these data, scripts, or biographies, please cite the manuscript
-above. DOI of this deposit: https://doi.org/10.5281/zenodo.21406224 (release v1.0.0).
+above. DOI of this deposit: https://doi.org/10.5281/zenodo.21406224 (release v1.0.1).
