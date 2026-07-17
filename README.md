@@ -266,7 +266,9 @@ and are retained for the historical record — their numbers are superseded by
 the corrected collection and the v20 files above:
 
 - `data/all_data.csv` (early scored subset), `data/*.jsonl`, `data/*.json`
-- `results/` (early paper drafts, tables, and charts)
+- `results/` (early tables and charts; the early paper drafts were removed
+  2026-07-17 — superseded by the current manuscript, and one draft disclosed
+  respondent-level demographic detail beyond the aggregate-only consent scope)
 - `legacy/collection-v1/` — the early-snapshot collection scripts, each marked
   `ARCHIVAL ONLY`; the pipeline used for the corrected collections lives in
   `reproduction/synthetic/`
