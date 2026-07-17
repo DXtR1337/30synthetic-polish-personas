@@ -43,7 +43,7 @@ produced them. The companion is Polish-first (the stimulus language);
 (study summary, live headline table, and a map of the Polish subpages).
 
 - [podtekst.app/magisterka](https://podtekst.app/magisterka) — results dashboard (35+ charts, corrected-collection panel)
-- [/magisterka/paper](https://podtekst.app/magisterka/paper) — interactive paper viewer with clickable numbers (working-draft chronicle v14–v19 + BRM manuscript PDFs)
+- [/magisterka/paper](https://podtekst.app/magisterka/paper) — interactive paper viewer with clickable numbers (working-draft chronicle v14–v19 + the English manuscript PDFs)
 - [/magisterka/persony](https://podtekst.app/magisterka/persony) — the 30 biographies with their 12-dimension target profiles and per-model outputs
 - [/magisterka/genealogy](https://podtekst.app/magisterka/genealogy) — data genealogy: raw files → parsed → scored → aggregated → derived, with the verify-gate report
 - [/magisterka/metodologia](https://podtekst.app/magisterka/metodologia) — methodology notes · [/magisterka/glossary](https://podtekst.app/magisterka/glossary) — glossary
