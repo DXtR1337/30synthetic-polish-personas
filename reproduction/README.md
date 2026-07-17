@@ -97,12 +97,13 @@ field name or target value token occurs in any model-facing prompt.
 each raw file can be verified against the manifest.
 
 Also not included: the verbatim items of the third-party instruments (DBZ-R,
-MentS-PL, KPP, TIPI-PL) and the TCTM vignette source file; the collection
-runners load them from local files, so the released code documents the exact
-pipeline but re-running a collection requires locally supplied instrument
-copies and API credentials (see `THIRD_PARTY_NOTICES.md`).
+MentS-PL, KPP, TIPI-PL); the collection runners load them from a local,
+non-distributed module, so the released code documents the exact pipeline but
+re-running a collection requires locally supplied instrument copies and API
+credentials (see `THIRD_PARTY_NOTICES.md`). The author-owned TCTM-22/57
+vignette source with keys IS included (`stimuli/tctm54.ts`).
 
 ## Citation
 
 If you use these data, scripts, or biographies, please cite the manuscript
-above (DOI of this deposit: to be minted on publication of the archive).
+above. DOI of this deposit: https://doi.org/10.5281/zenodo.21406224 (release v1.0.0).

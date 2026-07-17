@@ -6,8 +6,7 @@ authors:
     given-names: Michal
 type: dataset
 license: CC-BY-4.0
-# DOI of the Zenodo deposit - fill in after the deposit is created:
-# doi: 10.5281/zenodo.XXXXXXX
+doi: 10.5281/zenodo.21406224
 preferred-citation:
   type: article
   title: "Baseline Intercepts Versus Persona Slopes: Stimulus and Administration Fidelity of Polish Narrative-Biography Personas in Large Language Models"
