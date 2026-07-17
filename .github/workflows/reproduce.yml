@@ -29,6 +29,11 @@ jobs:
             reproduction/paper-brm/analysis/tables \
             reproduction/paper-brm/analysis/numbers.md \
             reproduction/synthetic/prompt_build_hashes.csv
+      - name: Verify file checksums
+        run: |
+          cd reproduction
+          find . -name __pycache__ -type d -exec rm -rf {} +
+          sha256sum --check --quiet CHECKSUMS.sha256
       - name: Report diff on failure
         if: failure()
         env:

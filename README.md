@@ -114,6 +114,8 @@ CSV-assembly scripts — instrument items externalized for copyright, see
 ├── manuscript/            current manuscript + supplement (PDF)
 ├── data/                  scored run-level data (v20 files above + legacy snapshot)
 ├── personas/              30 biographies (YAML ground-truth header + narrative body)
+├── stimuli/               full TCTM-22/57 vignette source with author keys and
+│                          MASC-style distractor tags (tctm54.ts, CC BY 4.0)
 ├── reproduction/          self-contained package: data + analysis + collection
 │                          pipeline + audit manifests (mirrors the Zenodo deposit)
 ├── results/               legacy: early drafts, tables, and charts (initial collection)

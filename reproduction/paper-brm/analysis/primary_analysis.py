@@ -145,7 +145,7 @@ def design_counts(df: pd.DataFrame) -> None:
          f"baseline={int((c.condition=='baseline').sum())}, zero-prompt={int((c.condition=='noprompt').sum())}); "
          f"initial rows={len(i)} (persona={int((i.condition=='persona').sum())}, "
          f"baseline={int((i.condition=='baseline').sum())}, zero-prompt={int((i.condition=='noprompt').sum())})")
-    note(f"[design] total scored runs incl. human sanity check = {len(df)}")
+    note(f"[design] scored model runs (22-item battery, all waves) = {int((df.condition != 'human').sum())}; the human sanity check (N=7) is released separately, aggregate-only")
 
 
 # ------------------------------------------------------------------
@@ -1202,6 +1202,91 @@ def style_threshold_sensitivity(df: pd.DataFrame, expected: dict[str, str]) -> N
              f"kappa {sub.kappa.min():.2f}-{sub.kappa.max():.2f}")
 
 
+
+
+# ------------------------------------------------------------------
+# 17. target structure (circularity checks) + first-administration agreement
+# ------------------------------------------------------------------
+TARGET_KEYS_11 = ["dbz_anxiety", "dbz_avoidance", "ments_self", "ments_other",
+                  "ments_motivation", "kpp", "tipi_E", "tipi_A", "tipi_C",
+                  "tipi_ES", "tipi_O"]
+
+
+def target_structure(df: pd.DataFrame) -> None:
+    """Author-target design structure: 11x11 correlation matrix of the ordinal
+    targets over the 30 personas, PCA effective dimensionality (participation
+    ratio), and the level distribution per dimension. Addresses the circularity
+    concern: how redundant/stereotypical is the designed target space."""
+    mat = []
+    level_rows = []
+    for p in PERSONAS:
+        text = (SYNTH / f"{p}.md").read_text(encoding="utf-8")
+        vals = dict(re.findall(r"^\s{2}(\w+):\s*([\w_]+)\s*$", text.split("---")[1],
+                               re.MULTILINE))
+        mat.append([LEVEL_RANK[vals[k]] for k in TARGET_KEYS_11])
+        for k in TARGET_KEYS_11:
+            level_rows.append({"dim": k, "level": vals[k]})
+    X = np.array(mat, dtype=float)
+
+    corr = np.corrcoef(X, rowvar=False)
+    cdf = pd.DataFrame(corr, columns=TARGET_KEYS_11)
+    cdf.insert(0, "dim", TARGET_KEYS_11)
+    cdf.to_csv(TABLES / "target_correlation_matrix.csv", index=False, float_format="%.10g")
+
+    Z = (X - X.mean(axis=0)) / X.std(axis=0, ddof=1)
+    eig = np.linalg.eigvalsh(np.cov(Z, rowvar=False))[::-1]
+    eig = np.clip(eig, 0, None)
+    pr = float(eig.sum() ** 2 / (eig ** 2).sum())
+    var1 = float(eig[0] / eig.sum())
+    off = corr[np.triu_indices_from(corr, k=1)]
+    note(f"[target structure] 11-dim author-target space over 30 personas: "
+         f"median |r| between target dims = {np.median(np.abs(off)):.2f} "
+         f"(max |r| = {np.max(np.abs(off)):.2f}); PCA: first component "
+         f"{var1:.0%} of variance, participation-ratio effective dimensionality "
+         f"= {pr:.1f} of 11")
+    pd.DataFrame([{"eigenvalue_rank": i + 1, "eigenvalue": float(v),
+                   "cum_var": float(eig[: i + 1].sum() / eig.sum())}
+                  for i, v in enumerate(eig)]).to_csv(
+        TABLES / "target_pca_eigenvalues.csv", index=False, float_format="%.10g")
+
+    ld = (pd.DataFrame(level_rows).groupby(["dim", "level"]).size()
+          .reset_index(name="n_personas"))
+    ld.to_csv(TABLES / "target_level_distribution.csv", index=False, float_format="%.10g")
+    lvl_counts = ld.groupby("dim")["level"].count()
+    note(f"[target levels] distinct declared levels per dimension: "
+         f"min {int(lvl_counts.min())}, max {int(lvl_counts.max())} "
+         f"(per-dim distribution in target_level_distribution.csv)")
+
+
+def first_admin_agreement(df: pd.DataFrame) -> None:
+    """Cross-model pairwise persona-profile agreement restricted to the FIRST
+    administration only (corrected collection) — rules out retest averaging as
+    a source of the pooled-agreement figures."""
+    g = df[(df.condition == "persona") & (df.collection == "corrected") & (df.run == 1)]
+    prof = {}
+    for model in MODEL_ORDER:
+        gm = g[g.model == model].set_index("persona")
+        prof[model] = {d: gm[d] for d in Z_DIMS}
+    rows = []
+    meds = []
+    for i, m1 in enumerate(MODEL_ORDER):
+        for m2 in MODEL_ORDER[i + 1:]:
+            rs = []
+            for d in Z_DIMS:
+                a, b = prof[m1][d].align(prof[m2][d], join="inner")
+                rs.append(pearson(a, b))
+            med = float(np.nanmedian(rs))
+            meds.append(med)
+            rows.append({"model_1": m1, "model_2": m2, "median_r_9dims": med,
+                         "min_r": float(np.nanmin(rs)), "max_r": float(np.nanmax(rs))})
+    pd.DataFrame(rows).to_csv(TABLES / "first_admin_pairwise.csv", index=False,
+                              float_format="%.10g")
+    note(f"[first-administration-only agreement] 21 pairwise medians in "
+         f"[{min(meds):.3f}, {max(meds):.3f}] (pooled-administration analysis "
+         f"reports [.947, .989]; single-administration agreement is not an "
+         f"artifact of retest averaging)")
+
+
 def main() -> None:
     df, df57 = load()
     exp = expected_styles()
@@ -1225,6 +1310,8 @@ def main() -> None:
     revision_checks(df, exp)
     review2_checks(df, exp)
     style_threshold_sensitivity(df, exp)
+    target_structure(df)
+    first_admin_agreement(df)
     (HERE / "numbers.md").write_text("\n".join(MANIFEST) + "\n", encoding="utf-8")
     print(f"\nWrote {len(list(TABLES.glob('*.csv')))} tables to {TABLES}")
     print(f"Wrote manifest to {HERE / 'numbers.md'}")

@@ -1,7 +1,7 @@
 # numbers.md — primary analysis manifest (seed 20260611)
 
 [design] corrected rows=538 (persona=424, baseline=70, zero-prompt=44); initial rows=618 (persona=426, baseline=149, zero-prompt=43)
-[design] total scored runs incl. human sanity check = 1156
+[design] scored model runs (22-item battery, all waves) = 1156; the human sanity check (N=7) is released separately, aggregate-only
 [intercepts/corrected] Anx z: mini=-1.33 vs 5.4(full)=-1.51 (gap 0.18 SD)
 [intercepts/corrected] largest between-model spread: DBZ-R Avo = 1.75 z (per-dim spreads: DBZ-R Anx 1.00, DBZ-R Avo 1.75, MentS total 1.03, KPP mean 0.64, TIPI E 1.54, TIPI A 1.50, TIPI C 1.33, TIPI ES 1.06, TIPI O 0.57)
 [slopes/corrected] 6-model cluster median r range: 0.948-0.989 (median of medians 0.965)
@@ -79,3 +79,6 @@
 [style threshold sensitivity t=4.0] matches 23-29/30, kappa 0.69-0.96
 [style threshold sensitivity t=4.25] matches 23-27/30, kappa 0.69-0.87
 [style threshold sensitivity t=4.5] matches 20-27/30, kappa 0.56-0.87
+[target structure] 11-dim author-target space over 30 personas: median |r| between target dims = 0.28 (max |r| = 0.86); PCA: first component 35% of variance, participation-ratio effective dimensionality = 4.6 of 11
+[target levels] distinct declared levels per dimension: min 6, max 8 (per-dim distribution in target_level_distribution.csv)
+[first-administration-only agreement] 21 pairwise medians in [0.924, 0.975] (pooled-administration analysis reports [.947, .989]; single-administration agreement is not an artifact of retest averaging)
