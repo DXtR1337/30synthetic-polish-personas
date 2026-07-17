@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Primary analysis for the BRM submission manuscript.
+Primary analysis for the submission manuscript.
 
 PRIMARY dataset = corrected-stimulus collection:
   - Azure-hosted models (GPT-5.4-mini, GPT-5.4, GPT-5.5, Grok-4-20): wave 3

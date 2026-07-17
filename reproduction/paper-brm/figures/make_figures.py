@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Figures for the BRM submission manuscript — all computed from the released CSVs
+Figures for the submission manuscript — all computed from the released CSVs
 (all_data_v20.csv + tctm57_runs_v20.csv), corrected-stimulus collection as primary.
 
   fig1_persona_validation.pdf  7x30 style-classification matrix (corrected, run 1)
