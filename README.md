@@ -35,13 +35,16 @@ independently adjudicated.
 - Human sanity check N = 7 (comprehensibility check, not a psychometric pilot; released in aggregate form only, per consent scope)
 - Instruments: DBZ-R, MentS-PL, KPP, TIPI-PL + TCTM-22 (author-keyed subtext-recognition vignette test)
 
-## Interactive companion (live)
+## Interactive companion (live soon)
 
 Every statistic in the manuscript can also be explored interactively — each
 number links down to its formula, the underlying CSV rows, and the run that
 produced them. The companion is Polish-first (the stimulus language);
 **English entry point: [podtekst.app/magisterka/en](https://podtekst.app/magisterka/en)**
 (study summary, live headline table, and a map of the Polish subpages).
+*The public deployment is being rolled out — if a link below asks for a
+login, the update has not reached production yet; everything in this
+repository is self-contained in the meantime.*
 
 - [podtekst.app/magisterka](https://podtekst.app/magisterka) — results dashboard (35+ charts, corrected-collection panel)
 - [/magisterka/paper](https://podtekst.app/magisterka/paper) — interactive paper viewer with clickable numbers (working-draft chronicle v14–v19 + the English manuscript PDFs)
