@@ -34,6 +34,22 @@ independently adjudicated.
 - Human sanity check N = 7 (comprehensibility check, not a psychometric pilot; released in aggregate form only, per consent scope)
 - Instruments: DBZ-R, MentS-PL, KPP, TIPI-PL + TCTM-22 (author-keyed subtext-recognition vignette test)
 
+## Interactive companion (live)
+
+Every statistic in the manuscript can also be explored interactively — each
+number links down to its formula, the underlying CSV rows, and the run that
+produced them:
+
+- [podtekst.app/magisterka](https://podtekst.app/magisterka) — results dashboard (35+ charts, corrected-collection panel)
+- [/magisterka/paper](https://podtekst.app/magisterka/paper) — interactive paper viewer with clickable numbers (working-draft chronicle v14–v19 + BRM manuscript PDFs)
+- [/magisterka/persony](https://podtekst.app/magisterka/persony) — the 30 biographies with their 12-dimension target profiles and per-model outputs
+- [/magisterka/genealogy](https://podtekst.app/magisterka/genealogy) — data genealogy: raw files → parsed → scored → aggregated → derived, with the verify-gate report
+- [/magisterka/metodologia](https://podtekst.app/magisterka/metodologia) — methodology notes · [/magisterka/glossary](https://podtekst.app/magisterka/glossary) — glossary
+
+The verbatim per-run prompt files are not publicly browsable there (the user
+prompts embed third-party instrument items — same restriction as the
+raw-artifacts archive); scored data, biographies, and aggregates are open.
+
 **Headline results (corrected collection):** attachment-style agreement with
 author labels κ = .69–.96 per model (Fleiss κ = .85 across the panel); all 21
 between-model persona-profile correlations ≥ .947; model baselines differ by
