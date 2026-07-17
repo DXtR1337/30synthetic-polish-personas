@@ -38,7 +38,9 @@ independently adjudicated.
 
 Every statistic in the manuscript can also be explored interactively — each
 number links down to its formula, the underlying CSV rows, and the run that
-produced them:
+produced them. The companion is Polish-first (the stimulus language);
+**English entry point: [podtekst.app/magisterka/en](https://podtekst.app/magisterka/en)**
+(study summary, live headline table, and a map of the Polish subpages).
 
 - [podtekst.app/magisterka](https://podtekst.app/magisterka) — results dashboard (35+ charts, corrected-collection panel)
 - [/magisterka/paper](https://podtekst.app/magisterka/paper) — interactive paper viewer with clickable numbers (working-draft chronicle v14–v19 + BRM manuscript PDFs)
