@@ -122,7 +122,7 @@ CSV-assembly scripts — instrument items externalized for copyright, see
 │                          MASC-style distractor tags (tctm54.ts, CC BY 4.0)
 ├── reproduction/          self-contained package: data + analysis + collection
 │                          pipeline + audit manifests (mirrors the Zenodo deposit)
-├── results/               legacy: early drafts, tables, and charts (initial collection)
+├── results/               legacy: early tables and charts (initial collection)
 ├── legacy/collection-v1/  ARCHIVAL ONLY: early-snapshot collection scripts
 │                          (pre-correction serializer) + the original README
 ├── .github/workflows/     CI: clean-environment reproduction gate
